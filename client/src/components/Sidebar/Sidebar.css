@@ -1,0 +1,44 @@
+.sidebar {
+    background-color: #252945;
+    width: 103px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 10px;
+    border-radius: 0px 20px 20px 0px;
+}
+
+.logo {
+    background-color: #7C5DFA;
+    width: 6.438em;
+    height: 6.438em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0px 20px 0px 0px;
+    margin-top: -10px;
+}
+
+.logo svg {
+
+}
+
+.bottom-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5em;
+}
+
+.bottom-section hr {
+    width: 6em;
+    border: 0.5px solid #494E6E;
+}
+
+.bottom-section img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
