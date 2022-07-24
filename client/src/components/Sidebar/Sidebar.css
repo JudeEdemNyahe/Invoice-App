@@ -18,8 +18,26 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 0px 20px 0px 0px;
+    border-radius: 0px 20px 20px 0px;
     margin-top: -10px;
+}
+
+.logo svg {
+    z-index: 1;
+}
+
+.logo-mask {
+    background-color: #9277FF;
+    opacity: 1;
+    width: 6.438em;
+    height: 3.219em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px 0px 20px 0px;
+    margin-top: -10px;
+    position: absolute;
+    top: 60px;
 }
 
 /* .logo svg {
@@ -61,6 +79,12 @@
         height: 80px;
     }
 
+    .logo-mask {
+        top: 49px;
+        left: 0px;
+        height: 2.5em;
+    }
+
     .bottom-section {
         flex-direction: row;
         gap: 2em;
@@ -84,5 +108,9 @@
 @media (max-width: 600px) {
     .sidebar {
         width: inherit;
+    }
+
+    .logo {
+        margin-top: 1px;
     }
 }
