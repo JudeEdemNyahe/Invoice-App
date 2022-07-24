@@ -8,6 +8,7 @@
     height: 100vh;
     padding: 10px;
     border-radius: 0px 20px 20px 0px;
+    position: fixed;
 }
 
 .logo {
@@ -21,15 +22,17 @@
     margin-top: -10px;
 }
 
-.logo svg {
-
-}
+/* .logo svg {
+    height: 40px;
+    width: 40px;
+} */
 
 .bottom-section {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1.5em;
+    margin-bottom: 1.5em;
 }
 
 .bottom-section hr {
@@ -41,4 +44,45 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
+}
+
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 100vw;
+        height: 80px;
+        flex-direction: row;
+        border-radius: 0;
+    }
+
+    .logo {
+        margin-top: 0px;
+        margin-left: -10px;
+        border-radius: 0px 20px 20px 0px;
+        height: 80px;
+    }
+
+    .bottom-section {
+        flex-direction: row;
+        gap: 2em;
+        margin-right: 1.5em;
+        margin-top: 22px;
+    }
+    
+    hr {
+        display: none;
+    }
+
+    .moon-icon {
+        border-right: 1px solid #494E6E;
+        padding-right: 2em;
+        display: flex;
+        align-items: center;   
+        height: 80px;
+    }
+}
+
+@media (max-width: 600px) {
+    .sidebar {
+        width: inherit;
+    }
 }

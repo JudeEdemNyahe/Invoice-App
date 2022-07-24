@@ -18,7 +18,7 @@
 
 *{
     box-sizing: border-box;
-    /* outline: 1px solid white; */
+    /* outline: 1px solid black; */
 }
 
 body {
@@ -26,4 +26,5 @@ body {
     font-family: var(--spartan);
     /* max-height: 100vh; */
     margin: 0;
+    overflow-x: hidden;
 }
