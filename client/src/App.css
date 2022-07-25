@@ -1,0 +1,5 @@
+.app {
+    display: flex;
+    width: -webkit-fill-available;
+    min-width: 100vw;
+}

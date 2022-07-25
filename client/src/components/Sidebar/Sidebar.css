@@ -1,0 +1,116 @@
+.sidebar {
+    background-color: #252945;
+    width: 103px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 10px;
+    border-radius: 0px 20px 20px 0px;
+    position: fixed;
+}
+
+.logo {
+    background-color: #7C5DFA;
+    width: 6.438em;
+    height: 6.438em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0px 20px 20px 0px;
+    margin-top: -10px;
+}
+
+.logo svg {
+    z-index: 1;
+}
+
+.logo-mask {
+    background-color: #9277FF;
+    opacity: 1;
+    width: 6.438em;
+    height: 3.219em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px 0px 20px 0px;
+    margin-top: -10px;
+    position: absolute;
+    top: 60px;
+}
+
+/* .logo svg {
+    height: 40px;
+    width: 40px;
+} */
+
+.bottom-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+.bottom-section hr {
+    width: 6em;
+    border: 0.5px solid #494E6E;
+}
+
+.bottom-section img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 100vw;
+        height: 80px;
+        flex-direction: row;
+        border-radius: 0;
+    }
+
+    .logo {
+        margin-top: 0px;
+        margin-left: -10px;
+        border-radius: 0px 20px 20px 0px;
+        height: 80px;
+    }
+
+    .logo-mask {
+        top: 49px;
+        left: 0px;
+        height: 2.5em;
+    }
+
+    .bottom-section {
+        flex-direction: row;
+        gap: 2em;
+        margin-right: 1.5em;
+        margin-top: 22px;
+    }
+    
+    hr {
+        display: none;
+    }
+
+    .moon-icon {
+        border-right: 1px solid #494E6E;
+        padding-right: 2em;
+        display: flex;
+        align-items: center;   
+        height: 80px;
+    }
+}
+
+@media (max-width: 600px) {
+    .sidebar {
+        width: inherit;
+    }
+
+    .logo {
+        margin-top: 1px;
+    }
+}

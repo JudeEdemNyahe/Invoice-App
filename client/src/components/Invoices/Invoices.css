@@ -1,0 +1,87 @@
+.container {
+    display: flex;
+    width: 730px;
+    margin: 0 auto;
+    margin-top: 72px;
+    height: 59px;
+    flex-direction: column;
+    gap: 65px;
+}
+
+.invoices {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 730px;
+    margin: 0 auto;
+    height: 59px;
+}
+
+.right-section {
+    display: flex;
+    align-items: center;
+    gap: 2.5em
+}
+
+.dropdown {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.btn button {
+    width: 150px; 
+    height: 48px;
+    padding: 17px;
+    background-color: #7C5DFA;
+    color: #F8F8FB;
+    border-radius: 2.5em;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    font-weight: 500;
+}
+
+#filter-dropdown {
+    border: none;
+    background-color: #F8F8FB;
+}
+
+label {
+    font-weight: bold;
+}
+
+.plus-icon {
+    font-size: 24px;
+    background-color: white;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+.invoice-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin-bottom: 1em;
+}
+
+@media (max-width: 1024px) {
+    .container {
+        margin-top: 8em;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        align-items: center;
+    }
+
+    .invoices {
+        justify-content: space-around;
+    }
+}
