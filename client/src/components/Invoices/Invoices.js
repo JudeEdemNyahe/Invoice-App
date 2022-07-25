@@ -1,5 +1,7 @@
 import React from 'react';
+
 import Invoice from './Invoice/Invoice';
+import NoInvoice from './Invoice/NoInvoice';
 
 import './Invoices.css'
 
@@ -27,7 +29,7 @@ const Invoices = () => {
             </div>
         </div>
         <div className='invoice-cards'>
-                <Invoice 
+                {/* <Invoice 
                 id='#RT3080' 
                 date = '19 Aug 2021' 
                 name='Jensen Huang'
@@ -81,8 +83,9 @@ const Invoices = () => {
                 name='Anita Wainwright'
                 amount='3,102.04'
                 status='Draft'
-                />
+                /> */}
                 
+                <NoInvoice />
             </div>
         </div>
        

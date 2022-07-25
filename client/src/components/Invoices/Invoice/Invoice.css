@@ -46,3 +46,20 @@
     display: inline-block;
     width: 1em;
 }
+
+/* No Invoice Styles */
+.noInvoice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 64px;
+}
+
+.noInvoice-text {
+    text-align: center;
+}
+
+.noInvoice-text span {
+    font-weight: bold;
+}
