@@ -29,6 +29,10 @@
     gap: 16px;
 }
 
+.remove {
+    margin-left: -10px;
+}
+
 .btn button {
     width: 150px; 
     height: 48px;
@@ -54,13 +58,14 @@ label {
 
 .plus-icon {
     font-size: 24px;
-    background-color: white;
+    background-color: #ffffff;
     width: 1em;
     height: 1em;
     border-radius: 50%;
     display: grid;
     justify-items: center;
     align-items: center;
+    margin-right: -5px;
 }
 
 .invoice-cards {
@@ -83,5 +88,17 @@ label {
 
     .invoices {
         justify-content: space-around;
+    }
+
+    .numberOfInvoices span, .remove  {
+        display: none;
+    }
+
+    .invoice-cards {
+        width: 90%;
+    }
+
+    .btn button {
+        width: 90px;
     }
 }
