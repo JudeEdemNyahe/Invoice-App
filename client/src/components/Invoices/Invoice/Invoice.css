@@ -9,6 +9,10 @@
     cursor: pointer;
 }
 
+.invoice-mobile {
+    display: none;
+}
+
 .invoice-left-section {
     display: flex;
     align-items: center;
@@ -34,16 +38,18 @@
 }
 
 .status {
-    background-color: rgba(51, 214, 159, 0.06);
+    background-color: rgba(51, 214, 159, 0.2);
     mix-blend-mode: normal;
     border-radius: 6px;
-    padding: 0.5em 0.7em;
+    padding: 13px;
     width: 6em;
+    color: #33D69F;
+    font-weight: 500;
 }
 
 .status:before {
     content: "•"; 
-    color: red;
+    color: #33D69F;
     display: inline-block;
     width: 1em;
 }
@@ -63,4 +69,31 @@
 
 .noInvoice-text span {
     font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .invoice {
+        display: none;
+    }
+
+    .invoice-mobile {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        background-color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        padding: 1em;
+        width: 500px;
+        margin: 0 auto;
+    }
+
+    .invoice-left-section-mobile, .invoice-right-section-mobile, .id-mobile  {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .id-mobile {
+        flex-direction: column;
+    }
 }

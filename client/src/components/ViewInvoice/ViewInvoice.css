@@ -1,0 +1,285 @@
+.viewInvoice-container {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+}
+
+.view-invoice-sidebar {
+    position: absolute;
+    left: 0;
+}
+
+.view-invoice {
+    margin-top: 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 730px;
+}
+
+.go-back {
+    cursor: pointer;
+    margin-top: 48px;
+}
+
+.left-arrow{
+    margin-right: 1.75em;
+}
+
+.viewInvoice-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 88px;
+    background-color: #ffffff;
+    padding: 1.5em;
+    border-radius: 0.5em;
+}
+
+.viewInvoice-left-section {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.viewInvoice-right-section {
+    display: flex;
+    gap: 8px;
+}
+
+.editBtn, .deleteBtn, .markAsPaidBtn {
+    height: 48px;
+    border-radius: 1.5em;
+    border: none;
+}
+
+.editBtn {
+    width: 73px;
+    background-color: #F8F8FB;
+    color: #7C5DFA;
+    font-weight: 700;
+}
+
+.deleteBtn {
+    width: 89px;
+    background-color: #EC5757;
+    color: #F8F8FB;
+}
+
+.markAsPaidBtn {
+    width: 131px;
+    background-color: #7C5DFA;
+    color: #F8F8FB;
+}
+
+.viewInvoice-bottom {
+    /* height: 631px; */
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+    border-radius: 8px;
+    padding: 48px;
+    gap: 48px;
+}
+
+.section-1 {
+    display: flex;
+    justify-content: space-between;
+}
+
+#left, #right {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#right {
+    text-align: right;
+}
+
+.section-2 {
+    display: flex;
+    height: 110px;
+    gap: 100px;
+}
+
+.dates, .billings, .email, .billing, .billing-location, .date {
+    display: flex;
+    flex-direction: column;
+}
+
+.dates, .totals-section, .amount-due {
+    justify-content: space-between;
+}
+
+.date, .billing, .email {
+    gap: 12px;
+}
+
+.billings {
+    gap: 8px;
+}
+
+.section-3, .totals-section, .amount-due {
+    display: flex;
+}
+
+.section-3 {
+    flex-direction: column;
+    gap: 40px;
+    background: #F9FAFE;
+    border-radius: 8px 8px 0px 0px;
+    padding: 32px;
+}
+
+.item, .quantity, .price, .total {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.amount-due {
+    background: #373B53;
+    border-radius: 0px 0px 8px 8px;
+    padding: 32px;
+    margin-top: -45px;
+    color: #F9FAFE;
+}
+
+#amount {
+    font-weight: 700;
+    font-size: 24px;
+}
+
+#amountDue-mobile, .email-mobile, .viewInvoice-right-section-mobile, #mobile-amount {
+    display: none;
+}
+
+/* font-color */
+.statusTitle, .occupation, #right, .invoice-dateHeading, .bill-toHeading, .billing-location,
+.sentTo, .itemName, .qty, .price, .numberOfInvoices, #total, #name, #date, #hashtag  {
+    color: #7E88C3;
+}
+
+.go-back, .invoice-date, .bill-to, .email-address, .item-name, .amounts {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+@media (max-width: 1024px) {
+    .view-invoice-sidebar {
+        position: absolute;
+        top: -1px;
+    }
+
+    .go-back {
+        margin-top: 48px;
+    }
+}
+
+@media (max-width: 600px) {
+    .viewInvoice-container {
+        justify-content: unset;
+        align-items: center;
+        width: 355px;
+        margin: 0 auto;
+    }
+
+    .view-invoice-sidebar {
+        width: 100vw;
+        position: absolute;
+        top: -1;
+    }
+
+    .view-invoice {
+        flex-wrap: wrap;
+    }
+
+    .viewInvoice-right-section {
+        display: none;
+    }
+
+    .viewInvoice-left-section {
+        justify-content: space-between;
+        width: -webkit-fill-available;
+    }
+
+    .viewInvoice-bottom {
+        gap: 30px;
+    }
+
+    .section-1 {
+        flex-direction: column;
+        justify-content: space-around;
+        gap: 30px;
+    }
+
+    #right {
+        align-self: flex-start;
+        text-align: left;
+    }
+
+    .section-2 {
+        gap: 40px;
+        width: max-content;
+    }
+
+    .email, .itemName, .quantity, .price, #total {
+        display: none;
+    }
+
+    .email-mobile {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .section-3 {
+        width: auto;
+        gap: 1em;
+    }
+
+    .item-name, .amounts {
+        font-size: 16px;
+    } 
+
+    #amountDue {
+        display: none;
+    }
+
+    #amountDue-mobile {
+        display: flex;
+    }
+
+    .amount-due {
+        align-items: center;
+        margin-top: -30px;
+    }
+
+    #mobile-amount {
+        display: block;
+        font-size: 12px;
+    }
+
+    .total {
+        justify-content: space-evenly;
+    }
+
+    .item {
+        gap: 1em;
+    }
+
+    .viewInvoice-right-section-mobile {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        background-color: #FFFFFF;
+        padding: 21px;
+    }
+}
+
+
+
+
+
