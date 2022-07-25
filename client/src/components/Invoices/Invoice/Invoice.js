@@ -1,10 +1,17 @@
 import React from 'react';
+import {useNavigate} from 'react-router-dom';
 
 import './Invoice.css';
 
 const Invoice = (props) => {
+  const navigate = useNavigate();
+
+  const viewInvoice = () => {
+    navigate('/view-invoice', {replace: true});
+  };
+
     return (
-        <div className='invoice'>
+        <div className='invoice' onClick = {viewInvoice}>
           <div className='invoice-left-section'>
             <span className='id'>{props.id}</span>
             <span>Due {props.date}</span>

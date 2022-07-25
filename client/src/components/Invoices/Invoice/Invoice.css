@@ -6,6 +6,7 @@
     font-size: 16px;
     background-color: white;
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .invoice-left-section {

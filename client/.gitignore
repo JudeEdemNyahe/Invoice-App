@@ -39,3 +39,6 @@ yarn-error.log*
 .DS_Store
 .prettierignore
 .prettierrc
+
+#assets folder
+/assets

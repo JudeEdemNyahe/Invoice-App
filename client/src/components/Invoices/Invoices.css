@@ -61,6 +61,7 @@ label {
     display: grid;
     justify-items: center;
     align-items: center;
+    margin-right: -5px;
 }
 
 .invoice-cards {
