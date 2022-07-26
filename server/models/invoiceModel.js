@@ -87,9 +87,6 @@ const invoiceSchema = new mongoose.Schema({
     items: {
         type: Array,
     },
-    total: {
-        type: Number,
-    }
 
 
 }, {
@@ -98,6 +95,23 @@ const invoiceSchema = new mongoose.Schema({
 });
 
 
+
+//Document middleware: runs before .save() and .create() cmd
+
+
+invoiceSchema.virtual('total').get(function() {
+    let calcTotal = 0;
+    this.items.map((item) => {
+        calcTotal += item.total;
+    });
+    return calcTotal;
+
+})
+
+
+
+
 const Invoice = mongoose.model('Invoice', invoiceSchema);
+
 
 module.exports = Invoice;
