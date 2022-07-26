@@ -2,16 +2,30 @@ import React from 'react';
 import {useNavigate} from 'react-router-dom';
 
 import './Invoice.css';
+// import '../../../scss/styles.sass';
 
-const Invoice = (props) => {
+export const Invoice = (props) => {
   const navigate = useNavigate();
 
   const viewInvoice = () => {
     navigate('/view-invoice');
   };
+
+const changeColor = () => {
+    let className = ''
+    if (props.status === 'Paid') {
+        className = 'status-paid'
+    }
+    else if (props.status === 'Pending') {
+        className = 'status-pending'
+    }
+    else {
+        className = 'status-draft'
+    }
+    return className;
+}
   
     return (
-
       <>
         <div className='invoice' onClick = {viewInvoice}>
           <div className='invoice-left-section'>
@@ -21,7 +35,7 @@ const Invoice = (props) => {
           </div>
           <div className='invoice-right-section'>
             <span className='amount'>&#163;{props.amount}</span>
-            <span className='status'>{props.status}</span>
+            <span className={changeColor(props.status)}>{props.status}</span>
           </div>
         </div>
 
@@ -35,7 +49,7 @@ const Invoice = (props) => {
               <span>Due {props.date}</span>
               <span className='amount'>&#163;{props.amount}</span>
             </div>
-            <span className='status'>{props.status}</span>
+            <span className={changeColor(props.status)}>{props.status}</span>
           </div>
         </div>
       </>

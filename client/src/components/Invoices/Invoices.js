@@ -5,7 +5,8 @@ import Invoice from './Invoice/Invoice';
 
 import './Invoices.css'
 
-const Invoices = () => {
+const Invoices = (props) => {
+    
     return (
         <div className='container'>
          <div className='invoices'>
@@ -15,9 +16,9 @@ const Invoices = () => {
             </div>
             <div className='right-section'>
                 <div className='dropdown'>
-                <label for="cars">Filter by status</label>
-                    <select name='filter-dropdown' id='filter-dropdown'>
-                        <option selected></option>
+                <label htmlFor="cars">Filter by status</label>
+                    <select name='filter-dropdown' id='filter-dropdown' defaultValue={''}>
+                        <option></option>
                         <option></option>
                         <option></option>
                         <option></option>
