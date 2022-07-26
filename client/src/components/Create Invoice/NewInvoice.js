@@ -5,6 +5,7 @@ import './NewInvoice.css';
 import Sidebar from '../Sidebar/Sidebar';
 import BillFrom from './Bill From/BillFrom';
 import BillTo from './Bill To/BillTo';
+import ItemList from './Item List/ItemList';
 
 const NewInvoice = () => {
     return(
@@ -12,13 +13,18 @@ const NewInvoice = () => {
             
             <div className="new-invoice-container">
                 <Sidebar />
-                <div className='invoice-form'>
+                <form className='invoice-form'>
                     <h1 className='title'>New Invoice</h1>
                     <BillFrom />
                     <BillTo />
-                    
-                </div>
-                
+                    <ItemList />
+
+                    <div className='btns'>
+                        <button id="discard">Discard</button>
+                        <button id='saveDraft'>Save as Draft</button>
+                        <button id='saveSend'>Save & Send</button>
+                    </div>
+                </form>
             </div>
             
         </Fragment>

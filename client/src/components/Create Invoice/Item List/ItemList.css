@@ -1,0 +1,80 @@
+.head{
+    font-family: 'Spartan';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: -0.25px;
+    color: #7C5DFA;
+    margin-top: 32px;
+    /* background-color: green; */
+}
+
+.item-head{
+    width: 464px;
+    height: 15px;
+    /* background-color: green; */
+    display: flex;
+}
+
+.item-head div h4{
+margin: 0px;
+font-family: 'Spartan';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 15px;
+/* identical to box height, or 125% */
+letter-spacing: -0.25px;
+color: #7E88C3;
+}
+
+.i-name{
+    width: 214px;
+    margin-right: 16px;
+}
+
+.i-qty{
+    width: 46px;
+    margin-right: 16px;
+}
+
+.i-price{
+    width: 56px;
+    margin-right: 60px;
+}
+
+.i-total{
+    width: 56px;
+}
+
+.addItem{
+    width: 504px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+    font-family: 'Spartan';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    /* identical to box height, or 125% */
+
+    background: #F9FAFE;
+    border-radius: 24px;
+    border: none;
+    text-align: center;
+    letter-spacing: -0.25px;
+    color: #7E88C3;
+    cursor: pointer;
+    margin-bottom: 39px;
+}
+
+.addItem svg{
+    position: relative;
+    top: 40%;
+    margin-right: 5px;
+}
+
+

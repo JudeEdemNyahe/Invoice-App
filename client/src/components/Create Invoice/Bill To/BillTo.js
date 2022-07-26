@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import '../Bill From/BillFrom.css';
+// import '../Bill From/BillFrom.css';
 import './BillTo.css'
 
 const BillTo = () => {

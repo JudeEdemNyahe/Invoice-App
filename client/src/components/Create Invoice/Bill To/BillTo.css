@@ -1,3 +1,50 @@
+label{
+    font-family: 'Spartan';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    /* identical to box height, or 125% */
+
+    letter-spacing: -0.25px;
+    color: #7E88C3;
+
+}
+
+.group1{
+    height: 73px;
+    width: 504px;
+    margin-bottom: 24px;
+    /* background-color: black; */
+}
+
+.group1 input{
+    height: 48px;
+    width: 504px;
+    outline: none;
+}
+
+.form-l3{
+    display: flex;
+    justify-content: space-between;
+    height: 73px;
+    width: 504px;
+    /* background-color: blue; */
+
+}
+
+.group2{
+    height: 73px;
+    width: 152px;
+    /* background-color: green; */
+}
+
+.group2 input{
+    height: 48px;
+    width: 100%;
+    margin-top: 10px;
+    outline: none;
+}
 
 .form-l2{
     width: 504px;
