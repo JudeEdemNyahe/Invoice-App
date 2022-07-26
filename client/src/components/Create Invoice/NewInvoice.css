@@ -1,0 +1,77 @@
+.new-invoice-container{
+    width: 719px;
+    height: 100vh;
+    /* background-color: red; */
+    margin: 0px;
+    padding: 0px;
+    
+}
+
+.invoice-form{
+    /* position: absolute; */
+    margin-left: 103px;
+    width: 616px;
+    height: 100vh;
+    background-color: white;
+    padding: 30px 56px 0px 56px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.title{
+    height: 32px;
+    /* background-color: blue; */
+    /* top: calc(50% - 32px/2 - 640px); */
+    font-family: 'Spartan';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+
+    letter-spacing: -0.5px;
+    color: #0C0E16;
+}
+
+.btns{
+    /* background-color: red; */
+    height: 48px;
+    margin-bottom: 32px;
+    font-family: 'Spartan';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    /* identical to box height, or 125% */
+
+    letter-spacing: -0.25px;
+
+}
+
+#discard{
+    width: 90px;
+    height: 48px;
+    border: none;
+    background: #F9FAFE;
+    border-radius: 24px;
+    margin-right: 139px;
+    color: #7E88C3;
+}
+
+#saveDraft{
+    width: 133px;
+    height: 48px;
+    border: none;
+    background: #373B53;
+    border-radius: 24px;
+    margin-right: 8px;
+    color: #888EB0;
+}
+
+#saveSend{
+    width: 128px;
+    height: 48px;
+    border: none;
+    background: #7C5DFA;
+    border-radius: 24px;
+    color: white
+}
