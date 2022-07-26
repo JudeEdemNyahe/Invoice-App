@@ -27,7 +27,20 @@ exports.getAllInvoices = async(req, res, next) => {
 
 
 
-        const query = Invoice.find(JSON.parse(queryStr))
+        let query = Invoice.find(JSON.parse(queryStr))
+
+
+        //2)Sorting
+        if (req.query.sort) {
+            const sortBy = req.query.sort.split(',').join(' ');
+
+            query = query.sort(sortBy)
+                //e.g sort('total payterms')
+        } else {
+            query = query.sort('-createdAt')
+        }
+
+
 
 
         //Execute Query
