@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import ViewInvoice from './components/ViewInvoice/ViewInvoice';
 import './App.css';
 import HomePage from './components/HomePage/HomePage';
+import NewInvoice from './components/Create Invoice/NewInvoice';
 
 const App = () => {
     return (
@@ -16,6 +17,8 @@ const App = () => {
                 amount='556.00'
                 id='#XM9141' 
                 />} />
+
+                <Route path='/new-invoice' element={<NewInvoice />}/>
             </Routes>   
         </Router> 
         </div>
