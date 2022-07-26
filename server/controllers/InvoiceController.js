@@ -11,11 +11,9 @@ exports.getAllInvoices = async(req, res, next) => {
 
         excludedFields.forEach(el => delete queryObj[el])
 
-        //console.log(req.query, queryObj);
 
 
         //ModelSchema.find() cmd gets all document in our database
-        const query = Invoice.find(queryObj)
 
         //Alternate
         //const query =Invoice.find()
@@ -23,8 +21,17 @@ exports.getAllInvoices = async(req, res, next) => {
         //.equals('pending') or 'draft'
 
 
+        //Advanced filtering
+        let queryStr = JSON.stringify(queryObj);
+        queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, match => `$${match}`);
 
-        const invoices = await query
+
+
+        const query = Invoice.find(JSON.parse(queryStr))
+
+
+        //Execute Query
+        const invoices = await query;
 
         //Send Response
         res.status(200).json({
@@ -65,4 +72,25 @@ exports.createInvoice = async(req, res, next) => {
     }
 
 
+}
+
+
+exports.getAnInvoice = async(req, res, next) => {
+    try {
+
+        let invoice = await Invoice.findById(req.params.id)
+            // Tour.findOne({ _id: req.params.id }) in mongo.. moongoose version findById
+
+        res.status(200).json({
+            status: 'success',
+            data: {
+                invoice
+            }
+        });
+    } catch (err) {
+        res.status(404).json({
+            status: 'fail',
+            message: err
+        })
+    }
 }

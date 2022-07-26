@@ -88,7 +88,7 @@ const invoiceSchema = new mongoose.Schema({
         type: Array,
     },
 
-
+    total: Number
 }, {
     toJSON: { virtuals: true },
     toObject: { virtuals: true }
@@ -99,12 +99,12 @@ const invoiceSchema = new mongoose.Schema({
 //Document middleware: runs before .save() and .create() cmd
 
 
-invoiceSchema.virtual('total').get(function() {
+invoiceSchema.pre('save', function() {
     let calcTotal = 0;
     this.items.map((item) => {
         calcTotal += item.total;
     });
-    return calcTotal;
+    this.total = calcTotal;
 
 })
 
