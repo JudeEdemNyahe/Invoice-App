@@ -41,7 +41,7 @@ const changeColor = () => {
 
         <div className='invoice-mobile' onClick = {viewInvoice}>
           <div className='invoice-left-section-mobile'>
-            <span className='id'>{props.id}</span>
+            <span className='id'><span id='hashtag'>#</span>{props.id}</span>
             <span>{props.name}</span>
           </div>
           <div className='invoice-right-section-mobile'>

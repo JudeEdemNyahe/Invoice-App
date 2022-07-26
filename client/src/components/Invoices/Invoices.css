@@ -45,6 +45,11 @@
     align-items: center;
     gap: 1em;
     font-weight: 500;
+    cursor: pointer;
+}
+
+.btn button:hover {
+    background-color: #9277FF;;
 }
 
 #filter-dropdown {
@@ -84,13 +89,15 @@ label {
 @media (max-width: 600px) {
     .container {
         align-items: center;
+        width: inherit;
     }
 
     .invoices {
         justify-content: space-around;
+        width: inherit;
     }
 
-    .numberOfInvoices span, .remove  {
+    .numberOfInvoices span, label span, .remove  {
         display: none;
     }
 
@@ -100,5 +107,9 @@ label {
 
     .btn button {
         width: 90px;
+    }
+
+    .right-section {
+        gap: 18px;
     }
 }

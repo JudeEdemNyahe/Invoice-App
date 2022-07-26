@@ -16,7 +16,7 @@ const Invoices = (props) => {
             </div>
             <div className='right-section'>
                 <div className='dropdown'>
-                <label htmlFor="cars">Filter by status</label>
+                <label htmlFor="cars">Filter <span>by status</span></label>
                     <select name='filter-dropdown' id='filter-dropdown' defaultValue={''}>
                         <option></option>
                         <option></option>
