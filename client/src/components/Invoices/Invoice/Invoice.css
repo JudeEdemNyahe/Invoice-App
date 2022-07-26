@@ -37,21 +37,33 @@
     font-size: 20px;
 }
 
-.status {
-    background-color: rgba(51, 214, 159, 0.2);
+.status-paid, .status-pending, .status-draft {
     mix-blend-mode: normal;
     border-radius: 6px;
     padding: 13px;
     width: 6em;
-    color: #33D69F;
     font-weight: 500;
 }
 
-.status:before {
+.status-paid:before, .status-pending:before, .status-draft::before {
     content: "•"; 
-    color: #33D69F;
     display: inline-block;
     width: 1em;
+}
+
+.status-paid {
+    background-color: rgba(51, 214, 159, 0.2);
+    color: #33D69F;
+}
+
+.status-pending {
+    background-color: rgba(255, 143, 0, 0.2);
+    color: #FF8F00;
+}
+
+.status-draft {
+    background-color: rgba(55, 59, 83, 0.2);
+    color: #373B53
 }
 
 /* No Invoice Styles */
