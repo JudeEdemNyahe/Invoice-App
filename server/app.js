@@ -1,7 +1,7 @@
 const express = require('express')
 const morgan = require('morgan')
 const app = express()
-const invoiceRouter = require('./routes/invoiceRouter').default
+const invoiceRouter = require('./routes/invoiceRouter')
     //Development logging
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
@@ -19,7 +19,7 @@ app.use((req, res, next) => {
 app.use('/api/v1/invoices', invoiceRouter)
 
 
-// if an endpoint hits this middleware an error is thrown with the message
+// if an endpoint hits this middle ware an error is thrown with the message
 app.all('*', (req, res, next) => {
     res.status(404).json({
         status: 'fail',
