@@ -1,0 +1,98 @@
+.item-container{
+    width: 504px;
+    height: 79px;
+    /* background-color: black; */
+}
+.item-form-container{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.item-form-container input{
+    height: 48px;
+    margin-top: 10px;
+    outline: none;
+
+}
+
+/* For mobile view */
+.item-form-container label{
+    display: none;
+}
+
+.item-props{
+    width: 274px;
+    display: flex;
+    justify-content: space-between;
+    
+    /* background-color: green; */
+}
+
+.grp1{
+    height: 79px;
+    width: 214px;
+    /* background-color: blue; */
+}
+
+.grp2{
+    height: 79px;
+    width: 48px;
+    /* background-color: red; */
+}
+
+.grp3{
+    height: 79px;
+    width: 100px;
+    /* background-color: gold; */
+}
+
+.grp4{
+    /* position: relative;
+    top: 50%; */
+    height: 15px;
+    width: 45px;
+    font-family: 'Spartan';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    /* identical to box height, or 125% */
+    letter-spacing: -0.25px;
+    /* background-color: blue; */
+    color: #888EB0;
+    /* background-color: green; */
+}
+
+
+
+#name{
+    width: 214px;
+}
+
+#qty{
+    width: 46px;
+}
+
+#price{
+    width: 100px;
+}
+
+#total{
+    width: 45px;
+}
+
+#delBtn{
+    height: 79px;
+    width: 30px;
+    justify-content: center;
+    padding-top: 20px;
+    background: none;
+    cursor: pointer;
+    border: none;
+}
+
+#delBtn svg{
+    position: relative;
+    top: -25%
+}
