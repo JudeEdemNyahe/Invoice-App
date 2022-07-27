@@ -11,11 +11,12 @@ const Invoices = (props) => {
         <div className='container'>
          <div className='invoices'>
             <div className='left-section'>
-                <h1 className='title'>Invoices</h1>
+                <h1 className='invoices-title'>Invoices</h1>
                 <p className='numberOfInvoices'> <span>There are</span> 7 <span>total</span> invoices</p>
             </div>
             <div className='right-section'>
                 <div className='dropdown'>
+
                 <label htmlFor="cars">Filter <span>by status</span></label>
                     <select name='filter-dropdown' id='filter-dropdown' defaultValue={''}>
                         <option></option>

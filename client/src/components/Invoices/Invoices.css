@@ -27,6 +27,7 @@
     display: flex;
     align-items: center;
     gap: 16px;
+    cursor: pointer;
 }
 
 .remove {
@@ -48,17 +49,16 @@
     cursor: pointer;
 }
 
-.btn button:hover {
+
+button:hover {
     background-color: #9277FF;;
 }
 
-#filter-dropdown {
-    border: none;
-    background-color: #F8F8FB;
-}
-
-label {
-    font-weight: bold;
+.filter-text {
+    font-weight: 800;
+    color: black;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 16px;
 }
 
 .plus-icon {

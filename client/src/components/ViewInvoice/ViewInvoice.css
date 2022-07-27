@@ -52,6 +52,7 @@
     height: 48px;
     border-radius: 1.5em;
     border: none;
+    cursor: pointer;
 }
 
 .editBtn {
@@ -71,6 +72,18 @@
     width: 131px;
     background-color: #7C5DFA;
     color: #F8F8FB;
+}
+
+.editBtn:hover {
+    background-color: #DFE3FA;
+}
+
+.deleteBtn:hover {
+    background-color: #FF8F00;
+}
+
+.markAsPaidBtn:hover {
+    background-color: #9277FF;
 }
 
 .viewInvoice-bottom {
@@ -159,7 +172,7 @@
 
 /* font-color */
 .statusTitle, .occupation, #right, .invoice-dateHeading, .bill-toHeading, .billing-location,
-.sentTo, .itemName, .qty, .price, .numberOfInvoices, #mobile-amount #total, #name, #date, #hashtag  {
+.sentTo, .itemName, .qty, .price, .numberOfInvoices, #mobile-amount #total, .name, #date, #hashtag  {
     color: #7E88C3;
 }
 
