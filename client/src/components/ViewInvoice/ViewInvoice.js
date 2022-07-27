@@ -2,14 +2,28 @@ import React from 'react';
 import {useNavigate} from 'react-router-dom';
 
 import Sidebar from '../Sidebar/Sidebar';
-
 import './ViewInvoice.css'
+
 const ViewInvoice = (props) => {
     const navigate = useNavigate();
 
     const goBack = () => {
       navigate('/');
     };
+
+    const changeColor = () => {
+        let className = ''
+        if (props.status === 'Paid') {
+            className = 'status-paid'
+        }
+        else if (props.status === 'Pending') {
+            className = 'status-pending'
+        }
+        else {
+            className = 'status-draft'
+        }
+        return className;
+    }
 
     return (
         <div className='viewInvoice-container'>
@@ -19,12 +33,12 @@ const ViewInvoice = (props) => {
             
             <div className='view-invoice'>
                 <div className='go-back' onClick = {goBack}>
-                    <p><span className='left-arrow'><svg width="7" height="10" xmlns="http://www.w3.org/2000/svg"><path d="M6.342.886L2.114 5.114l4.228 4.228" stroke="#9277FF" stroke-width="2" fill="none" fillRule="evenodd"/></svg></span>Go back</p>
+                    <p><span className='left-arrow'><svg width="7" height="10" xmlns="http://www.w3.org/2000/svg"><path d="M6.342.886L2.114 5.114l4.228 4.228" stroke="#9277FF" strokeWidth="2" fill="none" fillRule="evenodd"/></svg></span>Go back</p>
                 </div>
                 <div className='viewInvoice-top'>
                     <div className='viewInvoice-left-section'>
                         <span className='statusTitle'>Status</span>
-                        <span className='status'>{props.status}</span>
+                        <span className={changeColor(props.status)}>{props.status}</span>
                     </div>
                     <div className='viewInvoice-right-section'>
                         <button className='editBtn'>Edit</button>
@@ -82,9 +96,9 @@ const ViewInvoice = (props) => {
                             <div className='item'>
                                 <span className='itemName'>Item Name</span>
                                 <span className='item-name'>Banner Design</span>
-                                <span id='mobile-amount'>&#163; 156.00</span>
+                                <span id='mobile-amount'>1 x &#163; 156.00</span>
                                 <span className='item-name'>Email Design</span>
-                                <span id='mobile-amount'>&#163; 400.00</span>
+                                <span id='mobile-amount'>2 x &#163; 400.00</span>
                             </div>
                             <div className='quantity'>
                                 <span className='qty'>QTY.</span>
@@ -93,8 +107,8 @@ const ViewInvoice = (props) => {
                             </div>
                             <div className='price'>
                                 <span id='price'>Price</span>
-                                <span>&#163; 156.00</span>
-                                <span>&#163; 400.00</span>
+                                <span>&#163;156.00</span>
+                                <span>&#163;400.00</span>
                             </div>
                             <div className='total'>
                                 <span id='total'>Total</span>

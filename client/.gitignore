@@ -12,7 +12,7 @@
 /build
 
 # assets folder
- add/assets
+/assets
 
 # misc
 .DS_Store
