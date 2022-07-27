@@ -107,8 +107,8 @@ const ViewInvoice = (props) => {
                             </div>
                             <div className='price'>
                                 <span id='price'>Price</span>
-                                <span>&#163; 156.00</span>
-                                <span>&#163; 400.00</span>
+                                <span>&#163;156.00</span>
+                                <span>&#163;400.00</span>
                             </div>
                             <div className='total'>
                                 <span id='total'>Total</span>

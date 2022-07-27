@@ -41,12 +41,12 @@ const changeColor = () => {
 
         <div className='invoice-mobile' onClick = {viewInvoice}>
           <div className='invoice-left-section-mobile'>
-            <span className='id'>{props.id}</span>
-            <span>{props.name}</span>
+            <span className='id'><span id='hashtag'>#</span>{props.id}</span>
+            <span id='name'>{props.name}</span>
           </div>
           <div className='invoice-right-section-mobile'>
             <div className='id-mobile'>
-              <span>Due {props.date}</span>
+              <span id='date'>Due {props.date}</span>
               <span className='amount'>&#163;{props.amount}</span>
             </div>
             <span className={changeColor(props.status)}>{props.status}</span>
