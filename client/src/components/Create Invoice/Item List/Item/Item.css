@@ -80,19 +80,20 @@
 
 #total{
     width: 45px;
-}
-
-#delBtn{
-    height: 79px;
-    width: 30px;
-    justify-content: center;
-    padding-top: 20px;
-    background: none;
-    cursor: pointer;
-    border: none;
-}
-
-#delBtn svg{
+    height: 15px;
     position: relative;
-    top: -25%
+    bottom: -25px;
+}
+
+.delBtn{
+    height: 16px;
+    width: 13px;
+    /* background-color: red; */
+    margin-top: 21px;
+    cursor: pointer;
+    fill: #888EB0
+}
+
+.delBtn:hover{
+    fill: #EC5757;
 }
