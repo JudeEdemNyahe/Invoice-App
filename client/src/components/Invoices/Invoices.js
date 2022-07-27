@@ -6,7 +6,6 @@ import Invoice from './Invoice/Invoice';
 import './Invoices.css'
 
 const Invoices = (props) => {
-    
     return (
         <div className='container'>
          <div className='invoices'>
@@ -23,7 +22,7 @@ const Invoices = (props) => {
                     <button><span className="plus-icon"><svg width="11" height="11" xmlns="http://www.w3.org/2000/svg"><path d="M6.313 10.023v-3.71h3.71v-2.58h-3.71V.023h-2.58v3.71H.023v2.58h3.71v3.71z" fill="#7C5DFA" fillRule="nonzero"/></svg></span>New<span className='remove'>Invoice</span></button>
                 </div>
             </div>
-        </div>
+        </div>          
         <div className='invoice-cards'>
                 <Invoice 
                 id='RT3080' 
