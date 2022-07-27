@@ -22,7 +22,10 @@
     align-items: center;
     gap: 45px;
     padding: 1em;
+}
 
+#date {
+    
 }
 
 .invoice-right-section {
