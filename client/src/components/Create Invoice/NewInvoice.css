@@ -1,6 +1,20 @@
+.new-invoice-page{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.blank-side{
+    width: calc(100vw - 719px);
+    background: #000000;
+    mix-blend-mode: normal;
+    opacity: 0.5;
+}
+
 .new-invoice-container{
     width: 719px;
     height: 100vh;
+    z-index: 1000;
     /* background-color: red; */
     margin: 0px;
     padding: 0px;
@@ -67,6 +81,11 @@
     color: #888EB0;
 }
 
+#saveDraft:hover{
+    background-color: #0C0E16;
+    color: #888EB0
+}
+
 #saveSend{
     width: 128px;
     height: 48px;
@@ -74,4 +93,36 @@
     background: #7C5DFA;
     border-radius: 24px;
     color: white
+}
+
+#saveSend:hover{
+    background-color: #9277FF;
+}
+
+/* Tablet Mode */
+@media only screen and (max-width: 1024px){
+    .new-invoice-page{
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .new-invoice-container{
+        width: 616px
+    }
+    .invoice-form{
+        position: relative;
+        top: 80px;
+        left: -103px;
+        /* background-color: black; */
+    }
+
+    .blank-side{
+        margin-top: 80px;
+        width: calc(100vw - 616px);
+        background: #000000;
+        mix-blend-mode: normal;
+        opacity: 0.5;
+    }
+
+    
 }

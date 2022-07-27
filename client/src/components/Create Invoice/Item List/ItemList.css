@@ -71,9 +71,9 @@ color: #7E88C3;
     margin-bottom: 39px;
 }
 
-.addItem svg{
-    position: relative;
-    top: 40%;
+.addBtn{
+    fill: #7E88C3;
+    margin-top: 18px;
     margin-right: 5px;
 }
 
