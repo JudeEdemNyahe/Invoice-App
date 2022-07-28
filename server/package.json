@@ -22,7 +22,8 @@
         "morgan": "^1.10.0",
         "slugify": "^1.6.5",
         "validator": "^13.7.0",
-        "xss-clean": "^0.1.1"
+        "xss-clean": "^0.1.1",
+        "cors": "^2.8.5"
     },
     "devDependencies": {
         "eslint": "^8.17.0",
