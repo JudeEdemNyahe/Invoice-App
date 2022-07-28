@@ -6,7 +6,7 @@ import Sidebar from '../Sidebar/Sidebar';
 import BillFrom from './Bill From/BillFrom';
 import BillTo from './Bill To/BillTo';
 import ItemList from './Item List/ItemList';
-
+import {ReactComponent as Back} from '../../assets/icon-arrow-left.svg';
 const NewInvoice = () => {
     return(
         <Fragment>
@@ -14,6 +14,7 @@ const NewInvoice = () => {
                 <div className="new-invoice-container">
                     <Sidebar />
                     <form className='invoice-form'>
+                        <div className='back'><Back /> <span>Go back</span></div>
                         <h1 className='title'>New Invoice</h1>
                         <BillFrom />
                         <BillTo />

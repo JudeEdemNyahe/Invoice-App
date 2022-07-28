@@ -68,3 +68,11 @@ label{
     margin-top: 10px;
     outline: none;
 }
+
+/* Mobile View */
+@media (max-width: 600px){
+    .bill-from-container{
+        width: 100vw;
+
+    }
+}
