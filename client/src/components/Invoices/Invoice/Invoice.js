@@ -12,10 +12,9 @@ export const Invoice = (props) => {
     navigate('/view-invoice');
   };
 
-  
     // GET request using axios inside useEffect React hook
     try {
-      useEffect(() => {axios.get('https://127.0.0.1:5000/api/v1/invoices')
+      useEffect(() => {axios.get('http://127.0.0.1:5000/api/v1/invoices')
       .then(response => console.log(response));
 }, []); 
     } catch (error) {

@@ -7,6 +7,7 @@ import HomePage from './components/HomePage/HomePage';
 import NewInvoice from './components/Create Invoice/NewInvoice';
 
 const App = () => {
+
     return (
         <div className='app'>
         <Router>
@@ -15,7 +16,7 @@ const App = () => {
                 <Route path="/view-invoice" element={<ViewInvoice 
                 status = 'Pending' 
                 amount='556.00'
-                id='#XM9141' 
+                id='#XM9141'  
                 />} />
 
                 <Route path='/new-invoice' element={<NewInvoice />}/>
