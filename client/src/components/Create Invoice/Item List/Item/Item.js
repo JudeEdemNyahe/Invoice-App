@@ -1,4 +1,5 @@
 import React from 'react'
+
 import './Item.css';
 import {ReactComponent as Delete} from '../../../../assets/icon-delete.svg';
 

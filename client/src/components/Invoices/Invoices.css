@@ -27,6 +27,7 @@
     display: flex;
     align-items: center;
     gap: 16px;
+    cursor: pointer;
 }
 
 .remove {
@@ -45,15 +46,19 @@
     align-items: center;
     gap: 1em;
     font-weight: 500;
+    cursor: pointer;
 }
 
-#filter-dropdown {
-    border: none;
-    background-color: #F8F8FB;
+
+button:hover {
+    background-color: #9277FF;;
 }
 
-label {
-    font-weight: bold;
+.filter-text {
+    font-weight: 800;
+    color: black;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 16px;
 }
 
 .plus-icon {
@@ -84,21 +89,27 @@ label {
 @media (max-width: 600px) {
     .container {
         align-items: center;
+        width: inherit;
     }
 
     .invoices {
         justify-content: space-around;
+        width: inherit;
     }
 
-    .numberOfInvoices span, .remove  {
+    .numberOfInvoices span, label span, .remove  {
         display: none;
     }
 
     .invoice-cards {
-        width: 90%;
+        width: 95%;
     }
 
     .btn button {
         width: 90px;
+    }
+
+    .right-section {
+        gap: 18px;
     }
 }

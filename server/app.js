@@ -18,4 +18,15 @@ app.use((req, res, next) => {
 
 app.use('/api/v1/invoices', invoiceRouter)
 
+
+// if an endpoint hits this middle ware an error is thrown with the message
+app.all('*', (req, res, next) => {
+    res.status(404).json({
+        status: 'fail',
+        message: `Can't find ${req.originalUrl} on this server`
+    })
+
+});
+
+
 module.exports = app
