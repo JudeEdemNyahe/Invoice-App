@@ -1,14 +1,17 @@
 import React, {useState} from 'react';
+
 import FormGroup from '@mui/material/FormGroup';
-import { purple } from '@mui/material/colors';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import Spartan from '../../assets/LeagueSpartan-VariableFont_wght.ttf'
+import { purple } from '@mui/material/colors';
 
 import Invoice from './Invoice/Invoice';
 // import NoInvoice from './Invoice/NoInvoice';
 import './Invoices.css'
 
-const Invoices = (props) => {
+
+const Invoices = () => {
     const [show, setShow] = useState(false);
 
     return (
@@ -26,21 +29,37 @@ const Invoices = (props) => {
                     </div>
                     <div className='filter-checkboxes'>
                     {show && <FormGroup className="checkboxes" >
-                        <FormControlLabel control={<Checkbox size='small' sx={{
+                        <FormControlLabel 
+                        className='checkbox' 
+                        control={<Checkbox 
+                        size='small' 
+                        sx={{
                             '&.Mui-checked': {
-                            color: purple[300],
+                            color: purple[600],
+                            font: Spartan,
                             },
-                        }}/>} label="Draft" />
-                        <FormControlLabel control={<Checkbox size='small' sx={{
+                        }}/>} 
+                        label={<span style={{ fontFamily: 'League Spartan',  fontWeight: '700'}}>Draft</span>} />
+                        <FormControlLabel 
+                        className='checkbox'
+                        control={<Checkbox 
+                        size='small' 
+                        sx={{
                             '&.Mui-checked': {
-                            color: purple[300],
+                            color: purple[600],
                             },
-                        }}/>} label="Pending" />
-                        <FormControlLabel control={<Checkbox size='small' sx={{
+                        }}/>} 
+                        label={<span style={{ fontFamily: 'League Spartan', fontWeight: '700'}}>Pending</span>} />
+                        <FormControlLabel 
+                        className='checkbox'
+                        control={<Checkbox 
+                        size='small' 
+                        sx={{
                             '&.Mui-checked': {
-                            color: purple[300],
+                            color: purple[600],
                             },
-                        }}/>} label="Paid" />
+                        }}/>} 
+                        label={<span style={{ fontFamily: 'League Spartan',  fontWeight: '700'}}>Paid</span>} />
                     </FormGroup>}
                     </div>
                 </div>

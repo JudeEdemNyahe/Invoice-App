@@ -25,10 +25,6 @@
     padding: 1em;
 }
 
-#date {
-    
-}
-
 .invoice-right-section {
     display: flex;
     align-items: center;
@@ -43,6 +39,10 @@
 
 .amount {
     font-size: 20px;
+}
+
+#status {
+    align-self: flex-end;
 }
 
 .status-paid, .status-pending, .status-draft {
