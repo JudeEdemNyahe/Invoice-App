@@ -4,6 +4,7 @@ import './Sidebar.css'
 import Avatar from '../../assets/image-avatar.jpg'
 
 const Sidebar = () => {
+
     return (
         <div className='sidebar'>
                 <div className='logo'>

@@ -41,6 +41,10 @@
     font-size: 20px;
 }
 
+#status {
+    align-self: flex-end;
+}
+
 .status-paid, .status-pending, .status-draft {
     mix-blend-mode: normal;
     border-radius: 6px;
