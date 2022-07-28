@@ -5,6 +5,7 @@ import ViewInvoice from './components/ViewInvoice/ViewInvoice';
 import './App.css';
 import HomePage from './components/HomePage/HomePage';
 import NewInvoice from './components/Create Invoice/NewInvoice';
+import EditInvoice from './components/Edit Invoice/EditInvoice';
 
 const App = () => {
 
@@ -20,6 +21,7 @@ const App = () => {
                 />} />
 
                 <Route path='/new-invoice' element={<NewInvoice />}/>
+                <Route path='/edit-invoice' element={<EditInvoice />}/>
             </Routes>   
         </Router> 
         </div>

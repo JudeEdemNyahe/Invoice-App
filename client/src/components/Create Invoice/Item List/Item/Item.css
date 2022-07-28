@@ -29,6 +29,10 @@
     /* background-color: green; */
 }
 
+/* label{
+    background-color: red;
+} */
+
 .grp1{
     height: 79px;
     width: 214px;
@@ -44,15 +48,13 @@
 .grp3{
     height: 79px;
     width: 100px;
-    /* background-color: gold; */
 }
 
+
 .grp4{
-    /* position: relative;
-    top: 50%; */
     height: 15px;
     width: 45px;
-    font-family: 'Spartan';
+    /* font-family: 'Spartan'; */
     font-style: normal;
     font-weight: 700;
     font-size: 12px;

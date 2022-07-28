@@ -1,13 +1,14 @@
 import React, {Fragment} from 'react';
-import './NewInvoice.css';
+import '../Create Invoice/NewInvoice.css';
+import './EditInvoice.css';
 
 // Components
+import BillFrom from '../Create Invoice/Bill From/BillFrom';
 import Sidebar from '../Sidebar/Sidebar';
-import BillFrom from './Bill From/BillFrom';
-import BillTo from './Bill To/BillTo';
-import ItemList from './Item List/ItemList';
+import BillTo from '../Create Invoice/Bill To/BillTo';
+import ItemList from '../Create Invoice/Item List/ItemList';
 import {ReactComponent as Back} from '../../assets/icon-arrow-left.svg';
-const NewInvoice = () => {
+const EditInvoice = () => {
     return(
         <Fragment>
             <div className='new-invoice-page'>
@@ -15,15 +16,14 @@ const NewInvoice = () => {
                     <Sidebar />
                     <form className='invoice-form'>
                         <div className='back'><Back /> <span>Go back</span></div>
-                        <h1 className='title'>New Invoice</h1>
+                        <h1 className='title'>Edit<span>#</span>X9141</h1>
                         <BillFrom />
                         <BillTo />
                         <ItemList />
 
-                        <div className='btns'>
-                            <button id="discard">Discard</button>
-                            <button id='saveDraft'>Save as Draft</button>
-                            <button id='saveSend'>Save & Send</button>
+                        <div className='btns2'>
+                            <button id="cancel">Cancel</button>
+                            <button id='save-changes'>Save Changs</button>
                         </div>
                     </form>
                 </div>
@@ -36,5 +36,4 @@ const NewInvoice = () => {
     );
 }
 
-export default NewInvoice;
-
+export default EditInvoice;
