@@ -1,0 +1,30 @@
+.btns{
+    display: flex;
+    justify-content: space-between;
+    width: 242px;
+    height: 48px;
+    /* background-color: #ff0000; */
+    margin-left: 260px;
+}
+
+.title span{
+    color: #888EB0;
+}
+
+#cancel{
+    width: 96px;
+    height: 48px;
+    background: #F9FAFE;
+    border-radius: 24px;
+    border: none;
+    cursor: pointer;
+}
+
+#save-changes{
+    width: 138px;
+    height: 48px;
+    background: #7C5DFA;
+    border-radius: 24px;
+    border: none;
+    cursor: pointer;
+}
