@@ -64,3 +64,17 @@ exports.getAnInvoice = async(req, res, next) => {
     });
 
 }
+
+
+exports.updateAnInvoice = hookAsync(async(req, res, next) => {
+
+    const invoice = await Invoice.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true});
+
+    res.status(200).json({
+        status: 'success',
+        data: {
+            invoice
+        }
+    });
+    
+})
