@@ -3,6 +3,9 @@ const morgan = require('morgan');
 const app = express();
 const invoiceRouter = require('./routes/invoiceRouter');
 const cors = require('cors');
+const AppError = require('./utils/apiError');
+const globalErrorhandler = require('./controllers/errorController');
+
 //Development logging
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
@@ -29,24 +32,12 @@ app.all('*', (req, res, next) => {
     //     message: `Can't find ${req.originalUrl} on this server`
     // })
 
-    const err = new Error(`Can't find ${req.originalUrl} on this server`);
-    err.status = 'fail';
-    err.statusCode = 404;
 
-    next(err);
+    next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
 
 });
 
-app.use((err, req, res, next) => {
-    err.statusCode = err.statusCode || 500;
-    err.status = err.status || 'error'
-
-    res.status(err.statusCode).json({
-        status: err.status,
-        message: err.message
-    })
-
-})
+app.use(globalErrorhandler)
 
 
 module.exports = app
