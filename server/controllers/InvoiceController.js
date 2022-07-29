@@ -98,3 +98,18 @@ exports.updateAnInvoice = hookAsync(async(req, res, next) => {
     });
 
 })
+
+
+exports.deleteAnInvoice = hookAsync(async(req, res, next) => {
+
+    const invoice = await Invoice.findByIdAndDelete(req.params.id);
+
+    if (!invoice) {
+        return next(new AppError('No invoice found with that ID', 404))
+    }
+
+    res.status(204).json({
+        status: 'success',
+        data: null
+    })
+})

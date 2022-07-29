@@ -1,5 +1,5 @@
 const express = require('express');
-const { getAllInvoices, createInvoice, getAnInvoice, updateAnInvoice } = require('./../controllers/InvoiceController');
+const { getAllInvoices, createInvoice, getAnInvoice, updateAnInvoice, deleteAnInvoice } = require('./../controllers/InvoiceController');
 
 const router = express.Router();
 
@@ -13,6 +13,7 @@ router
     .route('/:id')
     .get(getAnInvoice)
     .patch(updateAnInvoice)
+    .delete(deleteAnInvoice)
 
     
 module.exports = router;
