@@ -7,7 +7,6 @@ import './Invoice.css';
 
 export const Invoice = (props) => {
   const navigate = useNavigate();
-
   // const [invoices, setInvoices] = useState(null);
 
   const viewInvoice = () => {

@@ -15,11 +15,6 @@
     --spartan: 'League Spartan', sans-serif;
 }
 
-[data-theme='dark'] {
-    --night: #000;
-    --white: #fff;
-  }
-
 *{
     box-sizing: border-box;
     /* outline: 1px solid black; */
