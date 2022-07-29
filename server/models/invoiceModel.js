@@ -28,6 +28,7 @@ const invoiceSchema = new mongoose.Schema({
             values: [1, 7, 14, 30],
             message: "Payment term is either: 1"
         }
+
     },
     clientName: {
         type: String,
@@ -45,7 +46,9 @@ const invoiceSchema = new mongoose.Schema({
     },
     status: {
         type: String,
+        lowercase: true,
         enum: ['pending', 'paid', 'draft']
+
     },
     senderAddress: {
         street: {
