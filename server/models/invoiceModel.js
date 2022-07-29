@@ -28,11 +28,11 @@ const invoiceSchema = new mongoose.Schema({
             values: [1, 7, 14, 30],
             message: "Payment term is either: 1"
         }
+
     },
     clientName: {
         type: String,
         required: [true, 'Clients name is required'],
-
         trim: true,
         maxlength: [30, 'clients name must have less or equal 30 characters'],
         minlength: [3, 'clients name must have more or equal than 3 characters'],
@@ -46,7 +46,9 @@ const invoiceSchema = new mongoose.Schema({
     },
     status: {
         type: String,
+        lowercase: true,
         enum: ['pending', 'paid', 'draft']
+
     },
     senderAddress: {
         street: {

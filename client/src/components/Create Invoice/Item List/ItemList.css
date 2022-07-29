@@ -1,5 +1,5 @@
 .head{
-    font-family: 'Spartan';
+    /* font-family: 'Spartan'; */
     font-style: normal;
     font-weight: 700;
     font-size: 12px;
@@ -11,7 +11,7 @@
 }
 
 .item-head{
-    width: 464px;
+    width: 480px;
     height: 15px;
     /* background-color: green; */
     display: flex;
@@ -19,7 +19,7 @@
 
 .item-head div h4{
 margin: 0px;
-font-family: 'Spartan';
+/* font-family: 'Spartan'; */
 font-style: normal;
 font-weight: 500;
 font-size: 12px;
@@ -36,7 +36,7 @@ color: #7E88C3;
 
 .i-qty{
     width: 46px;
-    margin-right: 16px;
+    margin-right: 25px;
 }
 
 .i-price{
@@ -54,7 +54,7 @@ color: #7E88C3;
     display: flex;
     justify-content: center;
     margin-top: 18px;
-    font-family: 'Spartan';
+    /* font-family: 'Spartan'; */
     font-style: normal;
     font-weight: 700;
     font-size: 12px;

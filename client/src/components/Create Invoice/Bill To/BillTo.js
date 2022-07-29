@@ -10,7 +10,7 @@ const BillTo = () => {
                 <div className='to-container'>
                     <form>
                         <div className='group1'>
-                            <label for="client">client's Name</label>
+                            <label for="client">Client's Name</label>
                             <input type="text" id="client"/>
                         </div>
 
