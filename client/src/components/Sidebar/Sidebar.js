@@ -1,5 +1,5 @@
 import React from 'react';
-import useLocalStorage from 'use-local-storage'
+import useLocalStorage from 'use-local-storage';
 
 import './Sidebar.css'
 import Avatar from '../../assets/image-avatar.jpg'
