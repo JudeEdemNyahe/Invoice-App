@@ -18,10 +18,9 @@ const App = () => {
                 amount='556.00'
                 id='#XM9141'  
                 />} />
-
                 <Route path='/new-invoice' element={<NewInvoice />}/>
             </Routes>   
-        </Router> 
+        </Router>  
         </div>
     )
 }
