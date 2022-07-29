@@ -34,20 +34,20 @@ label{
 
 }
 
-.group1{
+.f-group1{
     height: 73px;
     width: 504px;
     margin-bottom: 24px;
     /* background-color: black; */
 }
 
-.group1 input{
+.f-group1 input{
     height: 48px;
     width: 504px;
     outline: none;
 }
 
-.form-l3{
+.from-l3{
     display: flex;
     justify-content: space-between;
     height: 73px;
@@ -56,13 +56,13 @@ label{
 
 }
 
-.group2{
+.f-group2{
     height: 73px;
     width: 152px;
     /* background-color: green; */
 }
 
-.group2 input{
+.f-group2 input{
     height: 48px;
     width: 100%;
     margin-top: 10px;
@@ -72,7 +72,49 @@ label{
 /* Mobile View */
 @media (max-width: 600px){
     .bill-from-container{
-        width: 100vw;
+        /* width: 100vw; */
+        width: 100%;
+        height: 306px;
+        /* background-color: black; */
+    }
 
+    .from-container{
+        width: 100%;
+        height: 267px;
+        /* background-color: blue; */
+    }
+
+
+    .f-group1{
+        width: 100%;
+        margin-bottom: 24px;
+        /* background-color: green; */
+    }
+    
+    .f-group1 input{
+        width: inherit;
+    }
+
+    .from-l3{
+        display: flex;
+        flex-flow: row wrap;
+        /* justify-content: flex-start; */
+        height: 170px;
+        width: auto;
+        /* background-color: yellow; */
+    }
+
+
+
+    #from-country{
+        width: 100%;
+        /* background-color: #7C5DFA; */
+    }
+
+    .f-group2 input{
+        height: 48px;
+        width: 100%;
+        margin-top: 10px;
+        outline: none;
     }
 }
