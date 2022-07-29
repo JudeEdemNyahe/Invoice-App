@@ -1,3 +1,4 @@
+const AppError = require('../utils/apiError');
 const Invoice = require('./../models/invoiceModel');
 const APIFeatures = require('./../utils/apiFeatures');
 const hookAsync = require('./../utils/hookAsync');
@@ -50,12 +51,21 @@ exports.createInvoice = hookAsync(async(req, res, next) => {
 });
 
 
-exports.getAnInvoice = async(req, res, next) => {
+exports.getAnInvoice = hookAsync(async(req, res, next) => {
 
 
     let invoice = await Invoice.findById(req.params.id)
         // Tour.findOne({ _id: req.params.id }) in mongo.. moongoose version findById
 
+    if (!invoice) {
+        return next(new AppError('No invoice found with that ID', 404))
+    }
+
+
+
+
+
+
     res.status(200).json({
         status: 'success',
         data: {
@@ -63,12 +73,22 @@ exports.getAnInvoice = async(req, res, next) => {
         }
     });
 
-}
+})
 
 
 exports.updateAnInvoice = hookAsync(async(req, res, next) => {
 
-    const invoice = await Invoice.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true});
+    const invoice = await Invoice.findByIdAndUpdate(req.params.id, req.body, {
+        new: true,
+        runValidators: true
+    });
+
+
+    if (!invoice) {
+        return next(new AppError('No invoice found with that ID', 404))
+    }
+
+
 
     res.status(200).json({
         status: 'success',
@@ -76,5 +96,5 @@ exports.updateAnInvoice = hookAsync(async(req, res, next) => {
             invoice
         }
     });
-    
+
 })

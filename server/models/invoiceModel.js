@@ -32,7 +32,6 @@ const invoiceSchema = new mongoose.Schema({
     clientName: {
         type: String,
         required: [true, 'Clients name is required'],
-
         trim: true,
         maxlength: [30, 'clients name must have less or equal 30 characters'],
         minlength: [3, 'clients name must have more or equal than 3 characters'],
