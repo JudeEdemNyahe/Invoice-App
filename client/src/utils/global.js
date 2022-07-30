@@ -12,7 +12,7 @@ export const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.text};
   }
 
-  .invoice, .viewInvoice-top, .viewInvoice-bottom {
+  .invoice, .invoice-mobile, .viewInvoice-top, .viewInvoice-bottom {
     background: ${({ theme }) => theme.invoiceBg};
     color: ${({ theme }) => theme.text};
     box-shadow: ${({ theme }) => theme.boxShadow};
