@@ -7,7 +7,6 @@ import './Invoice.css';
 
 export const Invoice = (props) => {
   const navigate = useNavigate();
-
   // const [invoices, setInvoices] = useState(null);
 
   const viewInvoice = () => {
@@ -67,8 +66,7 @@ const changeColor = () => {
             <span className={changeColor(props.status)}>{props.status}</span>
           </div>
         </div>
-      </>
-        
+      </> 
     )
 }
 
