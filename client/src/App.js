@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import useLocalStorage from "use-local-storage";
+
 
 import ViewInvoice from './components/ViewInvoice/ViewInvoice';
 import './App.css';
@@ -12,7 +14,7 @@ import { lightTheme, darkTheme } from './utils/theme';
 import { GlobalStyles } from './utils/global';
 
 const App = () => {
-    const [theme, setTheme] = useState('light');
+    const [theme, setTheme] = useLocalStorage('light');
 
     const toggleTheme = () => {
       if (theme === 'light') {

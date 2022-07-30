@@ -64,6 +64,15 @@
     border-radius: 50%;
 }
 
+.moon {
+    background-color: inherit;
+    border: none;
+}
+
+.moon:hover {
+    background-color: inherit;
+}
+
 @media (max-width: 1024px) {
     .sidebar {
         width: 100vw;

@@ -66,8 +66,7 @@ const changeColor = () => {
             <span className={changeColor(props.status)}>{props.status}</span>
           </div>
         </div>
-      </>
-        
+      </> 
     )
 }
 
