@@ -30,7 +30,7 @@ export const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.text};
   }
 
-  .section-3 {
+  .section-3, .viewInvoice-right-section-mobile {
     background: ${({ theme }) => theme.totalsSection};
   }
 
