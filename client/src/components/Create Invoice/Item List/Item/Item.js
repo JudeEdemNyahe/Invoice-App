@@ -23,7 +23,8 @@ const Item = () => {
                     </div>
 
                     <div className='grp4'>
-                        <span id="total">189</span>
+                        <h4 className='total-head'>Total</h4>
+                        <span id="i-total">1892222</span>
                         {/* <label for="total">Total</label>
                         <input type="number" id="total"/> */}
                     </div>

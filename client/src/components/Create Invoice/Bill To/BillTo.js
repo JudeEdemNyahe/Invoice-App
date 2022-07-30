@@ -1,5 +1,4 @@
 import React, {Fragment} from 'react';
-// import '../Bill From/BillFrom.css';
 import './BillTo.css'
 
 const BillTo = () => {
@@ -35,7 +34,7 @@ const BillTo = () => {
                                 <input type="text" id="postal"/>
                             </div>
         
-                            <div className='group2'>
+                            <div className='group2' id='to-country'>
                                 <label for="country">Country</label>
                                 <input type="text" id="country"/>
                             </div>

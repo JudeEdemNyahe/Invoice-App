@@ -20,6 +20,7 @@ const NewInvoice = () => {
                         <BillTo />
                         <ItemList />
 
+                        <div className='boxShadow'></div>
                         <div className='btns'>
                             <button id="discard">Discard</button>
                             <button id='saveDraft'>Save as Draft</button>

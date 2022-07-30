@@ -1,5 +1,8 @@
+.items-container{
+    width: 100%;
+}
+
 .head{
-    /* font-family: 'Spartan'; */
     font-style: normal;
     font-weight: 700;
     font-size: 12px;
@@ -7,24 +10,20 @@
     letter-spacing: -0.25px;
     color: #7C5DFA;
     margin-top: 32px;
-    /* background-color: green; */
 }
 
 .item-head{
     width: 480px;
     height: 15px;
-    /* background-color: green; */
     display: flex;
 }
 
 .item-head div h4{
 margin: 0px;
-/* font-family: 'Spartan'; */
 font-style: normal;
 font-weight: 500;
 font-size: 12px;
 line-height: 15px;
-/* identical to box height, or 125% */
 letter-spacing: -0.25px;
 color: #7E88C3;
 }
@@ -54,13 +53,10 @@ color: #7E88C3;
     display: flex;
     justify-content: center;
     margin-top: 18px;
-    /* font-family: 'Spartan'; */
     font-style: normal;
     font-weight: 700;
     font-size: 12px;
     line-height: 15px;
-    /* identical to box height, or 125% */
-
     background: #F9FAFE;
     border-radius: 24px;
     border: none;
@@ -77,4 +73,12 @@ color: #7E88C3;
     margin-right: 5px;
 }
 
+@media (max-width: 600px){
+    .item-head{
+        display: none;
+    }
 
+    .addItem{
+        width: 100%;
+    }
+}

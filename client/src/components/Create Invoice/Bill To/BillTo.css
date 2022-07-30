@@ -1,10 +1,8 @@
 label{
-    /* font-family: 'Spartan'; */
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
     line-height: 15px;
-    /* identical to box height, or 125% */
 
     letter-spacing: -0.25px;
     color: #7E88C3;
@@ -15,7 +13,6 @@ label{
     height: 73px;
     width: 504px;
     margin-bottom: 24px;
-    /* background-color: black; */
 }
 
 .group1 input{
@@ -29,14 +26,11 @@ label{
     justify-content: space-between;
     height: 73px;
     width: 504px;
-    /* background-color: blue; */
-
 }
 
 .group2{
     height: 73px;
     width: 152px;
-    /* background-color: green; */
 }
 
 .group2 input{
@@ -49,7 +43,6 @@ label{
 .form-l2{
     width: 504px;
     height: 170px;
-    /* background-color: blue; */
     margin-top: 48px;
 }
 
@@ -76,4 +69,72 @@ label{
 .group3 input{
     width: 240px;
     height: 48px;
+}
+
+@media (max-width: 600px){
+    .bill-to-container{
+        width: 100%;
+    }
+    
+    .to-container{
+        width: 100%;
+    }
+
+    .group1{
+        height: 73px;
+        width: 100%;
+        margin-bottom: 24px;
+    }
+
+    .group1 input{
+        width: inherit;
+    }
+
+    .form-l3{
+        display: flex;
+        flex-flow: row wrap;
+        height: 170px;
+        width: auto;    
+    }
+    
+    .group2 input{
+        height: 48px;
+        width: 100%;
+        margin-top: 10px;
+        outline: none;
+    }
+
+    #to-country{
+        width: 100%;
+        margin-top: 24px;
+        /* background-color: purple; */
+    }
+    
+    .form-l2{
+        width: 100%;
+        height: 267px;
+
+        /* background-color: brown; */
+    }
+
+    .two-column{
+        width: 100%;
+        height: 170px;
+        /* background-color: #7E88C3; */
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 24px;
+    }
+
+    .group3{
+        width: 100%;
+        /* background-color: green; */
+    }
+    
+    .group3 input{
+        height: 48px;
+        width: 100%;
+        margin-top: 10px;
+        outline: none;
+    }
 }
