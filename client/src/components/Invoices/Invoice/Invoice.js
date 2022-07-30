@@ -3,7 +3,6 @@ import React from 'react';
 import {useNavigate} from 'react-router-dom';
 
 import './Invoice.css';
-// import '../../../scss/styles.sass';
 
 export const Invoice = (props) => {
   const navigate = useNavigate();
@@ -50,6 +49,7 @@ const changeColor = () => {
           <div className='invoice-right-section'>
             <span className='amount'>&#163;{props.amount}</span>
             <span id='status' className={changeColor(props.status)}>{props.status}</span>
+            <span className='right-arrow'><svg width="7" height="10" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l4 4-4 4" stroke="#7C5DFA" strokeWidth="2" fill="none" fillRule="evenodd"/></svg></span>
           </div>
         </div>
 

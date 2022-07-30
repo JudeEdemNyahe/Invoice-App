@@ -1,11 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
-  *,
-  *::after,
-  *::before {
-    box-sizing: border-box;
-  }
 
   body {
     background: ${({ theme }) => theme.body};
@@ -37,4 +32,9 @@ export const GlobalStyles = createGlobalStyle`
   .amount-due {
     background: ${({ theme }) => theme.amountDue};
   }
+
+  .status-draft {
+    background-color: rgba(55, 59, 83, 0.2);
+    color:${({ theme }) => theme.draftDark};
+}
   `

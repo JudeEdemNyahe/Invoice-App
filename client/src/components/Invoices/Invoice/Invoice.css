@@ -1,6 +1,5 @@
 .invoice {
     display: flex;
-    justify-content: space-around;
     align-items: center;
     height: 72px;
     font-size: 16px;
@@ -23,6 +22,8 @@
     align-items: center;
     gap: 45px;
     padding: 1em;
+    width: 30em;
+    justify-content: flex-start;
 }
 
 .invoice-right-section {
@@ -30,6 +31,10 @@
     align-items: center;
     gap: 45px;
     padding: 1em;
+}
+
+.id {
+    margin-left: 20px;
 }
 
 .id, .amount {
@@ -43,6 +48,10 @@
 
 #status {
     align-self: flex-end;
+}
+
+.right-arrow {
+    margin-left: -25px;
 }
 
 .status-paid, .status-pending, .status-draft {
@@ -115,5 +124,9 @@
 
     .id-mobile {
         flex-direction: column;
+    }
+
+    .id {
+        margin-left: 0;
     }
 }
