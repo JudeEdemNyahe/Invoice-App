@@ -3,13 +3,25 @@ import React, {useState} from 'react';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Spartan from '../../assets/LeagueSpartan-VariableFont_wght.ttf'
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { purple } from '@mui/material/colors';
 
 import Invoice from './Invoice/Invoice';
 // import NoInvoice from './Invoice/NoInvoice';
 import './Invoices.css'
 
+const theme = createTheme({
+    palette: {
+      primary: {
+        // Purple and green play nicely together.
+        main: purple[500],
+      },
+      secondary: {
+        // This is green.A700 as hex.
+        main: '#7C5DFA',
+      },
+    },
+  });
 
 const Invoices = () => {
     const [show, setShow] = useState(false);
@@ -28,39 +40,31 @@ const Invoices = () => {
                         <span className='down-arrow'><svg width="11" height="7" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l4.228 4.228L9.456 1" stroke="#7C5DFA" strokeWidth="2" fill="none" fillRule="evenodd"/></svg></span>
                     </div>
                     <div className='filter-checkboxes'>
+                    <ThemeProvider theme={theme}>
                     {show && <FormGroup className="checkboxes" >
                         <FormControlLabel 
                         className='checkbox' 
                         control={<Checkbox 
                         size='small' 
-                        sx={{
-                            '&.Mui-checked': {
-                            color: purple[600],
-                            font: Spartan,
-                            },
-                        }}/>} 
+                        color="secondary"
+                        />} 
                         label={<span style={{ fontFamily: 'League Spartan',  fontWeight: '700'}}>Draft</span>} />
                         <FormControlLabel 
                         className='checkbox'
                         control={<Checkbox 
                         size='small' 
-                        sx={{
-                            '&.Mui-checked': {
-                            color: purple[600],
-                            },
-                        }}/>} 
+                        color="secondary"
+                        />} 
                         label={<span style={{ fontFamily: 'League Spartan', fontWeight: '700'}}>Pending</span>} />
                         <FormControlLabel 
                         className='checkbox'
                         control={<Checkbox 
                         size='small' 
-                        sx={{
-                            '&.Mui-checked': {
-                            color: purple[600],
-                            },
-                        }}/>} 
+                        color="secondary"
+                        />} 
                         label={<span style={{ fontFamily: 'League Spartan',  fontWeight: '700'}}>Paid</span>} />
                     </FormGroup>}
+                    </ThemeProvider>
                     </div>
                 </div>
                 <div className='btn'>
@@ -118,7 +122,7 @@ const Invoices = () => {
                 />
 
                 <Invoice 
-                id='RT3080' 
+                id='FV2353' 
                 date = '12 Nov 2021' 
                 name='Anita Wainwright'
                 amount='3,102.04'
