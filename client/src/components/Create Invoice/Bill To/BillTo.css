@@ -15,10 +15,13 @@ label{
     margin-bottom: 24px;
 }
 
+input{
+    margin-top: 14px;
+}
+
 .group1 input{
     height: 48px;
     width: 504px;
-    outline: none;
 }
 
 .form-l3{
@@ -28,12 +31,12 @@ label{
     width: 504px;
 }
 
-.group2{
+.t-group2{
     height: 73px;
     width: 152px;
 }
 
-.group2 input{
+.t-group2 input{
     height: 48px;
     width: 100%;
     margin-top: 10px;
@@ -71,6 +74,22 @@ label{
     height: 48px;
 }
 
+ select{
+    width: 240px;
+    height: 48px;
+    margin-top: 10px;
+    border: 1px solid #DFE3FA;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #ffffff;
+    border-radius: 4px;
+}
+
+select:hover{
+    border: 1px solid #7E88C3;
+}
+
+
 @media (max-width: 600px){
     .bill-to-container{
         width: 100%;
@@ -97,7 +116,7 @@ label{
         width: auto;    
     }
     
-    .group2 input{
+    .t-group2 input{
         height: 48px;
         width: 100%;
         margin-top: 10px;
@@ -132,6 +151,13 @@ label{
     }
     
     .group3 input{
+        height: 48px;
+        width: 100%;
+        margin-top: 10px;
+        outline: none;
+    }
+
+    .group3 select{
         height: 48px;
         width: 100%;
         margin-top: 10px;

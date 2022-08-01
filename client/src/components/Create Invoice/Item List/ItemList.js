@@ -21,7 +21,7 @@ const ItemList = () => {
             </div>
 
             <button className='addItem'>
-                <Add className='addBtn'/>
+                <Add className='addIcon'/>
                 <h4>Add New Item</h4>
             </button>
             

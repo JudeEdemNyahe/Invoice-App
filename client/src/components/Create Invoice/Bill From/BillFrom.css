@@ -18,6 +18,17 @@
     height: 170px;
 }
 
+input{
+    border: 1px solid #DFE3FA;
+    padding-left: 20px; 
+    border-radius: 4px;
+    outline: none
+}
+
+input:hover{
+    border: 1px solid #7E88C3;
+}
+
 label{
     font-style: normal;
     font-weight: 500;
@@ -26,7 +37,6 @@ label{
 
     letter-spacing: -0.25px;
     color: #7E88C3;
-
 }
 
 .f-group1{
@@ -39,6 +49,7 @@ label{
     height: 48px;
     width: 504px;
     outline: none;
+    margin-top: 14px;
 }
 
 .from-l3{

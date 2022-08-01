@@ -14,12 +14,12 @@ const Item = () => {
                 <div className='item-props'>
                     <div className='grp2'>
                         <label for="qty">Qty</label>
-                        <input type="number" id="qty" />
+                        <input type="number" min="1" id="qty" />
                     </div>
 
                     <div className='grp3'>
                         <label for="price">Price</label>
-                        <input type="number" id="price" />
+                        <input type="number" id="price" min="1" />
                     </div>
 
                     <div className='grp4'>
