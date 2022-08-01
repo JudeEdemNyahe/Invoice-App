@@ -12,6 +12,17 @@
     margin-top: 32px;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 .item-head{
     width: 480px;
     height: 15px;
@@ -67,7 +78,11 @@ color: #7E88C3;
     margin-bottom: 39px;
 }
 
-.addBtn{
+.addItem:hover{
+    background:#F9FAFE;
+}
+
+.addIcon{
     fill: #7E88C3;
     margin-top: 18px;
     margin-right: 5px;

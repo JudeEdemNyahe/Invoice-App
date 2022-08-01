@@ -24,19 +24,19 @@ const BillTo = () => {
                         </div>
                           
                         <div className='form-l3'>
-                            <div className='group2'>
-                                <label for="city">City</label>
-                                <input type="text" id="city"/>
+                            <div className='t-group2'>
+                                <label for="t-city">City</label>
+                                <input type="text" id="t-city"/>
                             </div>
         
-                            <div className='group2'>
-                                <label for="postal">Post Code</label>
-                                <input type="text" id="postal"/>
+                            <div className='t-group2'>
+                                <label for="t-postal">Post Code</label>
+                                <input type="text" id="t-postal"/>
                             </div>
         
-                            <div className='group2' id='to-country'>
-                                <label for="country">Country</label>
-                                <input type="text" id="country"/>
+                            <div className='t-group2' id='to-country'>
+                                <label for="t-country">Country</label>
+                                <input type="text" id="t-country"/>
                             </div>
                         </div>
 
@@ -47,14 +47,19 @@ const BillTo = () => {
                                     <input type="date" id="date"/>
                                 </div>
                                 <div className='group3'>
-                                    <label for="client">Payment Terms</label>
-                                    <input type="text" id="client"/>
+                                    <label for="terms">Payment Terms</label>
+                                    <select name="payment-terms" id="terms">
+                                      <option value="30" selected>Next 30 days</option>
+                                      <option value="15">Next 15 days</option>
+                                      <option value="7">Next 7 days</option>
+                                      <option value="1">Next 1 days</option>
+                                    </select>
                                 </div>
                             </div>
                             
                             <div className='group1'>
-                                <label for="client">Payment Description</label>
-                                <input type="text" id="client"/>
+                                <label for="description">Payment Description</label>
+                                <input type="text" id="description"/>
                             </div>
                         </div>
                         
