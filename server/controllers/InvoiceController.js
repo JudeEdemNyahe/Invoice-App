@@ -55,7 +55,7 @@ exports.getAnInvoice = hookAsync(async(req, res, next) => {
 
 
     let invoice = await Invoice.findById(req.params.id)
-        // Tour.findOne({ _id: req.params.id }) in mongo.. moongoose version findById
+        // invoice.findOne({ _id: req.params.id }) in mongo.. moongoose version findById
 
     if (!invoice) {
         return next(new AppError('No invoice found with that ID', 404))
