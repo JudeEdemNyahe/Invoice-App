@@ -7,13 +7,13 @@ export const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.text};
   }
 
-  .invoice, .invoice-mobile, .viewInvoice-top, .viewInvoice-bottom {
+  .invoice, .invoice-mobile, .viewInvoice-top, .viewInvoice-bottom, .invoice-form {
     background: ${({ theme }) => theme.invoiceBg};
     color: ${({ theme }) => theme.text};
     box-shadow: ${({ theme }) => theme.boxShadow};
   }
 
-  .filter-text {
+  .filter-text, .title, label, .item-head div h4 {
     color: ${({ theme }) => theme.text};
   }
 
@@ -25,7 +25,7 @@ export const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.text};
   }
 
-  .section-3, .viewInvoice-right-section-mobile {
+  .section-3, .viewInvoice-right-section-mobile, input, .addItem {
     background: ${({ theme }) => theme.totalsSection};
   }
 
