@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import EditInvoice from '../Edit Invoice/EditInvoice';
 
@@ -28,21 +28,21 @@ const ViewInvoice = (props) => {
 
     const [showEditInvoice, setShowEditInvoice] = useState(false);
 
-        useEffect(() => {
-        document.addEventListener('click', handleClickOutside, true) 
-        }, [])
+    //     useEffect(() => {
+    //     document.addEventListener('click', handleClickOutside, true) 
+    //     }, [])
         
         
-        const refTwo = useRef(null)
+    //     const refTwo = useRef(null)
 
-        const handleClickOutside = (e) => {
-            if(!refTwo.current?.contains(e.target)) {
-                setShowEditInvoice(false)
-            }
-            else {
-                console.log('clicked inside')
-            }
-    }
+    //     const handleClickOutside = (e) => {
+    //         if(!refTwo.current?.contains(e.target)) {
+    //             setShowEditInvoice(false)
+    //         }
+    //         else {
+    //             console.log('clicked inside')
+    //         }
+    // }
 
     return (
         <>
@@ -146,13 +146,15 @@ const ViewInvoice = (props) => {
                     </div>
                 </div>
                 <div className='viewInvoice-right-section-mobile'>
-                        <button className='editBtn'>Edit</button>
+                        <button className='editBtn' onClick={() => setShowEditInvoice(prev => !prev)}>Edit</button>
                         <button className='deleteBtn'>Delete</button>
                         <button className='markAsPaidBtn'>Mark as Paid</button>
                 </div>
             </div>
-        </div> 
-        {showEditInvoice && <EditInvoice ref={refTwo} /> }
+        </div>   
+        {showEditInvoice && <EditInvoice 
+        // ref={refTwo} 
+        /> }
         </>
     )  
 }
