@@ -21,10 +21,16 @@ const EditInvoice = () => {
                         <BillTo />
                         <ItemList />
 
-                        <div className='btns2'>
-                            <button id="cancel">Cancel</button>
-                            <button id='save-changes'>Save Changs</button>
+                        <div className='footer'>
+                            <div className='boxShadow'></div>
+                            <div className='btns-container'>
+                                <div className='btns2'>
+                                    <button id="cancel">Cancel</button>
+                                    <button id='save-changes'>Save Changs</button>
+                                </div>
+                            </div>
                         </div>
+                        
                     </form>
                 </div>
 

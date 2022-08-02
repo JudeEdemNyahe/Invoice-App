@@ -7,7 +7,10 @@ import BillFrom from './Bill From/BillFrom';
 import BillTo from './Bill To/BillTo';
 import ItemList from './Item List/ItemList';
 import {ReactComponent as Back} from '../../assets/icon-arrow-left.svg';
+
+
 const NewInvoice = () => {
+
     return(
         <Fragment>
             <div className='new-invoice-page'>
@@ -20,11 +23,15 @@ const NewInvoice = () => {
                         <BillTo />
                         <ItemList />
 
-                        <div className='boxShadow'></div>
-                        <div className='btns'>
-                            <button id="discard">Discard</button>
-                            <button id='saveDraft'>Save as Draft</button>
-                            <button id='saveSend'>Save & Send</button>
+                        <div className='footer'>
+                            <div className='boxShadow'></div>
+                            <div className='btns-container'>
+                                <div className='btns'>
+                                    <button id="discard">Discard</button>
+                                    <button id='saveDraft'>Save as Draft</button>
+                                    <button id='saveSend'>Save & Send</button>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
