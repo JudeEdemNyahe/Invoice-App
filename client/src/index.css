@@ -16,3 +16,16 @@ body {
     margin: 0;
     overflow-x: hidden;
 }
+
+html::-webkit-scrollbar {
+    width: 11px;
+}
+
+html::-webkit-scrollbar-track {
+    background-color: #141625;
+}
+
+html::-webkit-scrollbar-thumb {
+    background-color: rgb(126, 136, 195);
+    border-radius: 100px;
+}
