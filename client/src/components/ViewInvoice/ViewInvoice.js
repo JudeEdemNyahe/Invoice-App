@@ -151,7 +151,7 @@ const ViewInvoice = (props) => {
                         <button className='markAsPaidBtn'>Mark as Paid</button>
                 </div>
             </div>
-        </div> 
+        </div>   
         {showEditInvoice && <EditInvoice 
         // ref={refTwo} 
         /> }
