@@ -1,6 +1,12 @@
 const dotenv = require('dotenv')
 dotenv.config({ path: './config.env' }) // retrieving protected variables from config file
 
+process.on('uncaughtException', err => {
+    console.log(err.name, err.message);
+    console.log('UNHANDLED EXCEPTION 💥 Shutting down...');
+    process.exit(1);
+})
+
 const app = require('./app')
 const mongoose = require('mongoose') //for manipulating our mongodb
 const PORT = process.env.PORT || 5000;
