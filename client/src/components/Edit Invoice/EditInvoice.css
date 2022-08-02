@@ -1,6 +1,5 @@
 .btns2{
     display: flex;
-    justify-content: space-between;
     width: 242px;
     height: 48px;
     /* background-color: #ff0000; */
@@ -16,6 +15,7 @@
     height: 48px;
     background: #F9FAFE;
     border-radius: 24px;
+    margin-right: 8px;
     border: none;
     cursor: pointer;
 }
@@ -27,4 +27,12 @@
     border-radius: 24px;
     border: none;
     cursor: pointer;
+}
+
+@media only screen and (min-width: 360px) and (max-width: 600px){
+    .btns2{
+        display: flex;
+        /* background-color: red; */
+        margin-left: calc(100vw - 266px);
+    }
 }
