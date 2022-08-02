@@ -63,7 +63,7 @@
     width: 719px;
     height: 110px;
     margin-left: -103px;
-    background: #ffffff;
+    background: inherit;
     border-radius: 0px 20px 20px 0px;
     display: flex;
     justify-content: center;
