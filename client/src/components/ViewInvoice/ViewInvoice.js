@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
+import EditInvoice from '../Edit Invoice/EditInvoice';
 
 import Sidebar from '../Sidebar/Sidebar';
 import './ViewInvoice.css'
@@ -25,7 +26,26 @@ const ViewInvoice = (props) => {
         return className;
     }
 
+    const [showEditInvoice, setShowEditInvoice] = useState(false);
+
+    //     useEffect(() => {
+    //     document.addEventListener('click', handleClickOutside, true) 
+    //     }, [])
+        
+        
+    //     const refTwo = useRef(null)
+
+    //     const handleClickOutside = (e) => {
+    //         if(!refTwo.current?.contains(e.target)) {
+    //             setShowEditInvoice(false)
+    //         }
+    //         else {
+    //             console.log('clicked inside')
+    //         }
+    // }
+
     return (
+        <>
         <div className='viewInvoice-container'>
             <div className='view-invoice-sidebar'>
                 <Sidebar />
@@ -43,7 +63,7 @@ const ViewInvoice = (props) => {
                         <span className={changeColor(props.status)}>{props.status}</span>
                     </div>
                     <div className='viewInvoice-right-section'>
-                        <button className='editBtn'>Edit</button>
+                        <button className='editBtn' onClick={() => setShowEditInvoice(prev => !prev)}>Edit</button>
                         <button className='deleteBtn'>Delete</button>
                         <button className='markAsPaidBtn'>Mark as Paid</button>
                     </div>
@@ -126,12 +146,16 @@ const ViewInvoice = (props) => {
                     </div>
                 </div>
                 <div className='viewInvoice-right-section-mobile'>
-                        <button className='editBtn'>Edit</button>
+                        <button className='editBtn' onClick={() => setShowEditInvoice(prev => !prev)}>Edit</button>
                         <button className='deleteBtn'>Delete</button>
                         <button className='markAsPaidBtn'>Mark as Paid</button>
                 </div>
             </div>
-        </div> 
+        </div>   
+        {showEditInvoice && <EditInvoice 
+        // ref={refTwo} 
+        /> }
+        </>
     )  
 }
 

@@ -2,6 +2,7 @@
     width: 100vw;
     /* max-height: 100vh; */
     display: flex;
+    position: fixed;
 }
 
 .blank-side{
