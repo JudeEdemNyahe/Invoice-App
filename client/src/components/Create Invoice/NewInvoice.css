@@ -91,7 +91,11 @@
     font-size: 12px;
     line-height: 15px;
     letter-spacing: -0.25px;
+}
 
+#discard, #saveDraft, #saveSend {
+    cursor: pointer;
+    font-weight: 700;
 }
 
 #discard{

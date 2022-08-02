@@ -26,7 +26,7 @@ const EditInvoice = () => {
                             <div className='btns-container'>
                                 <div className='btns2'>
                                     <button id="cancel">Cancel</button>
-                                    <button id='save-changes'>Save Changs</button>
+                                    <button id='save-changes'>Save Changes</button>
                                 </div>
                             </div>
                         </div>
