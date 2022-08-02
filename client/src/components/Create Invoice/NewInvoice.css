@@ -25,7 +25,6 @@
 .back{
     /* position: relative; */
     display: none;
-
 }
 
 .invoice-form{
@@ -217,7 +216,7 @@
         font-size: 12px;
         line-height: 15px;
         letter-spacing: -0.25px;
-        color: #0C0E16;
+        color: white;
     }
 
     .footer{
