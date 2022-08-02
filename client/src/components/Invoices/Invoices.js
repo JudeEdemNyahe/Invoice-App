@@ -26,21 +26,21 @@ const Invoices = () => {
     const [show, setShow] = useState(false);
     const [showNewInvoice, setShowNewInvoice] = useState(false);
 
-    useEffect(() => {
-       document.addEventListener('click', handleClickOutside, true) 
-    }, [])
+    // useEffect(() => {
+    //    document.addEventListener('click', handleClickOutside, true) 
+    // }, [])
     
     
-    const refOne = useRef(null)
+    // const refOne = useRef(null)
 
-    const handleClickOutside = (e) => {
-        if(!refOne.current?.contains(e.target)) {
-            setShowNewInvoice(false)
-        }
-        else {
-            console.log('clicked inside')
-        }
-    }
+    // const handleClickOutside = (e) => {
+    //     if(!refOne.current?.contains(e.target)) {
+    //         setShowNewInvoice(false)
+    //     }
+    //     else {
+    //         setShowNewInvoice(true)
+    //     }
+    // }
     
     return (
         <>
@@ -149,7 +149,9 @@ const Invoices = () => {
                 {/* <NoInvoice /> */}
             </div>
         </div>
-            {showNewInvoice && <NewInvoice ref={refOne} /> }
+            {showNewInvoice && <NewInvoice 
+            // ref={refOne}
+            /> }
         </>
        
     )    
