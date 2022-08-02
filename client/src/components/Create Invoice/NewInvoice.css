@@ -37,6 +37,12 @@
     padding: 30px 56px 0px 56px;
     overflow-x: hidden;
     overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.invoice-form::-webkit-scrollbar { 
+    display: none;
 }
 
 .title{
