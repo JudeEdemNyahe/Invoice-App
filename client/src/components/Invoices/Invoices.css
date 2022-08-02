@@ -37,6 +37,10 @@
     color: #1E2139;
 }
 
+/* .checkbox:hover {
+    border-color: #7C5DFA;
+} */
+
 .dropdown-heading {
     display: flex;
     align-items: center;

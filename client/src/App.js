@@ -28,7 +28,7 @@ const App = () => {
         <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
         <div className='app'>
         <GlobalStyles className='global' />
-            <Sidebar onClick={toggleTheme}/ >
+            <Sidebar onClick={toggleTheme} / >
         <Router>
             <Routes>
                 <Route path="/" element={<Invoices />} />
