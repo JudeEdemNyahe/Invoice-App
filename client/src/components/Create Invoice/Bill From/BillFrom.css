@@ -22,7 +22,16 @@ input{
     border: 1px solid #DFE3FA;
     padding-left: 20px; 
     border-radius: 4px;
-    outline: none
+    outline: none;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    /* identical to box height, or 125% */
+    
+    letter-spacing: -0.25px;
+    
+    color: #0C0E16;
 }
 
 input:hover{
