@@ -42,8 +42,8 @@ const changeColor = () => {
       <>
         <div className='invoice' onClick = {viewInvoice}>
           <div className='invoice-left-section'>
-            <span className='id'><span id='hashtag'>#</span>{props.id}</span>
-            <span id='date'>Due {props.date}</span>
+            <span className='id' id='id'><span id='hashtag'>#</span>{props.id}</span>
+            <span id='date' className='date'>Due {props.date}</span>
             <span className='name'>{props.name}</span>
           </div>
           <div className='invoice-right-section'>

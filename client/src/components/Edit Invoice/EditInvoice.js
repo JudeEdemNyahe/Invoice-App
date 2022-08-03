@@ -1,4 +1,6 @@
 import React, {Fragment} from 'react';
+import {useNavigate} from 'react-router-dom';
+
 import '../Create Invoice/NewInvoice.css';
 import './EditInvoice.css';
 
@@ -8,14 +10,21 @@ import Sidebar from '../Sidebar/Sidebar';
 import BillTo from '../Create Invoice/Bill To/BillTo';
 import ItemList from '../Create Invoice/Item List/ItemList';
 import {ReactComponent as Back} from '../../assets/icon-arrow-left.svg';
+
 const EditInvoice = () => {
+    const navigate = useNavigate();
+
+    const goBack = () => {
+      navigate('/');
+    };
+
     return(
         <Fragment>
             <div className='new-invoice-page'>
                 <div className="new-invoice-container">
                     <Sidebar />
                     <form className='invoice-form'>
-                        <div className='back'><Back /> <span>Go back</span></div>
+                        <div className='back' onClick = {goBack}><Back /> <span>Go back</span></div>
                         <h1 className='title'>Edit<span>#</span>X9141</h1>
                         <BillFrom />
                         <BillTo />
@@ -26,7 +35,7 @@ const EditInvoice = () => {
                             <div className='btns-container'>
                                 <div className='btns2'>
                                     <button id="cancel">Cancel</button>
-                                    <button id='save-changes'>Save Changs</button>
+                                    <button id='save-changes'>Save Changes</button>
                                 </div>
                             </div>
                         </div>
