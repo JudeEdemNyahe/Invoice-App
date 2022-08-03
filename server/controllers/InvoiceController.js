@@ -43,7 +43,7 @@ exports.createInvoice = hookAsync(async(req, res, next) => {
     res.status(201).json({
         status: 'success',
         data: {
-            data: invoice
+            invoice
         }
     });
 
