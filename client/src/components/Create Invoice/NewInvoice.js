@@ -13,17 +13,13 @@ import {ReactComponent as Back} from '../../assets/icon-arrow-left.svg';
 const NewInvoice = () => {
     const navigate = useNavigate();
 
-    const goBack = () => {
-      navigate('/');
-    };
-
     return(
         <Fragment>
             <div className='new-invoice-page'>
                 <div className="new-invoice-container">
                     <Sidebar />
                     <form className='invoice-form'>
-                        <div className='back' onClick = {goBack}><Back /> <span>Go back</span></div>
+                        <div className='back' onClick={() => navigate(-1)}><Back /> <span>Go back</span></div>
                         <h1 className='title'>New Invoice</h1>
                         <BillFrom />
                         <BillTo />
