@@ -6,7 +6,7 @@ const cors = require("cors");
 const rateLimit = require('express-rate-limit');
 const xss = require('xss-clean');
 const hpp = require('hpp');
-const compression =require("compression")
+const compression = require("compression")
 const invoiceRouter = require("./routes/invoiceRouter");
 const AppError = require("./utils/apiError");
 const globalErrorhandler = require("./controllers/errorController");
@@ -29,7 +29,13 @@ app.use(monogoSanitize());
 
 //Data sanitization against xss
 app.use(xss());
+
 app.use(compression())
+
+app.use(hpp({
+    whitelist: ['status', 'total', 'clientName']
+}));
+
 
 app.use((req, res, next) => {
     req.requestTime = new Date().toISOString();
