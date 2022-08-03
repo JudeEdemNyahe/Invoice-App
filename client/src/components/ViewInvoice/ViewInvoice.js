@@ -49,7 +49,7 @@ const ViewInvoice = (props) => {
         <>
         <div className='viewInvoice-container'>
             <div className='view-invoice-sidebar'>
-                <Sidebar />
+                <Sidebar props={onclick}/>
             </div>
             
             <div className='view-invoice'>
