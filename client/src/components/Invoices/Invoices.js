@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-
+import React, {useState,useEffect} from 'react';
+import axios from 'axios'
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
@@ -10,6 +10,7 @@ import Invoice from './Invoice/Invoice';
 // import NoInvoice from './Invoice/NoInvoice';
 import './Invoices.css'
 import NewInvoice from '../Create Invoice/NewInvoice';
+import NoInvoice from './Invoice/NoInvoice';
 
 const theme = createTheme({
     palette: {
@@ -25,6 +26,24 @@ const theme = createTheme({
 const Invoices = () => {
     const [show, setShow] = useState(false);
     const [showNewInvoice, setShowNewInvoice] = useState(false);
+ const [invoices, setInvoices] = useState(null);
+
+
+    useEffect(() => {
+        axios.get('http://127.0.0.1:5000/api/v1/invoices')
+            .then(response => {
+                setInvoices(response.data.data.invoices)
+               // console.log(response.data.data.invoices)
+            }).catch((error) =>
+                error.message)
+
+    }, []);
+
+    if (!invoices) return null;
+
+
+
+
 
     // useEffect(() => {
     //    document.addEventListener('click', handleClickOutside, true) 
@@ -48,7 +67,12 @@ const Invoices = () => {
          <div className='invoices'>
             <div className='left-section'>
                 <h1 className='invoices-title'>Invoices</h1>
-                <p className='numberOfInvoices'> <span>There are</span> 7 <span>total</span> invoices</p>
+                {invoices?.length >0?(
+                    <p className='numberOfInvoices'> <span>There are</span> {invoices?.length} <span>total</span> invoices</p>
+                ):(
+                        <p className='numberOfInvoices'> <span> No invoices </span> <span></span></p>
+                )}
+                      
             </div>
             <div className='right-section'>
                 <div className='dropdown'>
@@ -89,65 +113,19 @@ const Invoices = () => {
                 </div>
             </div>
         </div>          
-        <div className='invoice-cards'>
-                <Invoice 
-                id='RT3080' 
-                date = '19 Aug 2021' 
-                name='Jensen Huang'
-                amount='1,800.90'
-                status='Paid'
-                />
-                
-                <Invoice 
-                id='XM9141' 
-                date = '20 Sep 2021' 
-                name='Alex Grim'
-                amount='556.00'
-                status='Pending'
-                />
+   {invoices?.length>0 ?( //if there invoices in our database
+                    <div className='invoice-cards'>
+                        {invoices.map((invoice)=>(
+                            <Invoice invoice={invoice}/>
+                        ))}
+                       
 
-                <Invoice 
-                id='RG0314' 
-                date = '01 Oct 2021' 
-                name='John Morrison'
-                amount='14,002.33'
-                status='Paid'
-                />
 
-                <Invoice 
-                id='RT2080' 
-                date = '19 Aug 2021' 
-                name='Alysa Werner'
-                amount='102.04'
-                status='Pending'
-                />
-
-                <Invoice 
-                id='AA1449' 
-                date = '12 Oct 2021' 
-                name='Mellisa Clarke'
-                amount='4,032.33'
-                status='Pending'
-                />
-
-                <Invoice 
-                id='TY9141' 
-                date = '31 Oct 2021' 
-                name='Thomas Wayne'
-                amount='6,155.91'
-                status='Pending'
-                />
-
-                <Invoice 
-                id='FV2353' 
-                date = '12 Nov 2021' 
-                name='Anita Wainwright'
-                amount='3,102.04'
-                status='Draft'
-                />
-                
-                {/* <NoInvoice /> */}
-            </div>
+                        {/* <NoInvoice /> */}
+                    </div>
+   ):(
+<NoInvoice/>
+   )}
         </div>
             {showNewInvoice && <NewInvoice 
             // ref={refOne}
