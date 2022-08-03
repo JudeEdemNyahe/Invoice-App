@@ -1,4 +1,5 @@
 import React, {Fragment} from 'react';
+import {useNavigate} from 'react-router-dom';
 import './NewInvoice.css';
 
 // Components
@@ -10,6 +11,7 @@ import {ReactComponent as Back} from '../../assets/icon-arrow-left.svg';
 
 
 const NewInvoice = () => {
+    const navigate = useNavigate();
 
     return(
         <Fragment>
@@ -17,7 +19,7 @@ const NewInvoice = () => {
                 <div className="new-invoice-container">
                     <Sidebar />
                     <form className='invoice-form'>
-                        <div className='back'><Back /> <span>Go back</span></div>
+                        <div className='back' onClick={() => navigate(-1)}><Back /> <span>Go back</span></div>
                         <h1 className='title'>New Invoice</h1>
                         <BillFrom />
                         <BillTo />

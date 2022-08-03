@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
+
 import EditInvoice from '../Edit Invoice/EditInvoice';
 
 import Sidebar from '../Sidebar/Sidebar';
@@ -48,7 +49,7 @@ const ViewInvoice = (props) => {
         <>
         <div className='viewInvoice-container'>
             <div className='view-invoice-sidebar'>
-                <Sidebar />
+                <Sidebar props={onclick}/>
             </div>
             
             <div className='view-invoice'>

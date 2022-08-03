@@ -5,6 +5,7 @@ export const GlobalStyles = createGlobalStyle`
   body {
     background: ${({ theme }) => theme.body};
     color: ${({ theme }) => theme.text};
+    transition: all 0.25s linear;
   }
 
   .invoice, .invoice-mobile, .viewInvoice-top, .viewInvoice-bottom, .invoice-form {
@@ -21,11 +22,11 @@ export const GlobalStyles = createGlobalStyle`
     background: ${({ theme }) => theme.invoiceBg};
   }
 
-  .checkbox {
+  .checkbox, .add-item h4, #saveDraft, #save-changes {
     color: ${({ theme }) => theme.text};
   }
 
-  .section-3, .viewInvoice-right-section-mobile, input, .addItem {
+  .section-3, .viewInvoice-right-section-mobile, input, .addItem, select {
     background: ${({ theme }) => theme.totalsSection};
   }
 
@@ -37,4 +38,13 @@ export const GlobalStyles = createGlobalStyle`
     background-color: rgba(55, 59, 83, 0.2);
     color:${({ theme }) => theme.draftDark};
 }
+
+  .invoice-form {
+    background: ${({ theme }) => theme.invoiceForm}
+  }
+
+  input, select, #date {
+    border: ${({ theme }) => theme.border};
+    color: ${({ theme }) => theme.text};
+  }
   `
