@@ -110,17 +110,6 @@ invoiceSchema.pre('save', function() {
 
 })
 
-invoiceSchema.virtual('dueDate').get(function() {
-    const dateStr = this.paymentDue.toLocaleDateString('en-uk', { day: "numeric", month: "short", year: "numeric", })
-    return dateStr
-
-});
-invoiceSchema.virtual('invoiceDate').get(function() {
-    const dateCreatedStr = this.createdAt.toLocaleDateString('en-uk', { day: "numeric", month: "short", year: "numeric", })
-    return dateCreatedStr
-
-});
-
 
 
 
