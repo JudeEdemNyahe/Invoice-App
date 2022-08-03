@@ -30,7 +30,7 @@ const Invoices = () => {
 
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:5000/api/v1/invoices')
+        axios.get('/api/v1/invoices')
             .then(response => {
                 setInvoices(response.data.data.invoices)
                // console.log(response.data.data.invoices)
