@@ -28,10 +28,10 @@ console.log({invoice});
 
   const changeColor = () => {
     let className = ''
-    if (invoice.status === 'Paid') {
+    if (invoice.status === 'paid') {
       className = 'status-paid'
     }
-    else if (invoice.status === 'Pending') {
+    else if (invoice.status === 'pending') {
       className = 'status-pending'
     }
     else {
@@ -58,7 +58,19 @@ console.log({invoice});
         </div>
       </div>
 
-    
+      <div className='invoice-mobile' onClick = {viewInvoice}>
+          <div className='invoice-left-section-mobile'>
+            <span className='id'><span id='hashtag'>#</span>{invoice.id}</span>
+            <span className='name'>{invoice.clientName}</span>
+          </div>
+          <div className='invoice-right-section-mobile'>
+            <div className='id-mobile'>
+              <span id='date'>Due {invoice.dueDate}</span>
+              <span className='amount'>&#163;{invoice.total}</span>
+            </div>
+            <span id='status' className={changeColor(invoice.status)}>{invoice.status}</span>
+          </div>
+        </div>
     </>
   )
 }
