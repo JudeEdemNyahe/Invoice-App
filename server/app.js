@@ -1,8 +1,12 @@
 const express = require("express");
 const morgan = require("morgan");
-
+const monogoSanitize = require('express-mongo-sanitize');
 const app = express();
 const cors = require("cors");
+const rateLimit = require('express-rate-limit');
+const xss = require('xss-clean');
+const hpp = require('hpp');
+const compression =require("compression")
 const invoiceRouter = require("./routes/invoiceRouter");
 const AppError = require("./utils/apiError");
 const globalErrorhandler = require("./controllers/errorController");
@@ -11,10 +15,21 @@ const globalErrorhandler = require("./controllers/errorController");
 if (process.env.NODE_ENV === "development") {
     app.use(morgan("dev"));
 }
-
-//Body Parser, reading data from body into req.body
-app.use(express.json({ limit: "10kb" }));
+const limiter = rateLimit({
+    max: 100,
+    windowMs: 60 * 60 * 1000,
+    message: 'Too many request from this Ip, please try again in an hour!'
+});
 app.use(cors());
+//Body Parser, reading data from body into req.body
+app.use('/api', limiter);
+app.use(express.json({ limit: "10kb" }));
+//Data sanitization against nosql query injection
+app.use(monogoSanitize());
+
+//Data sanitization against xss
+app.use(xss());
+app.use(compression())
 
 app.use((req, res, next) => {
     req.requestTime = new Date().toISOString();
