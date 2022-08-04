@@ -118,7 +118,6 @@ const Invoices = () => {
                         {invoices.map((invoice) => (
                             <Invoice invoice={invoice} />
                         ))}
-                        {/* <NoInvoice /> */}
                     </div>
                 ) : (
                     <NoInvoice />
