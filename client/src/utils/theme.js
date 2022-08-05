@@ -11,6 +11,6 @@ export const lightTheme = {
     totalsSection: '#252945',
     amountDue: '#0C0E16',
     draftDark: '#DFE3FA',
-    invoiceForm: '#141625',
+    // invoiceForm: '#141625',
     border: 'none'
   }

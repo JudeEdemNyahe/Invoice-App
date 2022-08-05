@@ -1,0 +1,35 @@
+.delete-invoice-container {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.delete-invoice {
+    padding: 48px;
+    background-color: #FFFFFF;
+    width: 480px;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    border-radius: 8px;
+}
+
+.delete-buttons {
+    margin-top: 16px;
+    align-self: flex-end;
+}
+
+.edit {
+    margin-right: 8px;
+}
+
+@media (max-width: 600px) {
+    .delete-invoice {
+        width: 354px;
+    }
+}
+

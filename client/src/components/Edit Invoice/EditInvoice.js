@@ -11,7 +11,7 @@ import BillTo from '../Create Invoice/Bill To/BillTo';
 import ItemList from '../Create Invoice/Item List/ItemList';
 import {ReactComponent as Back} from '../../assets/icon-arrow-left.svg';
 
-const EditInvoice = () => {
+const EditInvoice = ({closeEditForm}) => {
     const navigate = useNavigate();
 
     const goBack = () => {
@@ -34,7 +34,7 @@ const EditInvoice = () => {
                             <div className='boxShadow'></div>
                             <div className='btns-container'>
                                 <div className='btns2'>
-                                    <button id="cancel">Cancel</button>
+                                    <button id="cancel" onClick={() => closeEditForm(false)}>Cancel</button>
                                     <button id='save-changes'>Save Changes</button>
                                 </div>
                             </div>
