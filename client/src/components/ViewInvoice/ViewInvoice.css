@@ -171,8 +171,11 @@
 }
 
 /* font-color */
-.statusTitle, .occupation, #right, .invoice-dateHeading, .bill-toHeading, .billing-location,
-.sentTo, .itemName, .qty, .price, .numberOfInvoices, #mobile-amount #total, .name, #date, #hashtag  {
+.statusTitle, .occupation, #right, .invoice-dateHeading, 
+.bill-toHeading, .billing-location,
+.sentTo, .itemName, .qty, .price, 
+.numberOfInvoices, #mobile-amount #total, 
+.name, #date, #hashtag, .delete-description {
     color: #7E88C3;
 }
 

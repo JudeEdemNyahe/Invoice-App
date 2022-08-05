@@ -12,7 +12,7 @@ import axios from 'axios';
 
 const url = 'https://amalitech-invoice-app.herokuapp.com/api/v1/invoices';
 
-const NewInvoice = () => {
+const NewInvoice = ({closeNewForm}) => {
     const [newInvoice, setNewInvoice] = useState({
         street: '',
         city: '',
@@ -31,9 +31,7 @@ const NewInvoice = () => {
         qty: '',
         price: '',
     });
-
-
-
+    
     const handleSubmit = (event) => {
         event.preventDefault();
         axios.post(url, {
@@ -62,9 +60,6 @@ const NewInvoice = () => {
                     price: newInvoice.price
                 }
             ]
-
-
-
         })
             .then(response => {
                 setNewInvoice(response.data.data.invoice)
@@ -95,7 +90,6 @@ const NewInvoice = () => {
     //             error.message)
 
     // }, []);
-
 
     return (
         <Fragment>
@@ -135,7 +129,7 @@ const NewInvoice = () => {
                             <div className='boxShadow'></div>
                             <div className='btns-container'>
                                 <div className='btns'>
-                                    <button id="discard" type='cancel'>Discard</button>
+                                    <button id="discard" onClick={() => closeNewForm(false)}>Discard</button>
                                     <button id='saveDraft'>Save as Draft</button>
                                     <button id='saveSend' type='submit'>Save & Send</button>
                                 </div>
@@ -146,8 +140,6 @@ const NewInvoice = () => {
 
                 <div className='blank-side'></div>
             </div>
-
-
         </Fragment>
     );
 }

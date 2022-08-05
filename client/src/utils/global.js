@@ -14,11 +14,13 @@ export const GlobalStyles = createGlobalStyle`
     box-shadow: ${({ theme }) => theme.boxShadow};
   }
 
-  .filter-text, .title, label, .item-head div h4 {
+  .filter-text, .title, label, .item-head div h4,
+   .delete-buttons button, .delete-description, #cancel
+    {
     color: ${({ theme }) => theme.text};
   }
 
-  .checkboxes {
+  .checkboxes, .delete-invoice, .btns-container {
     background: ${({ theme }) => theme.invoiceBg};
   }
 
@@ -26,7 +28,8 @@ export const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.text};
   }
 
-  .section-3, .viewInvoice-right-section-mobile, input, .addItem, select {
+  .section-3, .viewInvoice-right-section-mobile, input, 
+  .addItem, select, .delete-buttons .editBtn, #cancel {
     background: ${({ theme }) => theme.totalsSection};
   }
 
@@ -40,11 +43,17 @@ export const GlobalStyles = createGlobalStyle`
 }
 
   .invoice-form {
-    background: ${({ theme }) => theme.invoiceForm}
+    background: ${({ theme }) => theme.body}
   }
 
   input, select, #date {
     border: ${({ theme }) => theme.border};
     color: ${({ theme }) => theme.text};
   }
+
+  @media (min-width: 600px) {
+    .btns-container {
+      background: ${({ theme }) => theme.body}
+  }
+    } 
   `
