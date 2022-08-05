@@ -1,7 +1,9 @@
-import React from 'react';
+import React ,{useEffect } from 'react';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import useLocalStorage from "use-local-storage";
+import { getInvoices } from './actions/invoices';
+import { useDispatch } from 'react-redux'
 
 import ViewInvoice from './components/ViewInvoice/ViewInvoice';
 import './App.css';
@@ -12,6 +14,14 @@ import { GlobalStyles } from './utils/global';
 
 const App = () => {
     const [theme, setTheme] = useLocalStorage('light');
+    const dispatch = useDispatch();
+
+
+    useEffect(() => {
+        dispatch(getInvoices());
+    }, [dispatch])
+
+
 
     const toggleTheme = () => {
       if (theme === 'light') {

@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios'
+import React, { useState} from 'react';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { purple } from '@mui/material/colors';
-
 import Invoice from './Invoice/Invoice';
+
 // import NoInvoice from './Invoice/NoInvoice';
 import './Invoices.css'
 import NewInvoice from '../Create Invoice/NewInvoice';
 import NoInvoice from './Invoice/NoInvoice';
+import {useSelector} from 'react-redux'
 
 const theme = createTheme({
     palette: {
@@ -24,25 +24,19 @@ const theme = createTheme({
 });
 
 const Invoices = () => {
+
+ 
     const [show, setShow] = useState(false);
     const [showNewInvoice, setShowNewInvoice] = useState(false);
-    const [invoices, setInvoices] = useState(null);
+   // const [invoices, setInvoices] = useState(null);
+    const invoices = useSelector((state) => state.invoices)
 
-
-    useEffect(() => {
-        axios.get('https://amalitech-invoice-app.herokuapp.com/api/v1/invoices')
-            .then(response => {
-                setInvoices(response.data.data.invoices)
-                // console.log(response.data.data.invoices)
-            }).catch((error) =>
-                error.message)
-
-    }, []);
-
-    if (!invoices) return null;
+    console.log(invoices);
 
 
 
+
+//const invoices=getInvoices.data.invoices;
 
 
     // useEffect(() => {
