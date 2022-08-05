@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from 'react';
+import React, { Fragment, useState } from 'react';
 // import axios from 'axios'
 import './NewInvoice.css';
 
@@ -7,10 +7,10 @@ import Sidebar from '../Sidebar/Sidebar';
 import BillFrom from './Bill From/BillFrom';
 import BillTo from './Bill To/BillTo';
 import ItemList from './Item List/ItemList';
-import {ReactComponent as Back} from '../../assets/icon-arrow-left.svg';
+import { ReactComponent as Back } from '../../assets/icon-arrow-left.svg';
 import axios from 'axios';
 
-
+const url = 'http://localhost:5000/api/v1/invoices';
 
 const NewInvoice = () => {
     const [newInvoice, setNewInvoice] = useState({
@@ -32,40 +32,54 @@ const NewInvoice = () => {
         price: '',
     });
 
-    const url = 'https://amalitech-invoice-app.herokuapp.com/api/v1/invoices';
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
         axios.post(url, {
-            street: newInvoice.street,
-            city: newInvoice.city,
-            postal: newInvoice.postal,
-            country: newInvoice.country,
-            client: newInvoice.client,
-            streetAddress: newInvoice.streetAddress,
-            email: newInvoice.email,
-            tCity: newInvoice.tCity,
-            tPostal: newInvoice.tPostal,
-            tCountry: newInvoice.tCountry,
-            date: newInvoice.date,
-            terms: newInvoice.terms,
+            //refer to dev-data/data.json or invoice model in server folder for model structure
+            createdAt: newInvoice.date,
+            paymentTerms: newInvoice.terms,
             description: newInvoice.description,
-            name: newInvoice.name,
-            qty: newInvoice.qty,
-            price: newInvoice.price,
+            clientName: newInvoice.client,
+            clientEmail: newInvoice.email,
+            senderAddress: {
+                street: newInvoice.street,
+                city: newInvoice.city,
+                postCode: newInvoice.postal,
+                country: newInvoice.country
+            },
+            clientAddress: {
+                street: newInvoice.streetAddress,
+                city: newInvoice.tCity,
+                postCode: newInvoice.tPostal,
+                country: newInvoice.tCountry
+            },
+            items: [
+                {
+                    name: newInvoice.name,
+                    quantity: newInvoice.qty,
+                    price: newInvoice.price
+                }
+            ]
+
+
+
         })
-        .then(response => {
-            console.log(response.data.data.invoice)
-        })
+            .then(response => {
+                setNewInvoice(response.data.data.invoice)
+
+                console.log(response.data.data.invoice)
+            }).catch(err => console.log(err.message))//to see error message api
     }
 
     const handleChange = (event) => {
-        const newData = {...newInvoice}
+        const newData = { ...newInvoice }
         newData[event.target.id] = event.target.value
         setNewInvoice(newData)
         console.log(newData)
     }
-    
+
     // useEffect(() => {
     //     axios({
     //         method: 'post',
@@ -83,7 +97,7 @@ const NewInvoice = () => {
     // }, []);
 
 
-    return(
+    return (
         <Fragment>
             <div className='new-invoice-page'>
                 <div className="new-invoice-container">
@@ -91,30 +105,30 @@ const NewInvoice = () => {
                     <form className='invoice-form' onSubmit={handleSubmit}>
                         <div className='back'><Back /> <span>Go back</span></div>
                         <h1 className='title'>New Invoice</h1>
-                        <BillFrom 
-                        onChange = {handleChange}
-                        street = {newInvoice.street}
-                        city = {newInvoice.city}
-                        country = {newInvoice.country}
-                        postal = {newInvoice.postal}
+                        <BillFrom
+                            onChange={handleChange}
+                            street={newInvoice.street}
+                            city={newInvoice.city}
+                            country={newInvoice.country}
+                            postal={newInvoice.postal}
                         />
-                        <BillTo 
-                        onChange = {handleChange}
-                        client = {newInvoice.client}
-                        email = {newInvoice.email}
-                        streetAddress = {newInvoice.streetAddress}
-                        tPostal = {newInvoice.tPostal}
-                        tCity = {newInvoice.tCity}
-                        tCountry = {newInvoice.tCountry}
-                        date = {newInvoice.date}
-                        terms = {newInvoice.terms}
-                        description = {newInvoice.description}
+                        <BillTo
+                            onChange={handleChange}
+                            client={newInvoice.client}
+                            email={newInvoice.email}
+                            streetAddress={newInvoice.streetAddress}
+                            tPostal={newInvoice.tPostal}
+                            tCity={newInvoice.tCity}
+                            tCountry={newInvoice.tCountry}
+                            date={newInvoice.date}
+                            terms={newInvoice.terms}
+                            description={newInvoice.description}
                         />
-                        <ItemList 
-                        onChange = {handleChange}
-                        name = {newInvoice.name}
-                        qty = {newInvoice.qty}
-                        price = {newInvoice.price}
+                        <ItemList
+                            onChange={handleChange}
+                            name={newInvoice.name}
+                            qty={newInvoice.qty}
+                            price={newInvoice.price}
                         />
 
                         <div className='footer'>
@@ -132,8 +146,8 @@ const NewInvoice = () => {
 
                 <div className='blank-side'></div>
             </div>
-            
-            
+
+
         </Fragment>
     );
 }

@@ -5,7 +5,6 @@ const validator = require('validator')
 const invoiceSchema = new mongoose.Schema({
     id: {
         type: String,
-        required: true,
     },
     createdAt: {
         type: Date,
@@ -13,8 +12,7 @@ const invoiceSchema = new mongoose.Schema({
 
     },
     paymentDue: {
-        type: Date,
-        default: Date.now(),
+        type: Date
 
     },
     description: {
@@ -47,7 +45,8 @@ const invoiceSchema = new mongoose.Schema({
     status: {
         type: String,
         lowercase: true,
-        enum: ['pending', 'paid', 'draft']
+        enum: ['pending', 'paid', 'draft'],
+        default: 'pending'
 
     },
     senderAddress: {
@@ -101,14 +100,7 @@ const invoiceSchema = new mongoose.Schema({
 //Document middleware: runs before .save() and .create() cmd
 
 
-invoiceSchema.pre('save', function() {
-    let calcTotal = 0;
-    this.items.map((item) => {
-        calcTotal += item.total;
-    });
-    this.total = calcTotal;
 
-})
 
 invoiceSchema.virtual('dueDate').get(function() {
     const dateStr = this.paymentDue.toLocaleDateString('en-uk', { day: "numeric", month: "short", year: "numeric", })
@@ -123,7 +115,48 @@ invoiceSchema.virtual('invoiceDate').get(function() {
 
 
 
+invoiceSchema.pre('save', function(next) {
+    let letters = Math.random()
+        .toString(36)
+        .replace(/[^a-z]+/g, "")
+        .substring(0, 2)
+        .toUpperCase();
 
+    var numbers = Math.floor(1000 + Math.random() * 9000);
+
+    let id = letters + numbers;
+
+    if (!this.id || this.id === " ") {
+        this.id = id
+    }
+    next()
+})
+
+invoiceSchema.pre('save', function(next) {
+    let calcDueDate = new Date(this.createdAt);
+    this.paymentDue = calcDueDate.setDate(calcDueDate.getDate() + Number.parseInt(this.paymentTerms));
+    next()
+})
+
+invoiceSchema.pre('save', function(next) {
+    let itemTotal = 0
+    this.items.map((item) => {
+        itemTotal = item.quantity * item.price;
+        item.total = itemTotal;
+    })
+
+    next()
+})
+
+
+invoiceSchema.pre('save', function(next) {
+    let calcTotal = 0;
+    this.items.map((item) => {
+        calcTotal += item.total;
+    });
+    this.total = calcTotal;
+    next()
+})
 const Invoice = mongoose.model('Invoice', invoiceSchema);
 
 
