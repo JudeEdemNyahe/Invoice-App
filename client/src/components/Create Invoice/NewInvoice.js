@@ -10,7 +10,7 @@ import ItemList from './Item List/ItemList';
 import { ReactComponent as Back } from '../../assets/icon-arrow-left.svg';
 import axios from 'axios';
 
-const url = 'http://localhost:5000/api/v1/invoices';
+const url = 'https://amalitech-invoice-app.herokuapp.com/api/v1/invoices';
 
 const NewInvoice = () => {
     const [newInvoice, setNewInvoice] = useState({
