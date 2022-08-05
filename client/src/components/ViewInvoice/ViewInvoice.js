@@ -2,11 +2,14 @@ import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 
 import EditInvoice from '../Edit Invoice/EditInvoice';
+import DeleteInvoice from '../DeleteInvoice/DeleteInvoice';
 
 import Sidebar from '../Sidebar/Sidebar';
 import './ViewInvoice.css'
 
 const ViewInvoice = (props) => {
+    const [showEditInvoice, setShowEditInvoice] = useState(false);
+    const [showDeleteInvoice, setShowDeleteInvoice] = useState(false);
     const navigate = useNavigate();
 
     const goBack = () => {
@@ -27,29 +30,11 @@ const ViewInvoice = (props) => {
         return className;
     }
 
-    const [showEditInvoice, setShowEditInvoice] = useState(false);
-
-    //     useEffect(() => {
-    //     document.addEventListener('click', handleClickOutside, true) 
-    //     }, [])
-        
-        
-    //     const refTwo = useRef(null)
-
-    //     const handleClickOutside = (e) => {
-    //         if(!refTwo.current?.contains(e.target)) {
-    //             setShowEditInvoice(false)
-    //         }
-    //         else {
-    //             console.log('clicked inside')
-    //         }
-    // }
-
     return (
         <>
         <div className='viewInvoice-container'>
             <div className='view-invoice-sidebar'>
-                <Sidebar props={onclick}/>
+                <Sidebar />
             </div>
             
             <div className='view-invoice'>
@@ -64,8 +49,8 @@ const ViewInvoice = (props) => {
                         <span className={changeColor(props.status)}>{props.status}</span>
                     </div>
                     <div className='viewInvoice-right-section'>
-                        <button className='editBtn' onClick={() => setShowEditInvoice(prev => !prev)}>Edit</button>
-                        <button className='deleteBtn'>Delete</button>
+                        <button className='editBtn' onClick={() => setShowEditInvoice(true)}>Edit</button>
+                        <button className='deleteBtn' onClick={() => setShowDeleteInvoice(true)}>Delete</button>
                         <button className='markAsPaidBtn'>Mark as Paid</button>
                     </div>
                 </div>
@@ -147,16 +132,20 @@ const ViewInvoice = (props) => {
                     </div>
                 </div>
                 <div className='viewInvoice-right-section-mobile'>
-                        <button className='editBtn' onClick={() => setShowEditInvoice(prev => !prev)}>Edit</button>
-                        <button className='deleteBtn'>Delete</button>
+                        <button className='editBtn' onClick={() => setShowEditInvoice(true)}>Edit</button>
+                        <button className='deleteBtn' onClick={() => setShowDeleteInvoice(true)}>Delete</button>
                         <button className='markAsPaidBtn'>Mark as Paid</button>
                 </div>
             </div>
         </div>   
-        {showEditInvoice && <EditInvoice 
-        // ref={refTwo} 
-        /> }
-        </>
+        {showEditInvoice && <EditInvoice
+        closeEditForm = {setShowEditInvoice}
+        />}
+
+        {showDeleteInvoice && <DeleteInvoice 
+        closeDelete = {setShowDeleteInvoice}
+        />}  
+        </>   
     )  
 }
 

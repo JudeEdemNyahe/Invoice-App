@@ -118,7 +118,7 @@ const Invoices = () => {
                 )}
             </div>
             {showNewInvoice && <NewInvoice
-            // ref={refOne}
+            closeNewForm = {setShowNewInvoice}
             />}
         </>
 

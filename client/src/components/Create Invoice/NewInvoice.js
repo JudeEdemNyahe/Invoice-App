@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 // import axios from 'axios'
-import { useDispatch } from 'react-redux'
+//import { useDispatch } from 'react-redux'
 import './NewInvoice.css';
 
 // Components
@@ -10,12 +10,12 @@ import BillTo from './Bill To/BillTo';
 import ItemList from './Item List/ItemList';
 import { ReactComponent as Back } from '../../assets/icon-arrow-left.svg';
 import axios from 'axios';
-import {CreateAnInvoice} from './../../actions/invoices'
+//import {CreateAnInvoice} from './../../actions/invoices'
 
 
 const url = 'https://amalitech-invoice-app.herokuapp.com/api/v1/invoices';
 
-const NewInvoice = () => {
+const NewInvoice = ({closeNewForm}) => {
     const [newInvoice, setNewInvoice] = useState({
         street: '',
         city: '',
@@ -34,9 +34,10 @@ const NewInvoice = () => {
         qty: '',
         price: '',
     });
-const dispatch=useDispatch()
+//const dispatch=useDispatch()
 
 
+    
     const handleSubmit = (event) => {
         event.preventDefault();
         axios.post(url, {
@@ -65,9 +66,6 @@ const dispatch=useDispatch()
                     price: newInvoice.price
                 }
             ]
-
-
-
         })
             .then(response => {
                 setNewInvoice(response.data.data.invoice)
@@ -98,7 +96,6 @@ const dispatch=useDispatch()
     //             error.message)
 
     // }, []);
-
 
     return (
         <Fragment>
@@ -138,7 +135,7 @@ const dispatch=useDispatch()
                             <div className='boxShadow'></div>
                             <div className='btns-container'>
                                 <div className='btns'>
-                                    <button id="discard" type='cancel'>Discard</button>
+                                    <button id="discard" onClick={() => closeNewForm(false)}>Discard</button>
                                     <button id='saveDraft'>Save as Draft</button>
                                     <button id='saveSend' type='submit'>Save & Send</button>
                                 </div>
@@ -149,8 +146,6 @@ const dispatch=useDispatch()
 
                 <div className='blank-side'></div>
             </div>
-
-
         </Fragment>
     );
 }
