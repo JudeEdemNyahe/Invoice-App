@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
 // import axios from 'axios'
+import { useDispatch } from 'react-redux'
 import './NewInvoice.css';
 
 // Components
@@ -9,6 +10,8 @@ import BillTo from './Bill To/BillTo';
 import ItemList from './Item List/ItemList';
 import { ReactComponent as Back } from '../../assets/icon-arrow-left.svg';
 import axios from 'axios';
+import {CreateAnInvoice} from './../../actions/invoices'
+
 
 const url = 'https://amalitech-invoice-app.herokuapp.com/api/v1/invoices';
 
@@ -31,7 +34,7 @@ const NewInvoice = () => {
         qty: '',
         price: '',
     });
-
+const dispatch=useDispatch()
 
 
     const handleSubmit = (event) => {
@@ -69,15 +72,15 @@ const NewInvoice = () => {
             .then(response => {
                 setNewInvoice(response.data.data.invoice)
 
-                console.log(response.data.data.invoice)
-            }).catch(err => console.log(err.message))//to see error message api
+                //   console.log(response.data.data.invoice)
+            }).catch(err => console.log(err))//to see error message api
     }
 
     const handleChange = (event) => {
         const newData = { ...newInvoice }
         newData[event.target.id] = event.target.value
         setNewInvoice(newData)
-        console.log(newData)
+        //console.log(newData)
     }
 
     // useEffect(() => {
