@@ -1,30 +1,15 @@
-//import React, { useState } from 'react';
-// import axios from 'axios';
-
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import './Invoice.css';
 
 export const Invoice = ({invoice}) => {
   const navigate = useNavigate();
- // const [invoices, setInvoices] = useState(null);
-console.log({invoice});
+  console.log({invoice});
 
   const viewInvoice = () => {
     navigate('/view-invoice');
   };
-
-  // useEffect(() => {
-  //   axios.get('http://127.0.0.1:5000/api/v1/invoices')
-  //     .then(response => {
-  //       setInvoices(response.data.data.invoices)
-  //       console.log(response.data.data.invoices)
-  //     }).catch((error) =>
-  //       error.message)
-
-  // }, []);
-
-  // if (!invoices) return null;
 
   const changeColor = () => {
     let className = ''
@@ -45,32 +30,23 @@ console.log({invoice});
 
   return (
     <>
-      <div className='invoice' onClick={viewInvoice}>
-        <div className='invoice-left-section'>
+      <div className='invoice invoice-mobile' onClick={viewInvoice}>
+        <div className='invoice-left-section left-mobile'>
           <span className='id'><span id='hashtag'>#</span>{invoice.id}</span>
           <span id='date'>Due {invoice.dueDate }</span>
           <span className='name'>{invoice.clientName}</span>
         </div>
-        <div className='invoice-right-section'>
+        <div className='invoice-right-section right-mobile'>
+          <div className='bottom-mobile'>
+            <span id='date-mobile'>Due {invoice.dueDate }</span>
+            <span className='amount-mobile'>&#163;{invoice.total}</span>
+          </div>
           <span className='amount'>&#163;{invoice.total}</span>
           <span id='status' className={changeColor(invoice.status)}>{invoice.status}</span>
           <span className='right-arrow'><svg width="7" height="10" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l4 4-4 4" stroke="#7C5DFA" strokeWidth="2" fill="none" fillRule="evenodd" /></svg></span>
-        </div>
+          <span id='status-mobile' className={changeColor(invoice.status)}>{invoice.status}</span>
+        </div>  
       </div>
-
-      <div className='invoice-mobile' onClick = {viewInvoice}>
-          <div className='invoice-left-section-mobile'>
-            <span className='id'><span id='hashtag'>#</span>{invoice.id}</span>
-            <span className='name'>{invoice.clientName}</span>
-          </div>
-          <div className='invoice-right-section-mobile'>
-            <div className='id-mobile'>
-              <span id='date'>Due {invoice.dueDate}</span>
-              <span className='amount'>&#163;{invoice.total}</span>
-            </div>
-            <span id='status' className={changeColor(invoice.status)}>{invoice.status}</span>
-          </div>
-        </div>
     </>
   )
 }

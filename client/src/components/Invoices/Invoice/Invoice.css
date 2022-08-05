@@ -3,14 +3,10 @@
     align-items: center;
     height: 72px;
     font-size: 16px;
-    background-color: white;
+    background-color: #fff;
     border-radius: 8px;
     cursor: pointer;
     /* box-shadow: 0px 10px 20px rgba(72, 84, 159, 0.25); */
-}
-
-.invoice-mobile {
-    display: none;
 }
 
 .invoice:hover, .invoice:active {
@@ -33,7 +29,7 @@
     padding: 1em;
 }
 
-#id {
+.id {
     margin-left: 20px;
 }
 
@@ -85,6 +81,10 @@
     color: #373B53
 }
 
+#status-mobile, .bottom-mobile {
+    display: none;
+}
+
 /* No Invoice Styles */
 .noInvoice {
     display: flex;
@@ -103,36 +103,43 @@
 }
 
 @media (max-width: 600px) {
-    .invoice {
+    .invoice-mobile {
+        height: auto;
+        flex-direction: column;
+    }
+
+    .left-mobile {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: -webkit-fill-available;
+    } 
+
+    .right-mobile {
+        justify-content: space-between;
+        width: -webkit-fill-available;
+    }
+
+    .bottom-mobile {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    #status, #date, .amount, .right-arrow{
         display: none;
     }
 
-    .invoice-mobile {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-        background-color: white;
-        border-radius: 8px;
-        cursor: pointer;
-        padding: 1em;
-        width: inherit;
-        margin: 0 auto;
+    #status-mobile {
+        display: block;
+        text-transform: capitalize;
     }
 
-    .invoice-left-section-mobile, .invoice-right-section-mobile, .id-mobile  {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .id-mobile {
-        flex-direction: column;
-    }
+    .status-pending {
+        width: fit-content;
+    } 
 
     .id {
         margin-left: 0;
     }
 
-    .status-pending {
-        width: fit-content;
-    }
 }
