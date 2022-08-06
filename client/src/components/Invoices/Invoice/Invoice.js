@@ -8,7 +8,7 @@ export const Invoice = ({invoice}) => {
   console.log({invoice});
 
   const viewInvoice = () => {
-    navigate('/view-invoice');
+    navigate(`/view-invoice/${invoice._id}`);
   };
 
   const changeColor = () => {

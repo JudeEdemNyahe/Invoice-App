@@ -1,16 +1,31 @@
-import React, {useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import React, {useState,useEffect} from 'react';
 
+import {useDispatch,useSelector} from 'react-redux';
 import EditInvoice from '../Edit Invoice/EditInvoice';
 import DeleteInvoice from '../DeleteInvoice/DeleteInvoice';
-
+import {useParams,useNavigate} from 'react-router-dom';
 import Sidebar from '../Sidebar/Sidebar';
-import './ViewInvoice.css'
+import './ViewInvoice.css';
+import { getInvoice } from '../../actions/invoices';
 
 const ViewInvoice = (props) => {
+    const { id } = useParams();
     const [showEditInvoice, setShowEditInvoice] = useState(false);
     const [showDeleteInvoice, setShowDeleteInvoice] = useState(false);
     const navigate = useNavigate();
+    const invoice = useSelector((state)=>state.invoices);
+   const  dispatch=useDispatch();
+  
+
+
+    useEffect(() => {
+        dispatch(getInvoice(id));
+    }, [dispatch,id]);
+
+    console.log(invoice.items);
+
+if(!invoice)return null;
+
 
     const goBack = () => {
       navigate('/');
@@ -57,42 +72,42 @@ const ViewInvoice = (props) => {
                 <div className='viewInvoice-bottom'>
                     <div className='section-1'>
                         <div id='left'>
-                           <span className='id'>{props.id}</span> 
-                           <span className='occupation'>Graphic Design</span> 
+                           <span className='id'>#{invoice.id}</span> 
+                           <span className='occupation'>{invoice.description}</span> 
                         </div>
                         <div id='right'>
-                            <span>19 Union Terrace</span>
-                            <span>London</span>
-                            <span>E1 3EZ</span>
-                            <span>United Kingdom</span>
+                                <span>{typeof invoice.senderAddress === 'undefined' ? ' ' : invoice.senderAddress.street}</span>
+                                <span>{typeof invoice.senderAddress === 'undefined' ? ' ' : invoice.senderAddress.city}</span>
+                                <span>E{typeof invoice.senderAddress === 'undefined' ? ' ' : invoice.senderAddress.postCode}</span>
+                                <span>{typeof invoice.senderAddress === 'undefined' ? ' ' : invoice.senderAddress.country}</span>
                         </div>
                     </div>
                     <div className='section-2'>
                         <div className='dates'>
                             <div className='date'>
                                 <span className='invoice-dateHeading'>Invoice Date</span>
-                                <span className='invoice-date'>21 Aug 2021</span>
+                                    <span className='invoice-date'>{invoice.invoiceDate}</span>
                             </div>
                             <div className='date'>
                                 <span className='invoice-dateHeading'>Payment Due</span>
-                                <span className='invoice-date'>20 Sep 2021</span>
+                                <span className='invoice-date'>{invoice.dueDate}</span>
                             </div>
                         </div>
                         <div className='billings'>
                             <div className='billing'>
                                 <span className='bill-toHeading'>Bill To</span>
-                                <span className='bill-to'>Alex Grim</span>
+                                    <span className='bill-to'>{invoice.clientName}</span>
                             </div>
                             <div className='billing-location'>
-                                <span>84 Church Way</span>
-                                <span>Bradford</span>
-                                <span>BD1 9PB</span>
-                                <span>United Kingdom</span>
+                                    <span>{typeof invoice.clientAddress === 'undefined' ? ' ' : invoice.clientAddress.street}</span>
+                                    <span>{typeof invoice.clientAddress === 'undefined' ? ' ' : invoice.clientAddress.city}</span>
+                                    <span>{typeof invoice.clientAddress === 'undefined' ? ' ' : invoice.clientAddress.postCode}</span>
+                                    <span>{typeof invoice.clientAddress === 'undefined' ? ' ' : invoice.clientAddress.country}</span>
                             </div>
                         </div>
                         <div className='email'>
                             <span className='sentTo'>Sent to</span>
-                            <span className='email-address'>alexgrim@mail.com</span>
+                                <span className='email-address'>{invoice.clientEmail}</span>
                         </div>
                     </div>
                     <div className='email-mobile'>
@@ -103,32 +118,73 @@ const ViewInvoice = (props) => {
                         <div className='totals-section'>
                             <div className='item'>
                                 <span className='itemName'>Item Name</span>
-                                <span className='item-name'>Banner Design</span>
-                                <span id='mobile-amount'>1 x &#163; 156.00</span>
-                                <span className='item-name'>Email Design</span>
-                                <span id='mobile-amount'>2 x &#163; 400.00</span>
+                                    {invoice.items?.length > 0 ? (
+
+                                        invoice.items.map((item) => (
+
+                                            <span>{item.name}</span>
+
+                                        ))
+
+                                    ) : (
+                                        <span>" "</span>
+                                    )}
+                            
+                               
                             </div>
                             <div className='quantity'>
                                 <span className='qty'>QTY.</span>
-                                <span>1</span>
-                                <span>2</span>
+                                  
+
+                                    {invoice.items?.length > 0 ? (
+                                        
+                                            invoice.items.map((item) => (
+
+                                                <span>{item.quantity}</span>
+
+                                            ))
+                                        
+                                    ) : (
+                                        <span>" "</span> 
+                                    )}
                             </div>
                             <div className='price'>
                                 <span id='price'>Price</span>
-                                <span>&#163;156.00</span>
-                                <span>&#163;400.00</span>
+                               
+                                    {invoice.items?.length > 0 ? (
+
+                                        invoice.items.map((item) => (
+
+                                            <span>&#163;{item.price}</span>
+
+                                        ))
+
+                                    ) : (
+                                        <span>" "</span>
+                                    )}
+                                
                             </div>
                             <div className='total'>
                                 <span id='total'>Total</span>
-                                <span className='amounts'>&#163;156.00</span>
-                                <span className='amounts'>&#163;400.00</span>
+                                    {invoice.items?.length > 0 ? (
+
+                                        invoice.items.map((item) => (
+
+                                            <span>&#163;{item.total}</span>
+
+                                        ))
+
+                                    ) : (
+                                        <span>" "</span>
+                                    )}
+
                             </div>
                         </div>
                     </div>
                     <div className='amount-due'>
                             <span id='amountDue'>Amount Due</span>
                             <span id='amountDue-mobile'>Grand Total</span>
-                            <span id='amount'>&#163;{props.amount}</span>
+                            <span id='amount'>&#163;{invoice.total}</span>
                     </div>
                 </div>
                 <div className='viewInvoice-right-section-mobile'>

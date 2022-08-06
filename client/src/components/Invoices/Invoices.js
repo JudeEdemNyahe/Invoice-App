@@ -1,11 +1,12 @@
-import React, { useState} from 'react';
+import React, { useState,useEffect} from 'react';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { purple } from '@mui/material/colors';
 import Invoice from './Invoice/Invoice';
-
+import { getInvoices } from '../../actions/invoices';
+import { useDispatch } from 'react-redux'
 // import NoInvoice from './Invoice/NoInvoice';
 import './Invoices.css'
 import NewInvoice from '../Create Invoice/NewInvoice';
@@ -31,8 +32,15 @@ const Invoices = () => {
    // const [invoices, setInvoices] = useState(null);
     const invoices = useSelector((state) => state.invoices)
 
-    console.log(invoices);
+    const dispatch = useDispatch();
 
+
+    useEffect(() => {
+        dispatch(getInvoices());
+    }, [dispatch])
+
+
+if(!invoices) return null;
     return (
         <>
             <div className='container'>
