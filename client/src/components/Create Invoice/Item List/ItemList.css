@@ -44,7 +44,7 @@ color: #7E88C3;
     margin-right: 16px;
 }
 
-.i-qty{
+.i-quantity{
     width: 46px;
     margin-right: 25px;
 }
@@ -117,7 +117,7 @@ color: #7E88C3;
     outline: none;
 }
 
-#qty{
+#quantity{
     padding: 10px;
 }
 
@@ -163,7 +163,7 @@ color: #7E88C3;
     width: 214px;
 }
 
-#qty{
+#quantity{
     width: 55px;
 }
 
@@ -254,7 +254,7 @@ color: #7E88C3;
         height: 15px;
             }
 
-    #qty{
+    #quantity{
         width: inherit;
     }
 

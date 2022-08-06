@@ -21,9 +21,9 @@ export const CreateAnInvoice = (invoice) => async(dispatch) => {
     try {
         const { data } = await api.createInvoice(invoice);
 
-        dispatch({ type: 'CREATE', payload: data.data.invoices })
+        dispatch({ type: 'CREATE', payload: data.data.invoice  })
     } catch (error) {
-        console.log(error);
+        console.log(error.response.data.message);
     }
 
 

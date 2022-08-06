@@ -5,7 +5,7 @@ import './Invoice.css';
 
 export const Invoice = ({invoice}) => {
   const navigate = useNavigate();
-  //console.log({invoice});
+  console.log({invoice});
 
   const viewInvoice = () => {
     navigate('/view-invoice');

@@ -9,21 +9,21 @@ const BillTo = (props) => {
                 <div className='to-container'>
                     <form>
                         <div className='group1'>
-                            <label for="client">Client's Name</label>
-                            <input type="text" id="client" 
+                            <label for="clientName">Client's Name</label>
+                            <input type="text" id="clientName" 
                             onChange={props.onChange} 
                             />
                         </div>
 
                         <div className='group1'>
-                            <label for="email">Client's Email</label>
-                            <input type="email" id="email" 
+                            <label for="clientEmail">Client's Email</label>
+                            <input type="email" id="clientEmail" 
                             onChange={props.onChange}
                             />
                         </div>
 
                         <div className='group1'>
-                            <label for="street">Street Address</label>
+                            <label for="streetAddress">Street Address</label>
                             <input type="text" id="streetAddress" 
                             onChange={props.onChange}
                             />
@@ -31,22 +31,22 @@ const BillTo = (props) => {
                           
                         <div className='form-l3'>
                             <div className='t-group2'>
-                                <label for="t-city">City</label>
-                                <input type="text" id="tCity"
+                                <label for="t-city">city</label>
+                                <input type="text" id="city"
                                 onChange={props.onChange}
                                 />
                             </div>
         
                             <div className='t-group2'>
-                                <label for="t-postal">Post Code</label>
-                                <input type="text" id="tPostal"
+                                <label for="postCode">Post Code</label>
+                                <input type="text" id="postCode"
                                 onChange={props.onChange}
                                 />
                             </div>
         
                             <div className='t-group2' id='to-country'>
-                                <label for="t-country">Country</label>
-                                <input type="text" id="tCountry"
+                                <label for="country">Country</label>
+                                <input type="text" id="country"
                                 onChange={props.onChange}
                                 />
                             </div>
@@ -55,14 +55,14 @@ const BillTo = (props) => {
                         <div className='form-l2'>
                             <div className='two-column'>
                                 <div className='group3'>
-                                    <label for="date">Invoice Date</label>
-                                    <input type="date" id="date"
+                                    <label for="createdAt">Invoice Date</label>
+                                    <input type="date" id="createdAt"
                                     onChange={props.onChange}
                                     />
                                 </div>
                                 <div className='group3'>
-                                    <label for="terms">Payment Terms</label>
-                                    <select name="payment-terms" id="terms"
+                                    <label for="paymentTerms">Payment Terms</label>
+                                    <select name="payment-terms" id="paymentTerms"
                                     onChange={props.onChange}>
                                       <option value="30" selected>Next 30 days</option>
                                       <option value="15">Next 15 days</option>

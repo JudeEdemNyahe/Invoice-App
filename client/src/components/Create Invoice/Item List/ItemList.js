@@ -28,8 +28,8 @@ const ItemList = (props) => {
 
                 <div className='item-props'>
                     <div className='grp2'>
-                        <label for="qty">Qty</label>
-                        <input type="number" min="1" id="qty" 
+                        <label for="quantity">Qty</label>
+                        <input type="number" min="1" id="quantity" 
                         onChange={props.onChange}
                         />
                     </div>
