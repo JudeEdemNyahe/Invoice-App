@@ -5,6 +5,10 @@ export default (invoices = [], action) => {
             return action.payload
         case 'CREATE':
             return [...invoices,action.payload];
+        case 'FETCH_INVOICE':
+             return action.payload
+
+        
         default:
             return invoices;
 

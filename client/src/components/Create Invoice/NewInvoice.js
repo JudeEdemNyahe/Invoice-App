@@ -50,13 +50,6 @@ const NewInvoice = ({ closeNewForm }) => {
 
 
 
-    const handleChange = (event) => {
-        const newData = { ...newInvoice }
-        newData[event.target.id] = event.target.value
-        setNewInvoice(newData)
-        //console.log(newData)
-    }
-
 
     
 
