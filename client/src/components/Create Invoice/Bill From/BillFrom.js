@@ -24,8 +24,8 @@ const BillFrom = (props) => {
                             </div>
         
                             <div className='f-group2'>
-                                <label for="postal">Post Code</label>
-                                <input type="text" id="postal"
+                                <label for="postCode">Post Code</label>
+                                <input type="text" id="postCode"
                                 onChange={props.onChange}
                                 />
                             </div>
