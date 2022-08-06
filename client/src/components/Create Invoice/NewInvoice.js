@@ -74,7 +74,7 @@ const NewInvoice = ({closeNewForm}) => {
             }).catch(err => console.log(err))//to see error message api
     }
 
-    const handleChange = (event) => {
+    const handleChange = (event, index) => {
         const newData = { ...newInvoice }
         newData[event.target.id] = event.target.value
         setNewInvoice(newData)
@@ -129,6 +129,7 @@ const NewInvoice = ({closeNewForm}) => {
                             name={newInvoice.name}
                             qty={newInvoice.qty}
                             price={newInvoice.price}
+                            totalAmount = {newInvoice.qty * newInvoice.price}
                         />
 
                         <div className='footer'>
@@ -137,7 +138,7 @@ const NewInvoice = ({closeNewForm}) => {
                                 <div className='btns'>
                                     <button id="discard" onClick={() => closeNewForm(false)}>Discard</button>
                                     <button id='saveDraft'>Save as Draft</button>
-                                    <button id='saveSend' type='submit'>Save & Send</button>
+                                    <button id='saveSend' type='submit' onSubmit={() => closeNewForm(false)}>Save & Send</button>
                                 </div>
                             </div>
                         </div>
