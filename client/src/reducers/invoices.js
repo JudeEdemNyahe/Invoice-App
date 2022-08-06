@@ -7,7 +7,8 @@ export default (invoices = [], action) => {
             return [...invoices,action.payload];
         case 'FETCH_INVOICE':
              return action.payload
-
+        case 'DELETE':
+            return invoices.filter((invoice)=>invoice._id !== action.payload)
         
         default:
             return invoices;

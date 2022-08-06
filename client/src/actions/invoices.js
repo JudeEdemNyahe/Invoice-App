@@ -41,6 +41,17 @@ export const getInvoice = (id) => async(dispatch) => {
         console.log(error);
     }
 
+}
 
+
+
+export const deleteAnInvoice = (id) => async(dispatch) => {
+    try {
+        await api.deleteInvoice(id);
+
+        dispatch({ type: 'DELETE', payload: id })
+    } catch (error) {
+        console.log(error);
+    }
 
 }
