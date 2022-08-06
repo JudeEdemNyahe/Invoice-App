@@ -21,7 +21,7 @@ const invoiceSchema = new mongoose.Schema({
     },
     paymentTerms: {
         type: String,
-        required: [true, 'An invoice must have a payterm']
+        default: '30'
 
     },
     clientName: {

@@ -29,6 +29,7 @@ const ItemList = (props) => {
                     <div className='i-price'><h4>Price</h4></div>
                     <div className='i-total'><h4>Total</h4></div>
                 </div>
+      
                 {itemList.map((singleItem, index) => (
                             <div key= {index} className='item-container'>
                             <div className='item-form-container'>

@@ -9,69 +9,92 @@ import BillFrom from './Bill From/BillFrom';
 import BillTo from './Bill To/BillTo';
 import ItemList from './Item List/ItemList';
 import { ReactComponent as Back } from '../../assets/icon-arrow-left.svg';
-import axios from 'axios';
+import { CreateAnInvoice } from '../../actions/invoices';
+import { useDispatch } from 'react-redux'
 //import {CreateAnInvoice} from './../../actions/invoices'
 
 
-const url = 'https://amalitech-invoice-app.herokuapp.com/api/v1/invoices';
 
-const NewInvoice = ({closeNewForm}) => {
-    const [newInvoice, setNewInvoice] = useState({
-        street: '',
-        city: '',
-        postal: '',
-        country: '',
-        client: '',
-        streetAddress: '',
-        email: '',
-        tCity: '',
-        tPostal: '',
-        tCountry: '',
-        date: '',
-        terms: '',
-        description: '',
-        name: '',
-        qty: '',
-        price: '',
+const NewInvoice = ({ closeNewForm }) => {
+
+    
+    const dispatch = useDispatch();
+    let [newInvoice, setNewInvoice] = useState({
+        createdAt: ' ',
+        paymentTerms: ' ',
+        description: ' ',
+        clientName: ' ',
+        clientEmail: ' ',
+        senderAddress: {
+            street: ' ',
+            city: ' ',
+            postCode: ' ',
+            country: ' '
+        },
+        clientAddress: {
+            street: ' ',
+            city: ' ',
+            postCode: ' ',
+            country: ' '
+        },
+        items: [
+            {
+                name: ' ',
+                quantity: ' ',
+                price: ' '
+            }
+        ]
     });
-//const dispatch=useDispatch()
+    //const dispatch=useDispatch()
 
+
+
+
+    const handleChange = (event) => {
+        const newData = { ...newInvoice }
+        newData[event.target.id] = event.target.value
+        setNewInvoice(newData)
+        //console.log(newData)
+    }
+
+
+    
+
+    
 
     
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.post(url, {
+
+        dispatch(CreateAnInvoice({
             //refer to dev-data/data.json or invoice model in server folder for model structure
-            createdAt: newInvoice.date,
-            paymentTerms: newInvoice.terms,
+            createdAt: newInvoice.createdAt,
+            paymentTerms: newInvoice.paymentTerms,
             description: newInvoice.description,
-            clientName: newInvoice.client,
-            clientEmail: newInvoice.email,
+            clientName: newInvoice.clientName,
+            clientEmail: newInvoice.clientEmail,
             senderAddress: {
                 street: newInvoice.street,
                 city: newInvoice.city,
-                postCode: newInvoice.postal,
+                postCode: newInvoice.postCode,
                 country: newInvoice.country
             },
             clientAddress: {
                 street: newInvoice.streetAddress,
-                city: newInvoice.tCity,
-                postCode: newInvoice.tPostal,
-                country: newInvoice.tCountry
+                city: newInvoice.city,
+                postCode: newInvoice.postCode,
+                country: newInvoice.country
             },
             items: [
                 {
                     name: newInvoice.name,
-                    quantity: newInvoice.qty,
+                    quantity: newInvoice.quantity,
                     price: newInvoice.price
                 }
             ]
-        })
-            .then(response => {
-                setNewInvoice(response.data.data.invoice)
+        }))
 
-                //   console.log(response.data.data.invoice)
-            }).catch(err => console.log(err))//to see error message api
+        event.target.reset();
     }
 
     const handleChange = (event, index) => {
@@ -80,22 +103,6 @@ const NewInvoice = ({closeNewForm}) => {
         setNewInvoice(newData)
         //console.log(newData)
     }
-
-    // useEffect(() => {
-    //     axios({
-    //         method: 'post',
-    //         url: 'https://amalitech-invoice-app.herokuapp.com/api/v1/invoices',
-    //         // data: invoicesFormData,
-    //         headers: { "Content-Type": "multipart/form-data" }
-
-    //     })
-    //         .then(response => {
-    //             setNewInvoice(response.data.data.invoices)
-    //             // console.log(response.data.data.invoices)
-    //         }).catch((error) =>
-    //             error.message)
-
-    // }, []);
 
     return (
         <Fragment>
@@ -109,25 +116,25 @@ const NewInvoice = ({closeNewForm}) => {
                             onChange={handleChange}
                             street={newInvoice.street}
                             city={newInvoice.city}
+                            postCode={newInvoice.postCode}
                             country={newInvoice.country}
-                            postal={newInvoice.postal}
-                        />
+/>
                         <BillTo
                             onChange={handleChange}
-                            client={newInvoice.client}
-                            email={newInvoice.email}
+                            clientName={newInvoice.clientName}
+                            clientEmail={newInvoice.clientEmail}
                             streetAddress={newInvoice.streetAddress}
-                            tPostal={newInvoice.tPostal}
-                            tCity={newInvoice.tCity}
-                            tCountry={newInvoice.tCountry}
-                            date={newInvoice.date}
-                            terms={newInvoice.terms}
+                            postCode={newInvoice.postCode}
+                            city={newInvoice.city}
+                            country={newInvoice.country}
+                            createdAt={newInvoice.createdAt}
+                            paymentTerms={newInvoice.paymentTerms}
                             description={newInvoice.description}
                         />
                         <ItemList
                             onChange={handleChange}
                             name={newInvoice.name}
-                            qty={newInvoice.qty}
+                            quantity={newInvoice.quantity}
                             price={newInvoice.price}
                             totalAmount = {newInvoice.qty * newInvoice.price}
                         />
@@ -138,7 +145,7 @@ const NewInvoice = ({closeNewForm}) => {
                                 <div className='btns'>
                                     <button id="discard" onClick={() => closeNewForm(false)}>Discard</button>
                                     <button id='saveDraft'>Save as Draft</button>
-                                    <button id='saveSend' type='submit' onSubmit={() => closeNewForm(false)}>Save & Send</button>
+                                    <button id='saveSend' type='submit' >Save & Send</button>
                                 </div>
                             </div>
                         </div>
