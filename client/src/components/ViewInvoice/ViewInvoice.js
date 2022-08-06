@@ -22,7 +22,6 @@ const ViewInvoice = (props) => {
         dispatch(getInvoice(id));
     }, [dispatch,id]);
 
-    console.log(invoice.items);
 
 if(!invoice)return null;
 
@@ -198,7 +197,7 @@ if(!invoice)return null;
         closeEditForm = {setShowEditInvoice}
         />}
 
-        {showDeleteInvoice && <DeleteInvoice 
+            {showDeleteInvoice && <DeleteInvoice invoice={invoice}
         closeDelete = {setShowDeleteInvoice}
         />}  
         </>   
