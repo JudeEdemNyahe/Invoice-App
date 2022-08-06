@@ -15,7 +15,7 @@ const EditInvoice = ({closeEditForm}) => {
     const navigate = useNavigate();
 
     const goBack = () => {
-      navigate('/');
+      navigate('/view-invoice');
     };
 
     return(
@@ -25,7 +25,7 @@ const EditInvoice = ({closeEditForm}) => {
                     <Sidebar />
                     <form className='invoice-form'>
                         <div className='back' onClick = {goBack}><Back /> <span>Go back</span></div>
-                        <h1 className='title'>Edit<span>#</span>X9141</h1>
+                        <h1 className='title'>Edit<span>#</span>XM9141</h1>
                         <BillFrom />
                         <BillTo />
                         <ItemList />

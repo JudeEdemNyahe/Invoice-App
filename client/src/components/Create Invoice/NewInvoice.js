@@ -97,27 +97,12 @@ const NewInvoice = ({ closeNewForm }) => {
         event.target.reset();
     }
 
-
-
-
-
-
-
-    // useEffect(() => {
-    //     axios({
-    //         method: 'post',
-    //         url: 'https://amalitech-invoice-app.herokuapp.com/api/v1/invoices',
-    //         // data: invoicesFormData,
-    //         headers: { "Content-Type": "multipart/form-data" }
-
-    //     })
-    //         .then(response => {
-    //             setNewInvoice(response.data.data.invoices)
-    //             // console.log(response.data.data.invoices)
-    //         }).catch((error) =>
-    //             error.message)
-
-    // }, []);
+    const handleChange = (event, index) => {
+        const newData = { ...newInvoice }
+        newData[event.target.id] = event.target.value
+        setNewInvoice(newData)
+        //console.log(newData)
+    }
 
     return (
         <Fragment>
@@ -151,6 +136,7 @@ const NewInvoice = ({ closeNewForm }) => {
                             name={newInvoice.name}
                             quantity={newInvoice.quantity}
                             price={newInvoice.price}
+                            totalAmount = {newInvoice.qty * newInvoice.price}
                         />
 
                         <div className='footer'>

@@ -10,7 +10,7 @@ import Invoice from './Invoice/Invoice';
 import './Invoices.css'
 import NewInvoice from '../Create Invoice/NewInvoice';
 import NoInvoice from './Invoice/NoInvoice';
-import {useSelector} from 'react-redux'
+import {useSelector} from 'react-redux';
 
 const theme = createTheme({
     palette: {
@@ -31,27 +31,7 @@ const Invoices = () => {
    // const [invoices, setInvoices] = useState(null);
     const invoices = useSelector((state) => state.invoices)
 
-
-
-
-//const invoices=getInvoices.data.invoices;
-
-
-    // useEffect(() => {
-    //    document.addEventListener('click', handleClickOutside, true) 
-    // }, [])
-
-
-    // const refOne = useRef(null)
-
-    // const handleClickOutside = (e) => {
-    //     if(!refOne.current?.contains(e.target)) {
-    //         setShowNewInvoice(false)
-    //     }
-    //     else {
-    //         setShowNewInvoice(true)
-    //     }
-    // }
+    console.log(invoices);
 
     return (
         <>
