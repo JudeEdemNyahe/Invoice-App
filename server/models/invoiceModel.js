@@ -99,13 +99,15 @@ const invoiceSchema = new mongoose.Schema({
 
 
 invoiceSchema.virtual('dueDate').get(function() {
-    const dateStr = this.paymentDue.toLocaleDateString('en-uk', { day: "numeric", month: "short", year: "numeric", })
-    return dateStr
+    let event = new Date(this.paymentDue)
+    const dateStr = event.toLocaleDateString('en-uk', { day: "numeric", month: "short", year: "numeric", })
+    return dateStr;
 
 });
 invoiceSchema.virtual('invoiceDate').get(function() {
-    const dateCreatedStr = this.createdAt.toLocaleDateString('en-uk', { day: "numeric", month: "short", year: "numeric", })
-    return dateCreatedStr
+    let event = new Date(this.createdAt)
+    const dateCreatedStr = event.toLocaleDateString('en-uk', { day: "numeric", month: "short", year: "numeric", })
+    return dateCreatedStr;
 
 });
 

@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 
 const DeleteInvoice = ({ closeDelete, invoice }) => {
 
-console.log(invoice);
 
 const dispatch = useDispatch();
 
