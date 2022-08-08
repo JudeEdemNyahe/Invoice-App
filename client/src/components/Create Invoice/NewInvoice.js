@@ -16,6 +16,7 @@ import { useDispatch } from 'react-redux';
 
 const NewInvoice = ({ closeNewForm }) => {
   const dispatch = useDispatch();
+  const [isDraft,setDraft]=useState(0);
   let [newInvoice, setNewInvoice] = useState({
     createdAt: ' ',
     paymentTerms: ' ',
@@ -43,10 +44,41 @@ const NewInvoice = ({ closeNewForm }) => {
     ]
   });
   //const dispatch=useDispatch()
-
   const handleSubmit = (event) => {
     event.preventDefault();
 
+  if(isDraft===1){
+    dispatch(
+      CreateAnInvoice({
+        //refer to dev-data/data.json or invoice model in server folder for model structure
+        createdAt: newInvoice.createdAt,
+        paymentTerms: newInvoice.paymentTerms,
+        description: newInvoice.description,
+        clientName: newInvoice.clientName,
+        clientEmail: newInvoice.clientEmail,
+        status: 'draft',
+        senderAddress: {
+          street: newInvoice.street,
+          city: newInvoice.city,
+          postCode: newInvoice.postCode,
+          country: newInvoice.country
+        },
+        clientAddress: {
+          street: newInvoice.streetAddress,
+          city: newInvoice.city,
+          postCode: newInvoice.postCode,
+          country: newInvoice.country
+        },
+        items: [
+          {
+            name: newInvoice.name,
+            quantity: newInvoice.quantity,
+            price: newInvoice.price
+          }
+        ]
+      })
+    );
+  }else{
     dispatch(
       CreateAnInvoice({
         //refer to dev-data/data.json or invoice model in server folder for model structure
@@ -76,16 +108,19 @@ const NewInvoice = ({ closeNewForm }) => {
         ]
       })
     );
+  }
 
     event.target.reset();
     handleCloseForm()
   };
 
+console.log(isDraft);
+
   const handleChange = (event) => {
     const newData = { ...newInvoice };
     newData[event.target.id] = event.target.value;
     setNewInvoice(newData);
-    //console.log(newData)
+    console.log(newData)
   };
 
 //   useEffect(() => {
@@ -114,6 +149,7 @@ const NewInvoice = ({ closeNewForm }) => {
               postCode={newInvoice.postCode}
               country={newInvoice.country}
             />
+       
             <BillTo
               onChange={handleChange}
               clientName={newInvoice.clientName}
@@ -141,7 +177,7 @@ const NewInvoice = ({ closeNewForm }) => {
                   <button id="discard" onClick={() => closeNewForm(false)}>
                     Discard
                   </button>
-                  <button id="saveDraft">Save as Draft</button>
+                  <button id="saveDraft" value="draft" onClick={()=>setDraft(1)} >Save as Draft</button>
                   <button id="saveSend" type="submit">
                     Save & Send
                   </button>
