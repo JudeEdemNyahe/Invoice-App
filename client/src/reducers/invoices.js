@@ -4,12 +4,17 @@ export default (invoices = [], action) => {
         case 'FETCH_ALL':
             return action.payload
         case 'CREATE':
-            return [...invoices,action.payload];
+            return [...invoices, action.payload];
+
+        case 'UPDATE':
+            return invoices.map((invoice) => (invoice._id === action.payload._id ? action.payload : invoice));
+
         case 'FETCH_INVOICE':
-             return action.payload
+            return action.payload
         case 'DELETE':
-            return invoices.filter((invoice)=>invoice._id !== action.payload)
-        
+            return invoices.filter((invoice) => invoice._id !== action.payload)
+
+
         default:
             return invoices;
 

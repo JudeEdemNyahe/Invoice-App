@@ -9,6 +9,7 @@ import './ViewInvoice.css';
 import { getInvoice } from '../../actions/invoices';
 
 const ViewInvoice = (props) => {
+
   const { id } = useParams();
   const [showEditInvoice, setShowEditInvoice] = useState(false);
   const [showDeleteInvoice, setShowDeleteInvoice] = useState(false);
@@ -142,6 +143,7 @@ const ViewInvoice = (props) => {
                       ? ' '
                       : invoice.clientAddress.country}
                   </span>
+
                 </div>
               </div>
               <div className="email">
@@ -149,6 +151,7 @@ const ViewInvoice = (props) => {
                 <span className="email-address">{invoice.clientEmail}</span>
               </div>
             </div>
+
             <div className="email-mobile">
               <span className="sentTo">Sent to</span>
               <span className="email-address">alexgrim@mail.com</span>
@@ -214,5 +217,6 @@ const ViewInvoice = (props) => {
     </>
   );
 };
+
 
 export default ViewInvoice;

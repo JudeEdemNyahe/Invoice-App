@@ -55,3 +55,13 @@ export const deleteAnInvoice = (id) => async(dispatch) => {
     }
 
 }
+
+
+export const updateInvoice = (id, invoice) => async(dispatch) => {
+    try {
+        const { data } = await api.updateInvoice(id, invoice);
+        dispatch({ type: 'UPDATE', payload: data.data.invoice })
+    } catch (error) {
+        console.log(error);
+    }
+};
