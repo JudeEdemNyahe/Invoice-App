@@ -114,7 +114,7 @@ const NewInvoice = ({ closeNewForm }) => {
     handleCloseForm()
   };
 
-console.log(isDraft);
+
 
   const handleChange = (event) => {
     const newData = { ...newInvoice };
