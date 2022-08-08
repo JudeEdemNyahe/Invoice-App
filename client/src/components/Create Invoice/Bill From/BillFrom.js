@@ -7,7 +7,7 @@ const BillFrom = ({ singleInvoice, ...props} ) => {
     return(
         <Fragment> 
             <div className='bill-from-container'>
-                < h4 className='head'>Bill From</h4>
+                <h4 className='head'>Bill From</h4>
                 <div className='from-container'>
                     <form>
                         <div className='f-group1'>
