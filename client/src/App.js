@@ -14,6 +14,7 @@ import { GlobalStyles } from './utils/global';
 
 const App = () => {
     const [theme, setTheme] = useLocalStorage('light');
+    
     const dispatch = useDispatch();
 
 

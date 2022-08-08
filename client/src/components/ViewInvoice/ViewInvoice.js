@@ -6,11 +6,12 @@ import DeleteInvoice from '../DeleteInvoice/DeleteInvoice';
 import { useParams, useNavigate } from 'react-router-dom';
 import Sidebar from '../Sidebar/Sidebar';
 import './ViewInvoice.css';
-import { getInvoice } from '../../actions/invoices';
+import { getInvoice,getInvoices } from '../../actions/invoices';
 
 const ViewInvoice = (props) => {
 
   const { id } = useParams();
+  const [currentId, setCurrentId] = useState(0);
   const [showEditInvoice, setShowEditInvoice] = useState(false);
   const [showDeleteInvoice, setShowDeleteInvoice] = useState(false);
   const navigate = useNavigate();
@@ -20,6 +21,10 @@ const ViewInvoice = (props) => {
   useEffect(() => {
     dispatch(getInvoice(id));
   }, [dispatch, id]);
+
+useEffect(()=>{
+  dispatch(getInvoices)
+},[dispatch,currentId])
 
   if (!invoice) return null;
 
@@ -211,7 +216,7 @@ const ViewInvoice = (props) => {
           </div>
         </div>
       </div>
-      {showEditInvoice && <EditInvoice invoice={invoice} closeEditForm={setShowEditInvoice} />}
+      {showEditInvoice && <EditInvoice currentId={currentId} setCurrentId={setCurrentId} closeEditForm={setShowEditInvoice} />}
 
       {showDeleteInvoice && <DeleteInvoice invoice={invoice} closeDelete={setShowDeleteInvoice} />}
     </>
