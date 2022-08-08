@@ -10,6 +10,7 @@ import BillTo from './Bill To/BillTo';
 import ItemList from './Item List/ItemList';
 import { ReactComponent as Back } from '../../assets/icon-arrow-left.svg';
 import { CreateAnInvoice } from '../../actions/invoices';
+// import validation from '../../utils/validation';
 import { useDispatch } from 'react-redux';
 //import {CreateAnInvoice} from './../../actions/invoices'
 
@@ -77,14 +78,24 @@ const NewInvoice = ({ closeNewForm }) => {
     );
 
     event.target.reset();
+    handleCloseForm()
   };
 
-  const handleChange = (event, index) => {
+  const handleChange = (event) => {
     const newData = { ...newInvoice };
     newData[event.target.id] = event.target.value;
     setNewInvoice(newData);
     //console.log(newData)
   };
+
+//   useEffect(() => {
+//     // closeNewForm(false)
+//     console.log('render');
+//   }, [setNewInvoice]);
+
+  const handleCloseForm = () => {
+    closeNewForm(false)
+  }
 
   return (
     <Fragment>
