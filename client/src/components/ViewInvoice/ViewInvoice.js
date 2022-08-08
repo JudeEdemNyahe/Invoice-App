@@ -66,7 +66,7 @@ const ViewInvoice = (props) => {
           <div className="viewInvoice-top">
             <div className="viewInvoice-left-section">
               <span className="statusTitle">Status</span>
-              <span className={changeColor(props.status)}>{props.status}</span>
+              <span className={changeColor(props.status)}>{invoice.status}</span>
             </div>
             <div className="viewInvoice-right-section">
               <button className="editBtn" onClick={() => setShowEditInvoice(true)}>
@@ -211,7 +211,7 @@ const ViewInvoice = (props) => {
           </div>
         </div>
       </div>
-      {showEditInvoice && <EditInvoice closeEditForm={setShowEditInvoice} />}
+      {showEditInvoice && <EditInvoice invoice={invoice} closeEditForm={setShowEditInvoice} />}
 
       {showDeleteInvoice && <DeleteInvoice invoice={invoice} closeDelete={setShowDeleteInvoice} />}
     </>

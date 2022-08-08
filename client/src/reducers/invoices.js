@@ -7,11 +7,13 @@ export default (invoices = [], action) => {
             return [...invoices, action.payload];
 
         case 'UPDATE':
-            return invoices.map((invoice) => (invoice._id === action.payload._id ? action.payload : invoice));
+            const newData=[invoices]
+            return newData.map((invoice) => (invoice._id === action.payload._id ? action.payload : invoice));
 
         case 'FETCH_INVOICE':
             return action.payload
         case 'DELETE':
+            console.log("hello",invoices)
             return invoices.filter((invoice) => invoice._id !== action.payload)
 
 

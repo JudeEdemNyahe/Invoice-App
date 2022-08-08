@@ -1,8 +1,7 @@
-
 import React, { Fragment } from 'react';
 import './BillTo.css';
 
-const BillTo = (props) => {
+const BillTo = ({ invoice, ...props }) => {
   return (
     <Fragment>
       <div className="bill-to-container">
@@ -11,33 +10,33 @@ const BillTo = (props) => {
           <form>
             <div className="group1">
               <label for="clientName">Client's Name</label>
-              <input type="text" id="clientName" onChange={props.onChange} />
+              <input type="text" id="clientName" defaultValue={invoice && invoice.clientName} onChange={props.onChange} />
             </div>
 
             <div className="group1">
               <label for="clientEmail">Client's Email</label>
-              <input type="email" id="clientEmail" onChange={props.onChange} />
+              <input type="email" id="clientEmail" defaultValue={invoice && invoice.clientEmail} onChange={props.onChange} />
             </div>
 
             <div className="group1">
               <label for="streetAddress">Street Address</label>
-              <input type="text" id="streetAddress" onChange={props.onChange} />
+              <input type="text" id="streetAddress" defaultValue={invoice && invoice.clientAddress.street} onChange={props.onChange} />
             </div>
 
             <div className="form-l3">
               <div className="t-group2">
                 <label for="t-city">city</label>
-                <input type="text" id="city" onChange={props.onChange} />
+                <input type="text" id="city" defaultValue={invoice && invoice.clientAddress.city} onChange={props.onChange} />
               </div>
 
               <div className="t-group2">
                 <label for="postCode">Post Code</label>
-                <input type="text" id="postCode" onChange={props.onChange} />
+                <input type="text" id="postCode" defaultValue={invoice && invoice.clientAddress.postCode} onChange={props.onChange} />
               </div>
 
               <div className="t-group2" id="to-country">
                 <label for="country">Country</label>
-                <input type="text" id="country" onChange={props.onChange} />
+                <input type="text" id="country" defaultValue={invoice && invoice.clientAddress.country} onChange={props.onChange} />
               </div>
             </div>
 
@@ -49,7 +48,7 @@ const BillTo = (props) => {
                 </div>
                 <div className="group3">
                   <label for="paymentTerms">Payment Terms</label>
-                  <select name="payment-terms" id="paymentTerms" onChange={props.onChange}>
+                  <select name="payment-terms" id="paymentTerms" value={invoice && invoice.paymentTerms} onChange={props.onChange}>
                     <option value="30" selected>
                       Next 30 days
                     </option>
@@ -61,7 +60,7 @@ const BillTo = (props) => {
               </div>
               <div className="group1">
                 <label for="description">Payment Description</label>
-                <input type="text" id="description" onChange={props.onChange} />
+                <input type="text" id="description " defaultValue={invoice && invoice.description} onChange={props.onChange} />
               </div>
             </div>
           </form>
