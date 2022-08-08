@@ -27,6 +27,7 @@ const EditInvoice = ({ closeEditForm, currentId, setCurrentId }) => {
     e.preventDefault();
 
     dispatch(updateInvoice(invoice._id, invoiceData));
+    handleCloseForm(false);
   };
 
   const handleChange = (event) => {
@@ -38,6 +39,10 @@ const EditInvoice = ({ closeEditForm, currentId, setCurrentId }) => {
 
   const goBack = () => {
     navigate('/view-invoice');
+  };
+
+  const handleCloseForm = () => {
+    closeEditForm(false);
   };
 
   return (
@@ -70,9 +75,7 @@ const EditInvoice = ({ closeEditForm, currentId, setCurrentId }) => {
                   <button id="cancel" onClick={() => closeEditForm(false)}>
                     Cancel
                   </button>
-                  <button id="save-changes">
-                    Save Changes
-                  </button>
+                  <button id="save-changes">Save Changes</button>
                 </div>
               </div>
             </div>
