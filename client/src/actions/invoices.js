@@ -9,7 +9,7 @@ export const getInvoices = () => async(dispatch) => {
 
         dispatch({ type: 'FETCH_ALL', payload: data.data.invoices })
     } catch (error) {
-        console.log(error.response.data.message);
+        console.log(error);
     }
 
 
@@ -62,6 +62,6 @@ export const updateInvoice = (id, invoice) => async(dispatch) => {
         const { data } = await api.updateInvoice(id, invoice);
         dispatch({ type: 'UPDATE', payload: data.data.invoice })
     } catch (error) {
-        console.log(error);
+        console.log(error.response.data.message);
     }
 };

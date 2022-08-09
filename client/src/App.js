@@ -43,9 +43,6 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<Invoices />} />
                 <Route path="/view-invoice/:id" element={<ViewInvoice 
-                status = 'Pending' 
-                amount='556.00'
-                id='#XM9141'  
                 />} />
             </Routes>   
         </Router>  

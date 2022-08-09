@@ -41,6 +41,7 @@ const Invoices = () => {
 
 
 if(!invoices) return null;
+
     return (
         <>
             <div className='container'>
@@ -96,8 +97,10 @@ if(!invoices) return null;
                 {invoices?.length > 0 ? ( //if there invoices in our database
                     <div className='invoice-cards'>
                         {invoices.map((invoice) => (
+                          
                             <div key={invoice._id}>
-                                <Invoice invoice={invoice} />
+                                <Invoice  invoice={invoice} />
+                                
                             </div>
                    
                         ))}
