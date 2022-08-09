@@ -14,15 +14,15 @@ const ViewInvoice = (props) => {
   const [showEditInvoice, setShowEditInvoice] = useState(false);
   const [showDeleteInvoice, setShowDeleteInvoice] = useState(false);
   const navigate = useNavigate();
-  const invoice = useSelector((state) => state.invoices);
   const dispatch = useDispatch();
+  const invoice = useSelector((state) => state.invoices);
 
+  
   useEffect(() => {
     dispatch(getInvoice(id));
   }, [dispatch, id]);
 
-  if (!invoice) return null;
-
+ 
   const goBack = () => {
     navigate('/');
   };
@@ -39,9 +39,11 @@ const ViewInvoice = (props) => {
     return className;
   };
 
+
+  if (!invoice) return null;
   return (
     <>
-      <div className="viewInvoice-container">
+      <div className="viewInvoice-container" key={invoice._id}>
         <div className="view-invoice-sidebar">
           <Sidebar />
         </div>
@@ -63,7 +65,7 @@ const ViewInvoice = (props) => {
               Go back
             </p>
           </div>
-          <div className="viewInvoice-top">
+          <div className="viewInvoice-top" >
             <div className="viewInvoice-left-section">
               <span className="statusTitle">Status</span>
               <span id='status' className={changeColor(props.status)}>{invoice.status}</span>
@@ -207,7 +209,7 @@ const ViewInvoice = (props) => {
             <button className="deleteBtn" onClick={() => setShowDeleteInvoice(true)}>
               Delete
             </button>
-            <button className="markAsPaidBtn">Mark as Paid</button>
+            <button className="markAsPaidBtn" >Mark as  Paid</button>
           </div>
         </div>
       </div>

@@ -84,7 +84,6 @@ const invoiceSchema = new mongoose.Schema({
     items: {
         type: Array,
     },
-
     total: Number
 }, {
     toJSON: { virtuals: true },
@@ -113,6 +112,8 @@ invoiceSchema.virtual('invoiceDate').get(function() {
 
 
 
+
+
 invoiceSchema.pre('save', function(next) {
     let letters = Math.random()
         .toString(36)
@@ -129,6 +130,7 @@ invoiceSchema.pre('save', function(next) {
     }
     next()
 })
+
 
 invoiceSchema.pre('save', function(next) {
     let calcDueDate = new Date(this.createdAt);
@@ -147,14 +149,7 @@ invoiceSchema.pre('save', function(next) {
 })
 
 
-invoiceSchema.pre('save', function(next) {
-    let calcTotal = 0;
-    this.items.map((item) => {
-        calcTotal += item.total;
-    });
-    this.total = calcTotal;
-    next()
-})
+
 const Invoice = mongoose.model('Invoice', invoiceSchema);
 
 

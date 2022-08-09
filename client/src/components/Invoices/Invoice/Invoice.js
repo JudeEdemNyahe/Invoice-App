@@ -5,7 +5,6 @@ import './Invoice.css';
 
 export const Invoice = ({invoice}) => {
   const navigate = useNavigate();
-  console.log({invoice});
 
   const viewInvoice = () => {
     navigate(`/view-invoice/${invoice._id}`);
@@ -26,11 +25,11 @@ export const Invoice = ({invoice}) => {
 
   }
 
-
+if(!invoice) return null;
 
   return (
     <>
-      <div className='invoice invoice-mobile' onClick={viewInvoice}>
+      <div className='invoice invoice-mobile' onClick={viewInvoice} key={invoice._id}>
         <div className='invoice-left-section left-mobile'>
           <span className='id'><span id='hashtag'>#</span>{invoice.id}</span>
           <span id='date'>Due {invoice.dueDate }</span>

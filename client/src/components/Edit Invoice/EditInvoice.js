@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { useState } from 'react';
+import { useState ,useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import './EditInvoice.css';
@@ -16,34 +16,78 @@ import { ReactComponent as Back } from '../../assets/icon-arrow-left.svg';
 
 const EditInvoice = ({ closeEditForm, currentId, setCurrentId }) => {
   const navigate = useNavigate();
-  const [invoiceData, setInvoiceData] = useState(null);
+
+
+
+  const [invoiceData, setInvoiceData] = useState({
+
+    
+  });
 
   const dispatch = useDispatch();
   // console.log(postInvoice);
   //     const singleInvoice = invoice;
   const invoice = useSelector((state) => state.invoices);
 
+
+    useEffect(() => {
+        console.log(JSON.stringify(invoiceData));
+    }, [invoiceData]);
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     dispatch(updateInvoice(invoice._id, invoiceData));
     handleCloseForm(false);
+  
   };
 
-  const handleChange = (event) => {
-    const newData = { ...invoiceData };
-    newData[event.target.id] = event.target.value;
-    setInvoiceData(newData);
-    console.log(newData);
-  };
+
 
   const goBack = () => {
     navigate('/view-invoice');
   };
 
+
+
+    const handleChange = (event) => {
+        const newData = { ...invoiceData };
+        newData[event.target.id] = event.target.value;
+        let arr = Object.keys(newData);
+        if (arr.includes('streetAddress') || arr.includes('city') || arr.includes('postCode') || arr.includes('country')) {
+         
+            const { dataset, name, value } = event.target;
+
+            setInvoiceData(values => ({
+                ...values,
+                [dataset.id]: {
+                    ...values[dataset.id],
+                    ...(dataset.nested
+                        ? {
+                            nested: {
+                                ...values[dataset.id]?.nested,
+                                [name]: value
+                            }
+                        }
+                        : {
+                            [name]: value
+                        })
+                }
+            }));
+
+        } else {
+            setInvoiceData(newData);
+        }
+
+    }
+
+  
+
   const handleCloseForm = () => {
     closeEditForm(false);
   };
+
 
   return (
     <Fragment>
@@ -60,10 +104,6 @@ const EditInvoice = ({ closeEditForm, currentId, setCurrentId }) => {
             <BillFrom
               invoice={invoice}
               onChange={handleChange}
-              street={invoice.street}
-              city={invoice.city}
-              postCode={invoice.postCode}
-              country={invoice.country}
             />
             <BillTo onChange={handleChange} invoice={invoice} />
             <ItemList />
