@@ -6,12 +6,11 @@ import DeleteInvoice from '../DeleteInvoice/DeleteInvoice';
 import { useParams, useNavigate } from 'react-router-dom';
 import Sidebar from '../Sidebar/Sidebar';
 import './ViewInvoice.css';
-import { getInvoice,getInvoices } from '../../actions/invoices';
+import { getInvoice } from '../../actions/invoices';
 
 const ViewInvoice = (props) => {
 
   const { id } = useParams();
-  const [currentId, setCurrentId] = useState(0);
   const [showEditInvoice, setShowEditInvoice] = useState(false);
   const [showDeleteInvoice, setShowDeleteInvoice] = useState(false);
   const navigate = useNavigate();
@@ -22,10 +21,6 @@ const ViewInvoice = (props) => {
     dispatch(getInvoice(id));
   }, [dispatch, id]);
 
-useEffect(()=>{
-  dispatch(getInvoices)
-},[dispatch,currentId])
-
   if (!invoice) return null;
 
   const goBack = () => {
@@ -34,9 +29,9 @@ useEffect(()=>{
 
   const changeColor = () => {
     let className = '';
-    if (props.status === 'Paid') {
+    if (invoice.status === 'paid') {
       className = 'status-paid';
-    } else if (props.status === 'Pending') {
+    } else if (invoice.status === 'pending') {
       className = 'status-pending';
     } else {
       className = 'status-draft';
@@ -71,7 +66,7 @@ useEffect(()=>{
           <div className="viewInvoice-top">
             <div className="viewInvoice-left-section">
               <span className="statusTitle">Status</span>
-              <span className={changeColor(props.status)}>{invoice.status}</span>
+              <span id='status' className={changeColor(props.status)}>{invoice.status}</span>
             </div>
             <div className="viewInvoice-right-section">
               <button className="editBtn" onClick={() => setShowEditInvoice(true)}>
@@ -216,7 +211,7 @@ useEffect(()=>{
           </div>
         </div>
       </div>
-      {showEditInvoice && <EditInvoice currentId={currentId} setCurrentId={setCurrentId} closeEditForm={setShowEditInvoice} />}
+      {showEditInvoice && <EditInvoice invoice={invoice} closeEditForm={setShowEditInvoice} />}
 
       {showDeleteInvoice && <DeleteInvoice invoice={invoice} closeDelete={setShowDeleteInvoice} />}
     </>

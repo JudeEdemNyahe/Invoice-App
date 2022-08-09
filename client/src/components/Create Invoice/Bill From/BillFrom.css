@@ -7,10 +7,8 @@
 
 .head{
     font-style: normal;
-    /* font-weight: 700; */
     font-size: 16px;
     line-height: 15px;
-    letter-spacing: -0.25px;
     color: #7C5DFA;
 }
 
@@ -24,13 +22,8 @@ input{
     border-radius: 4px;
     outline: none;
     font-style: normal;
-    /* font-weight: 700; */
     font-size: 12px;
     line-height: 15px;
-    /* identical to box height, or 125% */
-    
-    letter-spacing: -0.25px;
-    
     color: #0C0E16;
 }
 
@@ -43,8 +36,6 @@ label{
     font-weight: 500;
     font-size: 12px;
     line-height: 15px;
-
-    letter-spacing: -0.25px;
     color: #7E88C3;
 }
 

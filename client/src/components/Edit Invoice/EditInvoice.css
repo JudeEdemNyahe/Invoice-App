@@ -1,42 +1,53 @@
-.btns2{
+.btns2 {
+  display: flex;
+  width: 242px;
+  height: 48px;
+  /* background-color: #ff0000; */
+  margin-left: 260px;
+}
+
+.title span {
+  color: #888eb0;
+}
+
+#cancel {
+  width: 96px;
+  height: 48px;
+  background: #f9fafe;
+  color: #7e88c3;
+  border-radius: 24px;
+  margin-right: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+#save-changes {
+  width: 138px;
+  height: 48px;
+  background: #7c5dfa;
+  color: white;
+  border-radius: 24px;
+  border: none;
+  cursor: pointer;
+}
+
+#save-changes:hover {
+  background-color: #9277ff;
+}
+
+#cancel,
+#save-changes {
+  font-weight: 700;
+}
+
+#cancel:hover {
+  background: #dfe3fa;
+}
+
+@media only screen and (min-width: 360px) and (max-width: 600px) {
+  .btns2 {
     display: flex;
-    width: 242px;
-    height: 48px;
-    /* background-color: #ff0000; */
-    margin-left: 260px;
-}
-
-.title span{
-    color: #888EB0;
-}
-
-#cancel{
-    width: 96px;
-    height: 48px;
-    background: #F9FAFE;
-    border-radius: 24px;
-    margin-right: 8px;
-    border: none;
-    cursor: pointer;
-}
-
-#save-changes{
-    width: 138px;
-    height: 48px;
-    background: #7C5DFA;
-    border-radius: 24px;
-    border: none;
-    cursor: pointer;
-}
-
-#cancel, #save-changes {
-    font-weight: 700;
-}
-
-@media only screen and (min-width: 360px) and (max-width: 600px){
-    .btns2{
-        display: flex;
-        /* background-color: red; */
-        margin-left: calc(100vw - 266px);
-    }
+    /* background-color: red; */
+    margin-left: calc(100vw - 266px);
+  }
 }

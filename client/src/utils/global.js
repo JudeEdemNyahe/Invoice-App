@@ -24,10 +24,10 @@ export const GlobalStyles = createGlobalStyle`
     background: ${({ theme }) => theme.invoiceBg};
   }
 
-  .checkbox, .add-item h4, #saveDraft, #save-changes {
+  .checkbox, .add-item h4, #saveDraft, #save-changes, .addItem {
     color: ${({ theme }) => theme.text};
   }
-
+ 
   .section-3, .viewInvoice-right-section-mobile, input, 
   .addItem, select, .delete-buttons .editBtn, #cancel {
     background: ${({ theme }) => theme.totalsSection};
@@ -51,9 +51,13 @@ export const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.text};
   }
 
+  #cancel:hover, .addItem:hover {
+    background: ${({ theme }) => theme.invoiceBg};
+  }
+
   @media (min-width: 600px) {
     .btns-container {
       background: ${({ theme }) => theme.body}
   }
     } 
-  `
+  `;
