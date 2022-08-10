@@ -77,7 +77,9 @@ exports.getAnInvoice = hookAsync(async(req, res, next) => {
 
 
 exports.updateAnInvoice = hookAsync(async(req, res, next) => {
-    req.body.status ="pending"
+    if (!req.body.status){
+        req.body.status="pending"
+    }
     const invoice = await Invoice.findByIdAndUpdate(req.params.id, req.body, {
         new: true,
         runValidators: true

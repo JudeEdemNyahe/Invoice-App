@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import './Invoice.css';
 
@@ -29,7 +29,7 @@ if(!invoice) return null;
 
   return (
     <>
-      <div className='invoice invoice-mobile' onClick={viewInvoice} key={invoice._id}>
+      <div className='invoice invoice-mobile' onClick={viewInvoice} >
         <div className='invoice-left-section left-mobile'>
           <span className='id'><span id='hashtag'>#</span>{invoice.id}</span>
           <span id='date'>Due {invoice.dueDate }</span>

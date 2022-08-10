@@ -6,7 +6,7 @@ import DeleteInvoice from '../DeleteInvoice/DeleteInvoice';
 import { useParams, useNavigate } from 'react-router-dom';
 import Sidebar from '../Sidebar/Sidebar';
 import './ViewInvoice.css';
-import { getInvoice } from '../../actions/invoices';
+import { getInvoice,updateInvoice } from '../../actions/invoices';
 
 const ViewInvoice = (props) => {
 
@@ -15,14 +15,29 @@ const ViewInvoice = (props) => {
   const [showDeleteInvoice, setShowDeleteInvoice] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const invoice = useSelector((state) => state.invoices);
+  let invoice= useSelector((state) => state.invoices);
 
+
+  if (Array.isArray(invoice)){
+ 
+  invoice=invoice[0]
+  }
   
   useEffect(() => {
     dispatch(getInvoice(id));
-  }, [dispatch, id]);
+  }, [dispatch,id]);
 
- 
+ const handleMark=async()=>{
+   if (invoice.status === "pending" || invoice.status === "draft"){
+     dispatch(updateInvoice(invoice._id, { status: "Paid" }));
+   
+   }else{
+     dispatch(updateInvoice(invoice._id, { status: "Pending" }));
+   }
+
+ }
+
+
   const goBack = () => {
     navigate('/');
   };
@@ -43,7 +58,7 @@ const ViewInvoice = (props) => {
   if (!invoice) return null;
   return (
     <>
-      <div className="viewInvoice-container" key={invoice._id}>
+      <div className="viewInvoice-container" >
         <div className="view-invoice-sidebar">
           <Sidebar />
         </div>
@@ -77,7 +92,7 @@ const ViewInvoice = (props) => {
               <button className="deleteBtn" onClick={() => setShowDeleteInvoice(true)}>
                 Delete
               </button>
-              <button className="markAsPaidBtn">Mark as Paid</button>
+              <button className="markAsPaidBtn" onClick={() => handleMark() }>{invoice.status==="pending" || invoice.status==="draft"?"Mark as Paid":"mark as Pending"}</button>
             </div>
           </div>
           <div className="viewInvoice-bottom">
@@ -163,7 +178,7 @@ const ViewInvoice = (props) => {
                 <div className="item">
                   <span className="itemName">Item Name</span>
                   {invoice.items?.length > 0 ? (
-                    invoice.items.map((item) => <span>{item.name}</span>)
+                    invoice.items.map((item,i) => <span key={i}>{item.name}</span>)
                   ) : (
                     <span>" "</span>
                   )}
@@ -172,7 +187,7 @@ const ViewInvoice = (props) => {
                   <span className="qty">QTY.</span>
 
                   {invoice.items?.length > 0 ? (
-                    invoice.items.map((item) => <span>{item.quantity}</span>)
+                    invoice.items.map((item,i) => <span key={i}>{item.quantity}</span>)
                   ) : (
                     <span>" "</span>
                   )}
@@ -181,7 +196,7 @@ const ViewInvoice = (props) => {
                   <span id="price">Price</span>
 
                   {invoice.items?.length > 0 ? (
-                    invoice.items.map((item) => <span>&#163;{item.price}</span>)
+                    invoice.items.map((item, i) => <span key={i}>&#163;{item.price}</span>)
                   ) : (
                     <span>" "</span>
                   )}
@@ -189,7 +204,7 @@ const ViewInvoice = (props) => {
                 <div className="total">
                   <span id="total">Total</span>
                   {invoice.items?.length > 0 ? (
-                    invoice.items.map((item) => <span>&#163;{item.total}</span>)
+                    invoice.items.map((item, i) => <span key={i}>&#163;{item.total}</span>)
                   ) : (
                     <span>" "</span>
                   )}

@@ -28,23 +28,23 @@ const BillTo = ({ invoice, ...props }) => {
 
             <div className="group1">
               <label for="streetAddress">Street Address</label>
-              <input type="text" name="street" data-id="senderAddress" id="streetAddress" defaultValue={invoice.clientAddress.street} onChange={props.onChange} />
+              <input type="text" name="street" data-id="clientAddress" id="streetAddress" defaultValue={invoice.clientAddress.street} onChange={props.onChange} />
             </div>
 
             <div className="form-l3">
               <div className="t-group2">
                 <label for="t-city">City</label>
-                <input type="text" data-id="senderAddress" name='city' id="city" defaultValue={invoice.clientAddress.city} onChange={props.onChange} />
+                <input type="text" data-id="clientAddress" name='city' id="city" defaultValue={invoice.clientAddress.city} onChange={props.onChange} />
               </div>
 
               <div className="t-group2">
                 <label for="postCode">Post Code</label>
-                <input type="text" data-id="senderAddress" name='postCode' id="postCode" defaultValue={invoice.clientAddress.postCode} onChange={props.onChange} />
+                <input type="text" data-id="clientAddress" name='postCode' id="postCode" defaultValue={invoice.clientAddress.postCode} onChange={props.onChange} />
               </div>
 
               <div className="t-group2" id="to-country">
                 <label for="country">Country</label>
-                <input type="text" id="country" data-id="senderAddress" defaultValue={invoice.clientAddress.country} name='country' onChange={props.onChange} />
+                <input type="text" id="country" data-id="clientAddress" defaultValue={invoice.clientAddress.country} name='country' onChange={props.onChange} />
               </div>
             </div>
 
@@ -52,12 +52,12 @@ const BillTo = ({ invoice, ...props }) => {
               <div className="two-column">
                 <div className="group3">
                   <label for="createdAt">Invoice Date</label>
-                  <input type="date" id="createdAt" onChange={props.onChange} />
+                  <input type="date" id="createdAt" defaultValue={invoice.htmlDate} onChange={props.onChange} />
                 </div>
                 <div className="group3">
                   <label for="paymentTerms">Payment Terms</label>
                   <select name="payment-terms" id="paymentTerms" defaultValue={invoice.paymentTerms} onChange={props.onChange}>
-                    <option value="30" selected>
+                    <option value="30">
                       Next 30 days
                     </option>
                     <option value="15">Next 15 days</option>

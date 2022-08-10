@@ -6,7 +6,7 @@ import './EditInvoice.css';
 //import { useDispatch, useSelector } from 'react-redux';
 import { updateInvoice } from '../../actions/invoices';
 // Components
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import BillFrom from '../Create Invoice/Bill From/BillFrom';
 import Sidebar from '../Sidebar/Sidebar';
 import BillTo from '../Create Invoice/Bill To/BillTo';
@@ -14,20 +14,17 @@ import ItemList from '../Create Invoice/Item List/ItemList';
 import { ReactComponent as Back } from '../../assets/icon-arrow-left.svg';
 //import { updateInvoice } from '../../actions/invoices';
 
-const EditInvoice = ({ closeEditForm, currentId, setCurrentId }) => {
+const EditInvoice = ({ closeEditForm, invoice, setCurrentId }) => {
   const navigate = useNavigate();
 
 
 
-  const [invoiceData, setInvoiceData] = useState({
-
-    
-  });
+  const [invoiceData, setInvoiceData] = useState({});
 
   const dispatch = useDispatch();
   // console.log(postInvoice);
   //     const singleInvoice = invoice;
-  const invoice = useSelector((state) => state.invoices);
+ // const invoice = useSelector((state) => state.invoices);
 
 
     useEffect(() => {
@@ -55,7 +52,7 @@ const EditInvoice = ({ closeEditForm, currentId, setCurrentId }) => {
         const newData = { ...invoiceData };
         newData[event.target.id] = event.target.value;
         let arr = Object.keys(newData);
-        if (arr.includes('streetAddress') || arr.includes('city') || arr.includes('postCode') || arr.includes('country')) {
+      if (arr.includes('streetAddress') || arr.includes('city') || arr.includes('postCode') || arr.includes('country') || arr.includes('street') ) {
          
             const { dataset, name, value } = event.target;
 
@@ -76,7 +73,28 @@ const EditInvoice = ({ closeEditForm, currentId, setCurrentId }) => {
                 }
             }));
 
-        } else {
+        } 
+      else if (arr.includes('Itemname') || arr.includes("quantity") || arr.includes('price')){
+        const { dataset, name, value } = event.target;
+
+        setInvoiceData(values => ({
+          ...values,
+          [dataset.id]: [{
+            ...values[dataset.id],
+            ...(dataset.nested
+              ? {
+                nested: {
+                  ...values[dataset.id]?.nested,
+                  [name]: value
+                }
+              }
+              : {
+                [name]: value
+              })
+          }]
+        }));
+        }
+        else {
             setInvoiceData(newData);
         }
 
@@ -106,7 +124,7 @@ const EditInvoice = ({ closeEditForm, currentId, setCurrentId }) => {
               onChange={handleChange}
             />
             <BillTo onChange={handleChange} invoice={invoice} />
-            <ItemList />
+            <ItemList onChange={handleChange} invoice={invoice} />
 
             <div className="footer">
               <div className="boxShadow"></div>

@@ -41,7 +41,6 @@ const Invoices = () => {
 
 
 if(!invoices) return null;
-
     return (
         <>
             <div className='container'>
