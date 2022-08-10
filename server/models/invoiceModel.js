@@ -110,7 +110,10 @@ invoiceSchema.virtual('invoiceDate').get(function() {
 
 });
 
-
+invoiceSchema.virtual('htmlDate').get(function() {
+    let event = new Date(this.createdAt).toISOString().slice(0, 10)
+    return event;
+});
 
 
 
@@ -150,6 +153,14 @@ invoiceSchema.pre('save', function(next) {
 
 
 
+invoiceSchema.pre('save', function (next) {
+    let calcTotal = 0;
+    this.items.map((item) => {
+        calcTotal += item.total;
+    });
+    this.total = calcTotal;
+    next()
+})
 const Invoice = mongoose.model('Invoice', invoiceSchema);
 
 

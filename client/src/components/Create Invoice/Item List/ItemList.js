@@ -36,7 +36,7 @@ const ItemList = ({ invoice, ...props }) => {
                             <div className='grp1'>
                                 <label for="name">Item Name</label>
                                 <input type="text" id="name"
-                                    // value={singleItem.item}
+                                    //value={singleItem.item}
                                     onChange={props.onChange}
                                 />
                             </div>
@@ -72,24 +72,24 @@ const ItemList = ({ invoice, ...props }) => {
                         <div className='item-form-container'>
                             <div className='grp1'>
                                 <label for="name">Item Name</label>
-                                <input type="text" id="name"
-                                    value={singleItem.name}
+                                <input type="text" id="Itemname" data-id="items" name='name'
+                                    defaultValue={singleItem.name}
                                     onChange={props.onChange}
                                 />
                             </div>
                             <div className='item-props'>
                                 <div className='grp2'>
                                     <label for="quantity">Qty</label>
-                                    <input type="number" min="1" id="quantity"
-                                        value={singleItem.quantity}
+                                    <input type="number" min="1" id="quantity" data-id="items" name='quantity'
+                                        defaultValue={singleItem.quantity}
                                         onChange={props.onChange}
                                     />
                                 </div>
 
                                 <div className='grp3'>
                                     <label for="price">Price</label>
-                                    <input type="number" id="price" 
-                                        value={singleItem.price}
+                                    <input type="number" id="price" name='price' data-id="items"
+                                        defaultValue={singleItem.price}
                                         onChange={props.onChange}
                                     />
                                 </div>
