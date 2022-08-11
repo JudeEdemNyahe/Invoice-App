@@ -17,6 +17,22 @@ export const getInvoices = () => async(dispatch) => {
 
 }
 
+export const filterInvoices = (filterType) => async (dispatch) => {
+
+    try {
+
+        const { data } = await api.filterInvoice(filterType);
+
+        dispatch({ type: 'FILTER_INVOICES', payload: data.data.invoices })
+    } catch (error) {
+        console.log(error);
+    }
+
+
+
+}
+
+
 export const CreateAnInvoice = (invoice) => async(dispatch) => {
 
     try {
@@ -66,3 +82,8 @@ export const updateInvoice = (id, invoice) => async(dispatch) => {
         console.log(error.response.data.message);
     }
 };
+
+
+
+
+

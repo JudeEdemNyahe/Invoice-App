@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const slugify = require('slugify')
+const { v4: uuidv4 } = require('uuid');
 const validator = require('validator')
 
 const invoiceSchema = new mongoose.Schema({
@@ -145,6 +145,7 @@ invoiceSchema.pre('save', function(next) {
     let itemTotal = 0
     this.items.map((item) => {
         itemTotal = item.quantity * item.price;
+        item.id = uuidv4()
         item.total = itemTotal;
     })
 

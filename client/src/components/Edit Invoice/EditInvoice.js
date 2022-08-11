@@ -17,18 +17,7 @@ const EditInvoice = ({ closeEditForm, invoice, setCurrentId }) => {
   const navigate = useNavigate();
 
   const [invoiceData, setInvoiceData] = useState({
-    senderAddress: {
-      street: invoice.senderAddress.street,
-      city: invoice.senderAddress.city,
-      postCode: invoice.senderAddress.postCode,
-      country: invoice.senderAddress.country
-    },
-    clientAddress: {
-      street: invoice.clientAddress.street,
-      city: invoice.clientAddress.city,
-      postCode: invoice.clientAddress.postCode,
-      country: invoice.clientAddress.country
-    },
+
     items:[...invoice.items]
 
   });
@@ -57,6 +46,7 @@ const EditInvoice = ({ closeEditForm, invoice, setCurrentId }) => {
   const handleChange = (event) => {
     const newData = { ...invoiceData };
     newData[event.target.id] = event.target.value;
+    const { dataset, name, value } = event.target;
     let arr = Object.keys(newData);
     if (
       arr.includes('streetAddress') ||
@@ -65,7 +55,7 @@ const EditInvoice = ({ closeEditForm, invoice, setCurrentId }) => {
       arr.includes('country') ||
       arr.includes('street')
     ) {
-      const { dataset, name, value } = event.target;
+   
 
       setInvoiceData((values) => ({
         ...values,
@@ -84,8 +74,6 @@ const EditInvoice = ({ closeEditForm, invoice, setCurrentId }) => {
         }
       }));
     } else if (arr.includes('Itemname') || arr.includes('quantity') || arr.includes('price')) {
-      const { dataset, name, value } = event.target;
-
       setInvoiceData((values) => ({
         ...values,
         [dataset.id]: {
