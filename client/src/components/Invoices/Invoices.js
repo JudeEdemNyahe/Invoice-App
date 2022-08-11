@@ -28,20 +28,30 @@ const theme = createTheme({
 const Invoices = () => {
   const [show, setShow] = useState(false);
   const [showNewInvoice, setShowNewInvoice] = useState(false);
-  // const [isLoading, setIsLoading] = useState(false);
+  const [filters, setFilters] = useState([]);
   const invoices = useSelector((state) => state.invoices);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // setIsLoading(true)
     dispatch(getInvoices());
   }, [dispatch]);
 
   if (!invoices) return null;
+
+  const handleFilterChange = (event) => {
+    const index = filters.indexOf(event.target.value);
+    if (index === -1) {
+      setFilters([...filters, event.target.value]);
+    } else {
+      setFilters(filters.filter((filter) => filter !== event.target.value));
+    }
+  };
+
+  console.log(filters);
+
   return (
     <>
-      {/* {isLoading ? ( */}
       <div className="container">
         <div className="invoices">
           <div className="left-section">
@@ -82,30 +92,60 @@ const Invoices = () => {
                     <FormGroup className="checkboxes">
                       <FormControlLabel
                         className="checkbox"
-                        control={<Checkbox size="small" color="secondary" />}
+                        control={
+                          <Checkbox
+                            size="small"
+                            color="secondary"
+                            name="draft"
+                            checked={filters.includes('draft')}
+                          />
+                        }
                         label={
                           <span style={{ fontFamily: 'League Spartan', fontWeight: '700' }}>
                             Draft
                           </span>
                         }
+                        value="draft"
+                        id="draft"
+                        onChange={handleFilterChange}
                       />
                       <FormControlLabel
                         className="checkbox"
-                        control={<Checkbox size="small" color="secondary" />}
+                        control={
+                          <Checkbox
+                            size="small"
+                            color="secondary"
+                            name="pending"
+                            checked={filters.includes('pending')}
+                          />
+                        }
                         label={
                           <span style={{ fontFamily: 'League Spartan', fontWeight: '700' }}>
                             Pending
                           </span>
                         }
+                        value="pending"
+                        id="pending"
+                        onChange={handleFilterChange}
                       />
                       <FormControlLabel
                         className="checkbox"
-                        control={<Checkbox size="small" color="secondary" />}
+                        control={
+                          <Checkbox
+                            size="small"
+                            color="secondary"
+                            name="paid"
+                            checked={filters.includes('paid')}
+                          />
+                        }
                         label={
                           <span style={{ fontFamily: 'League Spartan', fontWeight: '700' }}>
                             Paid
                           </span>
                         }
+                        value="paid"
+                        id="paid"
+                        onChange={handleFilterChange}
                       />
                     </FormGroup>
                   )}
@@ -143,7 +183,7 @@ const Invoices = () => {
             <Skeleton variant="rectangular" width={720} height={72} animation="wave" />
             <Skeleton variant="rectangular" width={720} height={72} animation="wave" />
             <Skeleton variant="rectangular" width={720} height={72} animation="wave" />
-            <Skeleton variant="rectangular" width={720} height={72} animation="wave" />
+            <Skeleton variant="rectangular" width={720} height={72} />
           </Stack>
         )}
       </div>
