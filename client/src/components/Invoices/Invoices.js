@@ -56,10 +56,6 @@ const Invoices = () => {
     }
   };
 
-
-
-
-
   return (
     <>
       <div className="container">
