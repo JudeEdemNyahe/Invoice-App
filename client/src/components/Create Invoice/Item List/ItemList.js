@@ -107,7 +107,7 @@ const ItemList = ({ invoice, ...props }) => {
                 ))}
             </div>
 
-            <button className='addItem' onClick={handleAddItem}>
+            <button className='addItem' onClick={() => handleAddItem()}>
                 <Add className='addIcon' />
                 <h4>Add New Item</h4>
             </button>
