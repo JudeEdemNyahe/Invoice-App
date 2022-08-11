@@ -12,7 +12,6 @@ import { useDispatch } from 'react-redux';
 // import NoInvoice from './Invoice/NoInvoice';
 import './Invoices.css';
 import NewInvoice from '../Create Invoice/NewInvoice';
-import NoInvoice from './Invoice/NoInvoice';
 import { useSelector } from 'react-redux';
 
 const theme = createTheme({
@@ -43,7 +42,7 @@ const Invoices = () => {
   return (
     <>
       {/* {isLoading ? ( */}
-            <div className="container">
+      <div className="container">
         <div className="invoices">
           <div className="left-section">
             <h1 className="invoices-title">Invoices</h1>
@@ -132,20 +131,20 @@ const Invoices = () => {
         {invoices?.length > 0 ? ( //if there invoices in our database
           <div className="invoice-cards">
             {invoices.map((invoice) => (
-              <div key={invoice._id}> 
+              <div key={invoice._id}>
                 <Invoice invoice={invoice} />
               </div>
             ))}
           </div>
         ) : (
           <Stack spacing={1}>
-          <Skeleton variant="rectangular" width={720} height={72} />
-          <Skeleton variant="rectangular" width={720} height={72} />
-          <Skeleton variant="rectangular" width={720} height={72} />
-          <Skeleton variant="rectangular" width={720} height={72} />
-          <Skeleton variant="rectangular" width={720} height={72} />
-          <Skeleton variant="rectangular" width={720} height={72} />
-        </Stack>
+            <Skeleton variant="rectangular" width={720} height={72} />
+            <Skeleton variant="rectangular" width={720} height={72} />
+            <Skeleton variant="rectangular" width={720} height={72} />
+            <Skeleton variant="rectangular" width={720} height={72} />
+            <Skeleton variant="rectangular" width={720} height={72} />
+            <Skeleton variant="rectangular" width={720} height={72} />
+          </Stack>
         )}
       </div>
       {showNewInvoice && <NewInvoice closeNewForm={setShowNewInvoice} />}
