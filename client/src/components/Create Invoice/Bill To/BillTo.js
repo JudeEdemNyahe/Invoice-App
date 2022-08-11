@@ -76,6 +76,7 @@ const BillTo = ({ invoice, ...props }) => {
       </div>
     </Fragment>
   ) : (
+    ////////////////////////////
     <Fragment>
       <div className="bill-to-container">
         <h4 className="head">Bill To</h4>
@@ -99,23 +100,23 @@ const BillTo = ({ invoice, ...props }) => {
 
             <div className="group1">
               <label for="streetAddress">Street Address</label>
-              <input type="text" name="street" data-id="senderAddress" id="streetAddress"  onChange={props.onChange} />
+                <input type="text" id='street' name='street' data-id="clientAddress" onChange={props.onChange} />
             </div>
 
             <div className="form-l3">
               <div className="t-group2">
                 <label for="t-city">City</label>
-                <input type="text" data-id="senderAddress" name='city' id="city" onChange={props.onChange} />
+                  <input type="text" id='city' name='city' data-id="clientAddress" onChange={props.onChange} />
               </div>
 
               <div className="t-group2">
                 <label for="postCode">Post Code</label>
-                <input type="text" data-id="senderAddress" name='postCode' id="postCode"  />
+                  <input type="text" id="postCode" name='postCode' data-id="clientAddress" onChange={props.onChange} />
               </div>
 
               <div className="t-group2" id="to-country">
                 <label for="country">Country</label>
-                <input type="text" id="country" data-id="senderAddress"  name='country' onChange={props.onChange} />
+                  <input type="text" id='country' name='country' data-id="clientAddress" onChange={props.onChange} />
               </div>
             </div>
 
@@ -139,7 +140,7 @@ const BillTo = ({ invoice, ...props }) => {
               </div>
               <div className="group1">
                 <label for="description">Payment Description</label>
-                <input type="text" id="description"  />
+                  <input type="text" id="description" onChange={props.onChange} />
               </div>
             </div>
           </form>

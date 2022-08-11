@@ -35,7 +35,7 @@ const ItemList = ({ invoice, ...props }) => {
                         <div className='item-form-container'>
                             <div className='grp1'>
                                 <label for="name">Item Name</label>
-                                <input type="text" id="name"
+                                <input type="text" name="name" id="Itemname" data-id="items"
                                     //value={singleItem.item}
                                     onChange={props.onChange}
                                 />
@@ -43,7 +43,7 @@ const ItemList = ({ invoice, ...props }) => {
                             <div className='item-props'>
                                 <div className='grp2'>
                                     <label for="quantity">quantity</label>
-                                    <input type="number" min="1" id="quantity"
+                                    <input type="number" name="quantity" min="1" id="quantity" data-id="items"
                                         // value={singleItem.item}
                                         onChange={props.onChange}
                                     />

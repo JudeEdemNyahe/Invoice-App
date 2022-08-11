@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState,useEffect } from 'react';
 // import axios from 'axios'
 //import { useDispatch } from 'react-redux'
 import './NewInvoice.css';
@@ -18,32 +18,15 @@ const NewInvoice = ({ closeNewForm }) => {
   const dispatch = useDispatch();
   const [isDraft, setDraft] = useState(0);
   let [newInvoice, setNewInvoice] = useState({
-    createdAt: ' ',
-    paymentTerms: ' ',
-    description: ' ',
-    clientName: ' ',
-    clientEmail: ' ',
-    senderAddress: {
-      street: ' ',
-      city: ' ',
-      postCode: ' ',
-      country: ' '
-    },
-    clientAddress: {
-      street: ' ',
-      city: ' ',
-      postCode: ' ',
-      country: ' '
-    },
-    items: [
-      {
-        name: ' ',
-        quantity: ' ',
-        price: ' '
-      }
-    ]
+    items: [ ]
   });
   //const dispatch=useDispatch()
+
+
+  useEffect(() => {
+    console.log(JSON.stringify(newInvoice));
+  }, [newInvoice]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -80,33 +63,7 @@ const NewInvoice = ({ closeNewForm }) => {
       );
     } else {
       dispatch(
-        CreateAnInvoice({
-          //refer to dev-data/data.json or invoice model in server folder for model structure
-          createdAt: newInvoice.createdAt,
-          paymentTerms: newInvoice.paymentTerms,
-          description: newInvoice.description,
-          clientName: newInvoice.clientName,
-          clientEmail: newInvoice.clientEmail,
-          senderAddress: {
-            street: newInvoice.street,
-            city: newInvoice.city,
-            postCode: newInvoice.postCode,
-            country: newInvoice.country
-          },
-          clientAddress: {
-            street: newInvoice.streetAddress,
-            city: newInvoice.city,
-            postCode: newInvoice.postCode,
-            country: newInvoice.country
-          },
-          items: [
-            {
-              name: newInvoice.name,
-              quantity: newInvoice.quantity,
-              price: newInvoice.price
-            }
-          ]
-        })
+        CreateAnInvoice(newInvoice)
       );
     }
 
@@ -117,11 +74,63 @@ const NewInvoice = ({ closeNewForm }) => {
 
 
   const handleChange = (event) => {
+
     const newData = { ...newInvoice };
     newData[event.target.id] = event.target.value;
-    setNewInvoice(newData);
-    console.log(newData)
+    let arr = Object.keys(newData);
+    if (
+      arr.includes('streetAddress') ||
+      arr.includes('city') ||
+      arr.includes('postCode') ||
+      arr.includes('country') ||
+      arr.includes('street')
+    ) {
+      const { dataset, name, value } = event.target;
+
+      setNewInvoice((values) => ({
+        ...values,
+        [dataset.id]: {
+          ...values[dataset.id],
+          ...(dataset.nested
+            ? {
+              nested: {
+                ...values[dataset.id]?.nested,
+                [name]: value
+              }
+            }
+            : {
+              [name]: value
+            })
+        }
+      }));
+    } else if (arr.includes('Itemname') || arr.includes('quantity') || arr.includes('price')) {
+      const { dataset, name, value } = event.target;
+
+      setNewInvoice((values) => ({
+        ...values,
+        [dataset.id]: {
+          ...values[dataset.id],
+          ...(dataset.nested
+            ? {
+              nested: {
+                ...values[dataset.id]?.nested,
+                [name]: value
+              }
+            }
+            : {
+              [name]: value
+            })
+        }
+      }));
+    } else {
+      setNewInvoice(newData);
+    }
   };
+
+
+
+
+  
 
   //   useEffect(() => {
   //     // closeNewForm(false)
@@ -144,30 +153,17 @@ const NewInvoice = ({ closeNewForm }) => {
             <h1 className="title">New Invoice</h1>
             <BillFrom
               onChange={handleChange}
-              street={newInvoice.street}
-              city={newInvoice.city}
-              postCode={newInvoice.postCode}
-              country={newInvoice.country}
+             
             />
 
             <BillTo
               onChange={handleChange}
-              clientName={newInvoice.clientName}
-              clientEmail={newInvoice.clientEmail}
-              streetAddress={newInvoice.streetAddress}
-              postCode={newInvoice.postCode}
-              city={newInvoice.city}
-              country={newInvoice.country}
-              createdAt={newInvoice.createdAt}
-              paymentTerms={newInvoice.paymentTerms}
-              description={newInvoice.description}
+             
             />
             <ItemList
               onChange={handleChange}
-              name={newInvoice.name}
-              quantity={newInvoice.quantity}
-              price={newInvoice.price}
-              totalAmount={newInvoice.qty * newInvoice.price}
+           
+            
             />
 
             <div className="footer">

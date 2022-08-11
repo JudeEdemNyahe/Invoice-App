@@ -60,15 +60,17 @@
   border-radius: 1.5em;
   border: none;
   cursor: pointer;
+  font-family: var(--spartan);
+   font-weight: 700;
 }
 
 .editBtn {
-  width: 73px;
-  background-color: #f8f8fb;
-  color: #7c5dfa;
-  font-weight: 700;
-}
 
+    width: 73px;
+    background-color: #252945;
+    color: #dfe3fa;
+   
+}
 .deleteBtn {
   width: 89px;
   background-color: #ec5757;
@@ -82,7 +84,7 @@
 }
 
 .editBtn:hover {
-  background-color: #dfe3fa;
+  background-color: #7c5dfa;
 }
 
 .deleteBtn:hover {

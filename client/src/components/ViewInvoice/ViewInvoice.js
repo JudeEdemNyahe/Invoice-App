@@ -16,9 +16,6 @@ const ViewInvoice = (props) => {
   const dispatch = useDispatch();
   let invoice = useSelector((state) => state.invoices);
 
-  if (Array.isArray(invoice)) {
-    invoice = invoice[0];
-  }
 
   useEffect(() => {
     dispatch(getInvoice(id));
@@ -47,6 +44,7 @@ const ViewInvoice = (props) => {
     }
     return className;
   };
+
 
   if (!invoice) return null;
   return (

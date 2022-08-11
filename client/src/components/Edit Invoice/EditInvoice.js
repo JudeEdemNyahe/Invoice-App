@@ -16,7 +16,23 @@ import { ReactComponent as Back } from '../../assets/icon-arrow-left.svg';
 const EditInvoice = ({ closeEditForm, invoice, setCurrentId }) => {
   const navigate = useNavigate();
 
-  const [invoiceData, setInvoiceData] = useState({});
+  const [invoiceData, setInvoiceData] = useState({
+    senderAddress: {
+      street: invoice.senderAddress.street,
+      city: invoice.senderAddress.city,
+      postCode: invoice.senderAddress.postCode,
+      country: invoice.senderAddress.country
+    },
+    clientAddress: {
+      street: invoice.clientAddress.street,
+      city: invoice.clientAddress.city,
+      postCode: invoice.clientAddress.postCode,
+      country: invoice.clientAddress.country
+    },
+    items:[...invoice.items]
+
+  });
+
 
   const dispatch = useDispatch();
   // console.log(postInvoice);
@@ -72,21 +88,19 @@ const EditInvoice = ({ closeEditForm, invoice, setCurrentId }) => {
 
       setInvoiceData((values) => ({
         ...values,
-        [dataset.id]: [
-          {
-            ...values[dataset.id],
-            ...(dataset.nested
-              ? {
-                  nested: {
-                    ...values[dataset.id]?.nested,
-                    [name]: value
-                  }
-                }
-              : {
-                  [name]: value
-                })
-          }
-        ]
+        [dataset.id]: {
+          ...values[dataset.id],
+          ...(dataset.nested
+            ? {
+              nested: {
+                ...values[dataset.id]?.nested,
+                [name]: value
+              }
+            }
+            : {
+              [name]: value
+            })
+        }
       }));
     } else {
       setInvoiceData(newData);
