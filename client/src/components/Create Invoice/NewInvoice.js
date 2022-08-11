@@ -1,4 +1,4 @@
-import React, { Fragment, useState,useEffect } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 // import axios from 'axios'
 //import { useDispatch } from 'react-redux'
 import './NewInvoice.css';
@@ -18,10 +18,9 @@ const NewInvoice = ({ closeNewForm }) => {
   const dispatch = useDispatch();
   const [isDraft, setDraft] = useState(0);
   let [newInvoice, setNewInvoice] = useState({
-    items: [ ]
+    items: []
   });
   //const dispatch=useDispatch()
-
 
   useEffect(() => {
     console.log(JSON.stringify(newInvoice));
@@ -62,19 +61,14 @@ const NewInvoice = ({ closeNewForm }) => {
         })
       );
     } else {
-      dispatch(
-        CreateAnInvoice(newInvoice)
-      );
+      dispatch(CreateAnInvoice(newInvoice));
     }
 
     event.target.reset();
-    handleCloseForm()
+    handleCloseForm();
   };
 
-
-
   const handleChange = (event) => {
-
     const newData = { ...newInvoice };
     newData[event.target.id] = event.target.value;
     let arr = Object.keys(newData);
@@ -93,14 +87,14 @@ const NewInvoice = ({ closeNewForm }) => {
           ...values[dataset.id],
           ...(dataset.nested
             ? {
-              nested: {
-                ...values[dataset.id]?.nested,
-                [name]: value
+                nested: {
+                  ...values[dataset.id]?.nested,
+                  [name]: value
+                }
               }
-            }
             : {
-              [name]: value
-            })
+                [name]: value
+              })
         }
       }));
     } else if (arr.includes('Itemname') || arr.includes('quantity') || arr.includes('price')) {
@@ -112,14 +106,14 @@ const NewInvoice = ({ closeNewForm }) => {
           ...values[dataset.id],
           ...(dataset.nested
             ? {
-              nested: {
-                ...values[dataset.id]?.nested,
-                [name]: value
+                nested: {
+                  ...values[dataset.id]?.nested,
+                  [name]: value
+                }
               }
-            }
             : {
-              [name]: value
-            })
+                [name]: value
+              })
         }
       }));
     } else {
@@ -127,19 +121,9 @@ const NewInvoice = ({ closeNewForm }) => {
     }
   };
 
-
-
-
-  
-
-  //   useEffect(() => {
-  //     // closeNewForm(false)
-  //     console.log('render');
-  //   }, [setNewInvoice]);
-
   const handleCloseForm = () => {
-    closeNewForm(false)
-  }
+    closeNewForm(false);
+  };
 
   return (
     <Fragment>
@@ -151,20 +135,10 @@ const NewInvoice = ({ closeNewForm }) => {
               <Back /> <span>Go back</span>
             </div>
             <h1 className="title">New Invoice</h1>
-            <BillFrom
-              onChange={handleChange}
-             
-            />
 
-            <BillTo
-              onChange={handleChange}
-             
-            />
-            <ItemList
-              onChange={handleChange}
-           
-            
-            />
+            <BillFrom onChange={handleChange} />
+            <BillTo onChange={handleChange} />
+            <ItemList onChange={handleChange} />
 
             <div className="footer">
               <div className="boxShadow"></div>
@@ -173,7 +147,9 @@ const NewInvoice = ({ closeNewForm }) => {
                   <button id="discard" onClick={() => closeNewForm(false)}>
                     Discard
                   </button>
-                  <button id="saveDraft" value="draft" onClick={() => setDraft(1)} >Save as Draft</button>
+                  <button id="saveDraft" value="draft" onClick={() => setDraft(1)}>
+                    Save as Draft
+                  </button>
                   <button id="saveSend" type="submit">
                     Save & Send
                   </button>

@@ -17,11 +17,8 @@ const EditInvoice = ({ closeEditForm, invoice, setCurrentId }) => {
   const navigate = useNavigate();
 
   const [invoiceData, setInvoiceData] = useState({
-
-    items:[...invoice.items]
-
+    items: [...invoice.items]
   });
-
 
   const dispatch = useDispatch();
   // console.log(postInvoice);
@@ -34,7 +31,6 @@ const EditInvoice = ({ closeEditForm, invoice, setCurrentId }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     dispatch(updateInvoice(invoice._id, invoiceData));
     handleCloseForm(false);
   };
@@ -55,8 +51,6 @@ const EditInvoice = ({ closeEditForm, invoice, setCurrentId }) => {
       arr.includes('country') ||
       arr.includes('street')
     ) {
-   
-
       setInvoiceData((values) => ({
         ...values,
         [dataset.id]: {
@@ -80,14 +74,14 @@ const EditInvoice = ({ closeEditForm, invoice, setCurrentId }) => {
           ...values[dataset.id],
           ...(dataset.nested
             ? {
-              nested: {
-                ...values[dataset.id]?.nested,
-                [name]: value
+                nested: {
+                  ...values[dataset.id]?.nested,
+                  [name]: value
+                }
               }
-            }
             : {
-              [name]: value
-            })
+                [name]: value
+              })
         }
       }));
     } else {
@@ -109,9 +103,11 @@ const EditInvoice = ({ closeEditForm, invoice, setCurrentId }) => {
               <Back /> <span>Go back</span>
             </div>
             <h1 className="title">
-              Edit<span>#</span>XM9141
+              Edit <span>#</span>
+              {invoice.id}
             </h1>
-            <BillFrom invoice={invoice} onChange={handleChange} />
+
+            <BillFrom onChange={handleChange} invoice={invoice} />
             <BillTo onChange={handleChange} invoice={invoice} />
             <ItemList onChange={handleChange} invoice={invoice} />
 
