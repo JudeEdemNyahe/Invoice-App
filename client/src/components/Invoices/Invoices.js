@@ -7,7 +7,7 @@ import Checkbox from '@mui/material/Checkbox';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { purple } from '@mui/material/colors';
 import Invoice from './Invoice/Invoice';
-import { getInvoices } from '../../actions/invoices';
+import { getInvoices,filterInvoices } from '../../actions/invoices';
 import { useDispatch } from 'react-redux';
 // import NoInvoice from './Invoice/NoInvoice';
 import './Invoices.css';
@@ -34,8 +34,16 @@ const Invoices = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getInvoices());
-  }, [dispatch]);
+    if (filters.length > 0) {
+
+      dispatch(filterInvoices(filters.join('&status=')))
+
+    } else if (filters.length === 0) {
+      dispatch(getInvoices());
+    }
+
+    
+  }, [dispatch,filters]);
 
   if (!invoices) return null;
 
@@ -48,7 +56,9 @@ const Invoices = () => {
     }
   };
 
-  console.log(filters);
+
+
+
 
   return (
     <>

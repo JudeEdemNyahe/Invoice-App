@@ -24,6 +24,7 @@
         "mongoose": "^5.13.14",
         "morgan": "^1.10.0",
         "slugify": "^1.6.5",
+        "uuidv4": "^6.2.13",
         "validator": "^13.7.0",
         "xss-clean": "^0.1.1"
     },
