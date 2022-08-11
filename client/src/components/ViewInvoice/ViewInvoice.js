@@ -16,7 +16,6 @@ const ViewInvoice = (props) => {
   const dispatch = useDispatch();
   let invoice = useSelector((state) => state.invoices);
 
-
   useEffect(() => {
     dispatch(getInvoice(id));
   }, [dispatch, id]);
@@ -45,7 +44,6 @@ const ViewInvoice = (props) => {
     return className;
   };
 
-
   if (!invoice) return null;
   return (
     <>
@@ -73,7 +71,7 @@ const ViewInvoice = (props) => {
             <div className="viewInvoice-left-section">
               <span className="statusTitle">Status</span>
               <span id="status" className={changeColor(props.status)}>
-                {invoice.status || <Skeleton /> }
+                {invoice.status || <Skeleton />}
               </span>
             </div>
             <div className="viewInvoice-right-section">
@@ -94,9 +92,11 @@ const ViewInvoice = (props) => {
             <div className="section-1">
               <div id="left">
                 <span className="id" id="id-view">
-                  #{invoice.id}
+                  #{invoice.id || <Skeleton height={25} width={70} />}
                 </span>
-                <span className="occupation">{invoice.description}</span>
+                <span className="occupation">
+                  {invoice.description || <Skeleton height={25} />}
+                </span>
               </div>
               <div id="right">
                 <span>
@@ -124,17 +124,21 @@ const ViewInvoice = (props) => {
               <div className="dates">
                 <div className="date">
                   <span className="invoice-dateHeading">Invoice Date</span>
-                  <span className="invoice-date">{invoice.invoiceDate}</span>
+                  <span className="invoice-date">
+                    {invoice.invoiceDate || <Skeleton height={25} />}
+                  </span>
                 </div>
                 <div className="date">
                   <span className="invoice-dateHeading">Payment Due</span>
-                  <span className="invoice-date">{invoice.dueDate}</span>
+                  <span className="invoice-date">
+                    {invoice.dueDate || <Skeleton height={25} />}
+                  </span>
                 </div>
               </div>
               <div className="billings">
                 <div className="billing">
                   <span className="bill-toHeading">Bill To</span>
-                  <span className="bill-to">{invoice.clientName}</span>
+                  <span className="bill-to">{invoice.clientName || <Skeleton height={25} />}</span>
                 </div>
                 <div className="billing-location">
                   <span>
@@ -161,13 +165,17 @@ const ViewInvoice = (props) => {
               </div>
               <div className="email">
                 <span className="sentTo">Sent to</span>
-                <span className="email-address">{invoice.clientEmail}</span>
+                <span className="email-address">
+                  {invoice.clientEmail || <Skeleton width={250} height={25} />}
+                </span>
               </div>
             </div>
 
             <div className="email-mobile">
               <span className="sentTo">Sent to</span>
-              <span className="email-address">alexgrim@mail.com</span>
+              <span className="email-address">
+                {invoice.clientEmail || <Skeleton height={25} />}
+              </span>
             </div>
             <div className="section-3">
               <div className="totals-section">
@@ -176,7 +184,9 @@ const ViewInvoice = (props) => {
                   {invoice.items?.length > 0 ? (
                     invoice.items.map((item, i) => <span key={i}>{item.name}</span>)
                   ) : (
-                    <span>" "</span>
+                    <span>
+                      <Skeleton height={30} />
+                    </span>
                   )}
                 </div>
                 <div className="quantity">
@@ -185,7 +195,9 @@ const ViewInvoice = (props) => {
                   {invoice.items?.length > 0 ? (
                     invoice.items.map((item, i) => <span key={i}>{item.quantity}</span>)
                   ) : (
-                    <span>" "</span>
+                    <span>
+                      <Skeleton height={30} />
+                    </span>
                   )}
                 </div>
                 <div className="price">
@@ -194,7 +206,9 @@ const ViewInvoice = (props) => {
                   {invoice.items?.length > 0 ? (
                     invoice.items.map((item, i) => <span key={i}>&#163;{item.price}</span>)
                   ) : (
-                    <span>" "</span>
+                    <span>
+                      <Skeleton height={30} />
+                    </span>
                   )}
                 </div>
                 <div className="total">
@@ -202,7 +216,9 @@ const ViewInvoice = (props) => {
                   {invoice.items?.length > 0 ? (
                     invoice.items.map((item, i) => <span key={i}>&#163;{item.total}</span>)
                   ) : (
-                    <span>" "</span>
+                    <span>
+                      <Skeleton height={30} />
+                    </span>
                   )}
                 </div>
               </div>

@@ -138,12 +138,12 @@ const Invoices = () => {
           </div>
         ) : (
           <Stack spacing={1}>
-            <Skeleton variant="rectangular" width={720} height={72} />
-            <Skeleton variant="rectangular" width={720} height={72} />
-            <Skeleton variant="rectangular" width={720} height={72} />
-            <Skeleton variant="rectangular" width={720} height={72} />
-            <Skeleton variant="rectangular" width={720} height={72} />
-            <Skeleton variant="rectangular" width={720} height={72} />
+            <Skeleton variant="rectangular" width={720} height={72} animation="wave" />
+            <Skeleton variant="rectangular" width={720} height={72} animation="wave" />
+            <Skeleton variant="rectangular" width={720} height={72} animation="wave" />
+            <Skeleton variant="rectangular" width={720} height={72} animation="wave" />
+            <Skeleton variant="rectangular" width={720} height={72} animation="wave" />
+            <Skeleton variant="rectangular" width={720} height={72} animation="wave" />
           </Stack>
         )}
       </div>
