@@ -17,9 +17,11 @@ import { useDispatch } from 'react-redux';
 const NewInvoice = ({ closeNewForm }) => {
   const dispatch = useDispatch();
   const [isDraft, setDraft] = useState(0);
-  let [newInvoice, setNewInvoice] = useState({
-    items: []
-  });
+  let [newInvoice, setNewInvoice] = useState(
+    {
+    items:[{ name: "" }]
+    
+});
   //const dispatch=useDispatch()
 
   useEffect(() => {
@@ -30,35 +32,16 @@ const NewInvoice = ({ closeNewForm }) => {
     event.preventDefault();
 
     if (isDraft === 1) {
+      newInvoice.status='draft'
       dispatch(
-        CreateAnInvoice({
+
+
+        CreateAnInvoice(
           //refer to dev-data/data.json or invoice model in server folder for model structure
-          createdAt: newInvoice.createdAt,
-          paymentTerms: newInvoice.paymentTerms,
-          description: newInvoice.description,
-          clientName: newInvoice.clientName,
-          clientEmail: newInvoice.clientEmail,
-          status: 'draft',
-          senderAddress: {
-            street: newInvoice.street,
-            city: newInvoice.city,
-            postCode: newInvoice.postCode,
-            country: newInvoice.country
-          },
-          clientAddress: {
-            street: newInvoice.streetAddress,
-            city: newInvoice.city,
-            postCode: newInvoice.postCode,
-            country: newInvoice.country
-          },
-          items: [
-            {
-              name: newInvoice.name,
-              quantity: newInvoice.quantity,
-              price: newInvoice.price
-            }
-          ]
-        })
+          
+         
+          newInvoice
+        )
       );
     } else {
       dispatch(CreateAnInvoice(newInvoice));
@@ -67,6 +50,9 @@ const NewInvoice = ({ closeNewForm }) => {
     event.target.reset();
     handleCloseForm();
   };
+
+
+
 
   const handleChange = (event) => {
     const newData = { ...newInvoice };
@@ -97,26 +83,7 @@ const NewInvoice = ({ closeNewForm }) => {
               })
         }
       }));
-    } else if (arr.includes('Itemname') || arr.includes('quantity') || arr.includes('price')) {
-      const { dataset, name, value } = event.target;
-
-      setNewInvoice((values) => ({
-        ...values,
-        [dataset.id]: {
-          ...values[dataset.id],
-          ...(dataset.nested
-            ? {
-                nested: {
-                  ...values[dataset.id]?.nested,
-                  [name]: value
-                }
-              }
-            : {
-                [name]: value
-              })
-        }
-      }));
-    } else {
+     } else {
       setNewInvoice(newData);
     }
   };
@@ -138,7 +105,7 @@ const NewInvoice = ({ closeNewForm }) => {
 
             <BillFrom onChange={handleChange} />
             <BillTo onChange={handleChange} />
-            <ItemList onChange={handleChange} />
+            <ItemList setNewInvoice={setNewInvoice} newInvoice={newInvoice}/>
 
             <div className="footer">
               <div className="boxShadow"></div>

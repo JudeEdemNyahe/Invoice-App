@@ -14,10 +14,25 @@ import { ReactComponent as Back } from '../../assets/icon-arrow-left.svg';
 //import { updateInvoice } from '../../actions/invoices';
 
 const EditInvoice = ({ closeEditForm, invoice, setCurrentId }) => {
+
   const navigate = useNavigate();
 
   const [invoiceData, setInvoiceData] = useState({
+
+    senderAddress: {
+      street: invoice.senderAddress.street,
+      city: invoice.senderAddress.city,
+      postCode: invoice.senderAddress.postCode,
+      country: invoice.senderAddress.country
+    },
+    clientAddress: {
+      street: invoice.clientAddress.street,
+      city: invoice.clientAddress.city,
+      postCode: invoice.clientAddress.postCode,
+      country: invoice.clientAddress.country
+    },
     items: [...invoice.items]
+    
   });
 
   const dispatch = useDispatch();
@@ -92,7 +107,8 @@ const EditInvoice = ({ closeEditForm, invoice, setCurrentId }) => {
   const handleCloseForm = () => {
     closeEditForm(false);
   };
-
+  if (!invoice)   return null;
+  
   return (
     <Fragment>
       <div className="new-invoice-page">
@@ -109,7 +125,7 @@ const EditInvoice = ({ closeEditForm, invoice, setCurrentId }) => {
 
             <BillFrom onChange={handleChange} invoice={invoice} />
             <BillTo onChange={handleChange} invoice={invoice} />
-            <ItemList onChange={handleChange} invoice={invoice} />
+            <ItemList invoice={invoice} setInvoiceData={setInvoiceData} invoiceData={invoiceData} />
 
             <div className="footer">
               <div className="boxShadow"></div>
