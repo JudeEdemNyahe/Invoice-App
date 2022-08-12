@@ -12,12 +12,12 @@ const ItemList = ({ invoice, newInvoice, setNewInvoice, setInvoiceData,invoiceDa
   const handleAddItem = (event) => {
     event.preventDefault();
    if(invoice){
-    console.log(invoice.items);
+   
        setInvoiceData({ items: [...invoiceData.items, { name: ''}] });
 
    }
   else{
-       setNewInvoice({ items: [...newInvoice.items, { name: '' }] });
+       setNewInvoice({...newInvoice,items: [...newInvoice.items, { name: '' }] });
 
   }
     };

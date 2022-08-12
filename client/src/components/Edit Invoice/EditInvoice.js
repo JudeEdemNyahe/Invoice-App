@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import './EditInvoice.css';
@@ -40,13 +40,12 @@ const EditInvoice = ({ closeEditForm, invoice, setCurrentId }) => {
   //     const singleInvoice = invoice;
   // const invoice = useSelector((state) => state.invoices);
 
-  useEffect(() => {
-    console.log(JSON.stringify(invoiceData));
-  }, [invoiceData]);
-
-  const handleSubmit = async (e) => {
+ 
+  const handleSubmit =  (e) => {
     e.preventDefault();
     dispatch(updateInvoice(invoice._id, invoiceData));
+    
+    e.target.reset();
     handleCloseForm(false);
   };
 
