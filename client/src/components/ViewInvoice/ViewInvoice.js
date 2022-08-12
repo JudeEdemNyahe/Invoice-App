@@ -8,6 +8,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import './ViewInvoice.css';
 import { getInvoice, updateInvoice } from '../../actions/invoices';
 
+
+
+
 const ViewInvoice = (props) => {
   const { id } = useParams();
   const [showEditInvoice, setShowEditInvoice] = useState(false);
@@ -18,9 +21,9 @@ const ViewInvoice = (props) => {
 
   useEffect(() => {
     dispatch(getInvoice(id));
-  }, [dispatch, id]);
+  }, [dispatch, id,invoice]);
 
-  const handleMark = async () => {
+  const handleMark =  () => {
     if (invoice.status === 'pending' || invoice.status === 'draft') {
       dispatch(updateInvoice(invoice._id, { status: 'Paid' }));
     } else {

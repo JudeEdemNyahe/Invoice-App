@@ -1,6 +1,18 @@
 import * as api from './../api';
 
 //Action Creators
+export const getInvoice = (id) => async (dispatch) => {
+
+    try {
+        const { data } = await api.fetchInvoice(id);
+
+        dispatch({ type: 'FETCH_INVOICE', payload: data.data.invoice })
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+
 
 export const getInvoices = () => async(dispatch) => {
 
@@ -48,17 +60,6 @@ export const CreateAnInvoice = (invoice) => async(dispatch) => {
 }
 
 
-export const getInvoice = (id) => async(dispatch) => {
-
-    try {
-        const { data } = await api.fetchInvoice(id);
-
-        dispatch({ type: 'FETCH_INVOICE', payload: data.data.invoice })
-    } catch (error) {
-        console.log(error);
-    }
-
-}
 
 
 

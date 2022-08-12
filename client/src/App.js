@@ -1,9 +1,8 @@
-import React ,{useEffect } from 'react';
+import React from 'react';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import useLocalStorage from "use-local-storage";
-import { getInvoices } from './actions/invoices';
-import { useDispatch } from 'react-redux'
+
 
 import ViewInvoice from './components/ViewInvoice/ViewInvoice';
 import './App.css';
@@ -15,13 +14,7 @@ import { GlobalStyles } from './utils/global';
 const App = () => {
     const [theme, setTheme] = useLocalStorage('light');
     
-    const dispatch = useDispatch();
-
-
-    useEffect(() => {
-        dispatch(getInvoices());
-    }, [dispatch])
-
+ 
 
 
     const toggleTheme = () => {
@@ -34,19 +27,19 @@ const App = () => {
 
     return (
         <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-        <div className='app'>
-        <GlobalStyles className='global' />
-            <Sidebar onClick={toggleTheme} 
-            darkMode = {setTheme}
-            / >
-        <Router>
-            <Routes>
-                <Route path="/" element={<Invoices />} />
-                <Route path="/view-invoice/:id" element={<ViewInvoice 
-                />} />
-            </Routes>   
-        </Router>  
-        </div>
+            <div className='app'>
+                <GlobalStyles className='global' />
+                <Sidebar onClick={toggleTheme}
+                    darkMode={setTheme}
+                />
+                <Router>
+                    <Routes>
+                        <Route path="/" element={<Invoices />} />
+                        <Route path="/view-invoice/:id" element={<ViewInvoice
+                        />} />
+                    </Routes>
+                </Router>
+            </div>
         </ThemeProvider>
     )
 }

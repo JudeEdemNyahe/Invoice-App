@@ -32,6 +32,13 @@ const Invoices = () => {
   const invoices = useSelector((state) => state.invoices);
 
   const dispatch = useDispatch();
+ 
+
+  useEffect(() => {
+    getInvoices()
+
+  }, [dispatch, invoices]);
+
 
   useEffect(() => {
     if (filters.length > 0) {
@@ -45,7 +52,7 @@ const Invoices = () => {
     
   }, [dispatch,filters]);
 
-  if (!invoices) return null;
+
 
   const handleFilterChange = (event) => {
     const index = filters.indexOf(event.target.value);
@@ -55,7 +62,7 @@ const Invoices = () => {
       setFilters(filters.filter((filter) => filter !== event.target.value));
     }
   };
-
+console.log(invoices);
   return (
     <>
       <div className="container">
