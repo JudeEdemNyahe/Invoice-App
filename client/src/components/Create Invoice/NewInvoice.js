@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
+import OutsideClickHandler from 'react-outside-click-handler';
 // import axios from 'axios'
 //import { useDispatch } from 'react-redux'
 import './NewInvoice.css';
@@ -126,6 +127,9 @@ const NewInvoice = ({ closeNewForm }) => {
   };
 
   return (
+    <OutsideClickHandler onOutsideClick={() => {
+      closeNewForm(false);
+    }}>
     <Fragment>
       <div className="new-invoice-page">
         <div className="new-invoice-container">
@@ -162,6 +166,7 @@ const NewInvoice = ({ closeNewForm }) => {
         <div className="blank-side"></div>
       </div>
     </Fragment>
+    </OutsideClickHandler>
   );
 };
 
