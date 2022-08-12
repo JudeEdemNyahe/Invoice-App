@@ -9,12 +9,12 @@ const BillTo = ({ invoice, ...props }) => {
       <div className="bill-to-container">
         <h4 className="head">Bill To</h4>
         <div className="to-container">
-          <form>
+       
             <div className="group1">
-              <label for="clientName">Client's Name</label>
+              <label htmlFor="clientName">Client's Name</label>
               <input
                 type="text"
-
+required
                 id="clientName"
                 defaultValue={invoice.clientName}
                 onChange={props.onChange}
@@ -22,28 +22,28 @@ const BillTo = ({ invoice, ...props }) => {
             </div>
 
             <div className="group1">
-              <label for="clientEmail">Client's Email</label>
+              <label htmlFor="clientEmail">Client's Email</label>
               <input type="email" id="clientEmail" defaultValue={invoice.clientEmail} onChange={props.onChange} />
             </div>
 
             <div className="group1">
-              <label for="streetAddress">Street Address</label>
+              <label htmlFor="streetAddress">Street Address</label>
               <input type="text" name="street" data-id="clientAddress" id="streetAddress" defaultValue={invoice.clientAddress.street} onChange={props.onChange} />
             </div>
 
             <div className="form-l3">
               <div className="t-group2">
-                <label for="t-city">City</label>
+                <label htmlFor="t-city">City</label>
                 <input type="text" data-id="clientAddress" name='city' id="city" defaultValue={invoice.clientAddress.city} onChange={props.onChange} />
               </div>
 
               <div className="t-group2">
-                <label for="postCode">Post Code</label>
+                <label htmlFor="postCode">Post Code</label>
                 <input type="text" data-id="clientAddress" name='postCode' id="postCode" defaultValue={invoice.clientAddress.postCode} onChange={props.onChange} />
               </div>
 
               <div className="t-group2" id="to-country">
-                <label for="country">Country</label>
+                <label htmlFor="country">Country</label>
                 <input type="text" id="country" data-id="clientAddress" defaultValue={invoice.clientAddress.country} name='country' onChange={props.onChange} />
               </div>
             </div>
@@ -51,11 +51,11 @@ const BillTo = ({ invoice, ...props }) => {
             <div className="form-l2">
               <div className="two-column">
                 <div className="group3">
-                  <label for="createdAt">Invoice Date</label>
+                  <label htmlFor="createdAt">Invoice Date</label>
                   <input type="date" id="createdAt" defaultValue={invoice.htmlDate} onChange={props.onChange} />
                 </div>
                 <div className="group3">
-                  <label for="paymentTerms">Payment Terms</label>
+                  <label htmlFor="paymentTerms">Payment Terms</label>
                   <select name="payment-terms" id="paymentTerms" defaultValue={invoice.paymentTerms} onChange={props.onChange}>
                     <option value="30">
                       Next 30 days
@@ -67,11 +67,11 @@ const BillTo = ({ invoice, ...props }) => {
                 </div>
               </div>
               <div className="group1">
-                <label for="description">Payment Description</label>
+                <label htmlFor="description">Payment Description</label>
                 <input type="text" id="description" defaultValue={invoice.description} onChange={props.onChange} />
               </div>
             </div>
-          </form>
+        
         </div>
       </div>
     </Fragment>
@@ -81,9 +81,9 @@ const BillTo = ({ invoice, ...props }) => {
       <div className="bill-to-container">
         <h4 className="head">Bill To</h4>
         <div className="to-container">
-          <form>
+         
             <div className="group1">
-              <label for="clientName">Client's Name</label>
+              <label htmlFor="clientName">Client's Name</label>
               <input
                 type="text"
 
@@ -94,28 +94,28 @@ const BillTo = ({ invoice, ...props }) => {
             </div>
 
             <div className="group1">
-              <label for="clientEmail">Client's Email</label>
+              <label htmlFor="clientEmail">Client's Email</label>
               <input type="email" id="clientEmail" onChange={props.onChange} />
             </div>
 
             <div className="group1">
-              <label for="streetAddress">Street Address</label>
+              <label htmlFor="streetAddress">Street Address</label>
                 <input type="text" id='street' name='street' data-id="clientAddress" onChange={props.onChange} />
             </div>
 
             <div className="form-l3">
               <div className="t-group2">
-                <label for="t-city">City</label>
+                <label htmlFor="t-city">City</label>
                   <input type="text" id='city' name='city' data-id="clientAddress" onChange={props.onChange} />
               </div>
 
               <div className="t-group2">
-                <label for="postCode">Post Code</label>
+                <label htmlFor="postCode">Post Code</label>
                   <input type="text" id="postCode" name='postCode' data-id="clientAddress" onChange={props.onChange} />
               </div>
 
               <div className="t-group2" id="to-country">
-                <label for="country">Country</label>
+                <label htmlFor="country">Country</label>
                   <input type="text" id='country' name='country' data-id="clientAddress" onChange={props.onChange} />
               </div>
             </div>
@@ -123,13 +123,13 @@ const BillTo = ({ invoice, ...props }) => {
             <div className="form-l2">
               <div className="two-column">
                 <div className="group3">
-                  <label for="createdAt">Invoice Date</label>
+                  <label htmlFor="createdAt">Invoice Date</label>
                   <input type="date" id="createdAt" onChange={props.onChange} />
                 </div>
                 <div className="group3">
-                  <label for="paymentTerms">Payment Terms</label>
-                  <select name="payment-terms" id="paymentTerms" onChange={props.onChange}>
-                    <option value="30" selected>
+                  <label htmlFor="paymentTerms">Payment Terms</label>
+                  <select name="payment-terms" id="paymentTerms" defaultValue="30" onChange={props.onChange}>
+                    <option value="30" >
                       Next 30 days
                     </option>
                     <option value="15">Next 15 days</option>
@@ -139,11 +139,11 @@ const BillTo = ({ invoice, ...props }) => {
                 </div>
               </div>
               <div className="group1">
-                <label for="description">Payment Description</label>
+                <label htmlFor="description">Payment Description</label>
                   <input type="text" id="description" onChange={props.onChange} />
               </div>
             </div>
-          </form>
+      
         </div>
       </div>
     </Fragment>
