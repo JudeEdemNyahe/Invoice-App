@@ -94,6 +94,7 @@ const NewInvoice = ({ closeNewForm }) => {
 
   return (
     <Fragment>
+      
       <div className="new-invoice-page">
         <div className="new-invoice-container">
           <Sidebar />
