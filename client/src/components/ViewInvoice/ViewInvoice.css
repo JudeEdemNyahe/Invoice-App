@@ -65,12 +65,11 @@
 }
 
 .editBtn {
-
     width: 73px;
     background-color: #252945;
-    color: #dfe3fa;
-   
+    color: #dfe3fa;  
 }
+
 .deleteBtn {
   width: 89px;
   background-color: #ec5757;
