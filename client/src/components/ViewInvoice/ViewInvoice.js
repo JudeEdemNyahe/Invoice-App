@@ -4,7 +4,7 @@ import Skeleton from '@mui/material/Skeleton';
 import { useDispatch, useSelector } from 'react-redux';
 import EditInvoice from '../Edit Invoice/EditInvoice';
 import DeleteInvoice from '../DeleteInvoice/DeleteInvoice';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import './ViewInvoice.css';
 import { getInvoice, updateInvoice } from '../../actions/invoices';
 
@@ -12,7 +12,7 @@ const ViewInvoice = (props) => {
   const { id } = useParams();
   const [showEditInvoice, setShowEditInvoice] = useState(false);
   const [showDeleteInvoice, setShowDeleteInvoice] = useState(false);
-  const navigate = useNavigate();
+ 
   const dispatch = useDispatch();
   let invoice = useSelector((state) => state.invoices);
 
@@ -30,7 +30,7 @@ const ViewInvoice = (props) => {
   };
 
   const goBack = () => {
-    navigate('/');
+    window.location.href = '/';
   };
 
   const changeColor = () => {
@@ -76,16 +76,16 @@ const ViewInvoice = (props) => {
               </span>
             </div>
             <div className="viewInvoice-right-section">
-              <button className="editBtn" onClick={() => setShowEditInvoice(true)}>
-                Edit
+              <button className="editBtn" onClick={() => invoice.status ? setShowEditInvoice(true): null}>
+                     {invoice.status? 'edit' :<Skeleton />}
               </button>
-              <button className="deleteBtn" onClick={() => setShowDeleteInvoice(true)}>
-                Delete
+              <button className="deleteBtn" onClick={() => invoice.status ? setShowDeleteInvoice(true) : null}>
+                {invoice.status ? 'delete' : <Skeleton />}
               </button>
-              <button className="markAsPaidBtn" onClick={() => handleMark()}>
-                {invoice.status === 'pending' || invoice.status === 'draft'
+              <button className="markAsPaidBtn" onClick={() => invoice.status?handleMark():null}>
+                {invoice.status ?  invoice.status === 'pending' || invoice.status === 'draft'
                   ? 'Mark as Paid'
-                  : 'Mark as Pending'}
+                  : 'Mark as Pending' : <Skeleton/>}
               </button>
             </div>
           </div>
