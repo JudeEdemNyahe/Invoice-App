@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState} from 'react';
 // import axios from 'axios'
 //import { useDispatch } from 'react-redux'
 import './NewInvoice.css';
@@ -22,11 +22,7 @@ const NewInvoice = ({ closeNewForm }) => {
     items:[{ name: "" }]
     
 });
-  //const dispatch=useDispatch()
 
-  useEffect(() => {
-    console.log(JSON.stringify(newInvoice));
-  }, [newInvoice]);
 
   const handleSubmit = (event) => {
     event.preventDefault();

@@ -13,8 +13,7 @@ import { GlobalStyles } from './utils/global';
 
 const App = () => {
     const [theme, setTheme] = useLocalStorage('light');
-    
- 
+
 
 
     const toggleTheme = () => {
@@ -35,7 +34,7 @@ const App = () => {
                 <Router>
                     <Routes>
                         <Route path="/" element={<Invoices />} />
-                        <Route path="/view-invoice/:id" element={<ViewInvoice
+                        <Route path="/view-invoice/:id" element={<ViewInvoice 
                         />} />
                     </Routes>
                 </Router>

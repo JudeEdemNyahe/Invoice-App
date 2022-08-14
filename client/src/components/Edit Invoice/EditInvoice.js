@@ -36,9 +36,7 @@ const EditInvoice = ({ closeEditForm, invoice, setCurrentId }) => {
   });
 
   const dispatch = useDispatch();
-  // console.log(postInvoice);
-  //     const singleInvoice = invoice;
-  // const invoice = useSelector((state) => state.invoices);
+ 
 
  
   const handleSubmit =  (e) => {
