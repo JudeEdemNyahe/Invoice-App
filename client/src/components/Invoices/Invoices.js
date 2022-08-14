@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import OutsideClickHandler from 'react-outside-click-handler';
 import Skeleton from '@mui/material/Skeleton';
 import Stack from '@mui/material/Stack';
 import FormGroup from '@mui/material/FormGroup';
@@ -8,7 +7,7 @@ import Checkbox from '@mui/material/Checkbox';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { purple } from '@mui/material/colors';
 import Invoice from './Invoice/Invoice';
-import { getInvoices, filterInvoices } from '../../actions/invoices';
+import { getInvoices,filterInvoices } from '../../actions/invoices';
 import { useDispatch } from 'react-redux';
 // import NoInvoice from './Invoice/NoInvoice';
 import './Invoices.css';
@@ -38,16 +37,20 @@ const Invoices = () => {
   useEffect(() => {
     getInvoices()
 
-  }, [dispatch, invoices]);
+  }, [dispatch]);
 
 
   useEffect(() => {
     if (filters.length > 0) {
-      dispatch(filterInvoices(filters.join('&status=')));
+
+      dispatch(filterInvoices(filters.join('&status=')))
+
     } else if (filters.length === 0) {
       dispatch(getInvoices());
     }
-  }, [dispatch, filters]);
+
+    
+  }, [dispatch,filters]);
 
 
 
@@ -59,7 +62,8 @@ const Invoices = () => {
       setFilters(filters.filter((filter) => filter !== event.target.value));
     }
   };
-console.log(invoices);
+  
+  
   return (
     <>
       <div className="container">
@@ -79,113 +83,103 @@ console.log(invoices);
             )}
           </div>
           <div className="right-section">
-            <OutsideClickHandler
-              onOutsideClick={() => {
-                setShow(false);
-              }}>
-              <div className="dropdown">
-                <div className="dropdown-heading" onClick={() => setShow((prev) => !prev)}>
-                  <span className="filter-text">
-                    Filter <span className="remove">by status</span>
-                  </span>
-                  <span className="down-arrow">
-                    <svg width="11" height="7" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M1 1l4.228 4.228L9.456 1"
-                        stroke="#7C5DFA"
-                        strokeWidth="2"
-                        fill="none"
-                        fillRule="evenodd"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <div className="filter-checkboxes">
-                  <ThemeProvider theme={theme}>
-                    {show && (
-                      <FormGroup className="checkboxes">
-                        <FormControlLabel
-                          className="checkbox"
-                          control={
-                            <Checkbox
-                              size="small"
-                              color="secondary"
-                              name="draft"
-                              checked={filters.includes('draft')}
-                            />
-                          }
-                          label={
-                            <span style={{ fontFamily: 'League Spartan', fontWeight: '700' }}>
-                              Draft
-                            </span>
-                          }
-                          value="draft"
-                          id="draft"
-                          onChange={handleFilterChange}
-                        />
-                        <FormControlLabel
-                          className="checkbox"
-                          control={
-                            <Checkbox
-                              size="small"
-                              color="secondary"
-                              name="pending"
-                              checked={filters.includes('pending')}
-                            />
-                          }
-                          label={
-                            <span style={{ fontFamily: 'League Spartan', fontWeight: '700' }}>
-                              Pending
-                            </span>
-                          }
-                          value="pending"
-                          id="pending"
-                          onChange={handleFilterChange}
-                        />
-                        <FormControlLabel
-                          className="checkbox"
-                          control={
-                            <Checkbox
-                              size="small"
-                              color="secondary"
-                              name="paid"
-                              checked={filters.includes('paid')}
-                            />
-                          }
-                          label={
-                            <span style={{ fontFamily: 'League Spartan', fontWeight: '700' }}>
-                              Paid
-                            </span>
-                          }
-                          value="paid"
-                          id="paid"
-                          onChange={handleFilterChange}
-                        />
-                      </FormGroup>
-                    )}
-                  </ThemeProvider>
-                </div>
+            <div className="dropdown">
+              <div className="dropdown-heading" onClick={() => setShow((prev) => !prev)}>
+                <span className="filter-text">
+                  Filter <span className="remove">by status</span>
+                </span>
+                <span className="down-arrow">
+                  <svg width="11" height="7" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M1 1l4.228 4.228L9.456 1"
+                      stroke="#7C5DFA"
+                      strokeWidth="2"
+                      fill="none"
+                      fillRule="evenodd"
+                    />
+                  </svg>
+                </span>
               </div>
-            </OutsideClickHandler>
-            <OutsideClickHandler
-              onOutsideClick={() => {
-                setShowNewInvoice(false);
-              }}>
-              <div className="btn">
-                <button onClick={() => setShowNewInvoice((prev) => !prev)}>
-                  <span className="plus-icon">
-                    <svg width="11" height="11" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M6.313 10.023v-3.71h3.71v-2.58h-3.71V.023h-2.58v3.71H.023v2.58h3.71v3.71z"
-                        fill="#7C5DFA"
-                        fillRule="nonzero"
+              <div className="filter-checkboxes">
+                <ThemeProvider theme={theme}>
+                  {show && (
+                    <FormGroup className="checkboxes">
+                      <FormControlLabel
+                        className="checkbox"
+                        control={
+                          <Checkbox
+                            size="small"
+                            color="secondary"
+                            name="draft"
+                            checked={filters.includes('draft')}
+                          />
+                        }
+                        label={
+                          <span style={{ fontFamily: 'League Spartan', fontWeight: '700' }}>
+                            Draft
+                          </span>
+                        }
+                        value="draft"
+                        id="draft"
+                        onChange={handleFilterChange}
                       />
-                    </svg>
-                  </span>
-                  New<span className="remove1">Invoice</span>
-                </button>
+                      <FormControlLabel
+                        className="checkbox"
+                        control={
+                          <Checkbox
+                            size="small"
+                            color="secondary"
+                            name="pending"
+                            checked={filters.includes('pending')}
+                          />
+                        }
+                        label={
+                          <span style={{ fontFamily: 'League Spartan', fontWeight: '700' }}>
+                            Pending
+                          </span>
+                        }
+                        value="pending"
+                        id="pending"
+                        onChange={handleFilterChange}
+                      />
+                      <FormControlLabel
+                        className="checkbox"
+                        control={
+                          <Checkbox
+                            size="small"
+                            color="secondary"
+                            name="paid"
+                            checked={filters.includes('paid')}
+                          />
+                        }
+                        label={
+                          <span style={{ fontFamily: 'League Spartan', fontWeight: '700' }}>
+                            Paid
+                          </span>
+                        }
+                        value="paid"
+                        id="paid"
+                        onChange={handleFilterChange}
+                      />
+                    </FormGroup>
+                  )}
+                </ThemeProvider>
               </div>
-            </OutsideClickHandler>
+            </div>
+            <div className="btn">
+              <button onClick={() => setShowNewInvoice((prev) => !prev)}>
+                <span className="plus-icon">
+                  <svg width="11" height="11" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M6.313 10.023v-3.71h3.71v-2.58h-3.71V.023h-2.58v3.71H.023v2.58h3.71v3.71z"
+                      fill="#7C5DFA"
+                      fillRule="nonzero"
+                    />
+                  </svg>
+                </span>
+                New<span className="remove1">Invoice</span>
+              </button>
+            </div>
           </div>
         </div>
         {invoices?.length > 0 ? ( //if there invoices in our database
@@ -203,7 +197,7 @@ console.log(invoices);
             <Skeleton variant="rectangular" width={720} height={72} animation="wave" />
             <Skeleton variant="rectangular" width={720} height={72} animation="wave" />
             <Skeleton variant="rectangular" width={720} height={72} animation="wave" />
-            <Skeleton variant="rectangular" width={720} height={72} animation="wave" />
+            <Skeleton variant="rectangular" width={720} height={72} />
           </Stack>
         )}
       </div>

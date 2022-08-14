@@ -6,7 +6,7 @@ export const getInvoice = (id) => async (dispatch) => {
     try {
         const { data } = await api.fetchInvoice(id);
 
-        dispatch({ type: 'FETCH_INVOICE', payload: data.data.invoice })
+        dispatch({ type: 'FETCH_INVOICE', payload: data.data })
     } catch (error) {
         console.log(error);
     }
@@ -52,7 +52,7 @@ export const CreateAnInvoice = (invoice) => async(dispatch) => {
 
         dispatch({ type: 'CREATE', payload: data.data.invoice })
     } catch (error) {
-        console.log(error.response.data.message);
+        console.log(error);
     }
 
 
@@ -79,8 +79,9 @@ export const updateInvoice = (id, invoice) => async(dispatch) => {
     try {
         const { data } = await api.updateInvoice(id, invoice);
         dispatch({ type: 'UPDATE', payload: data.data.invoice })
+        
     } catch (error) {
-        console.log(error.response.data.message);
+        console.log(error);
     }
 };
 

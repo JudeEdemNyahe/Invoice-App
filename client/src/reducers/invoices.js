@@ -16,12 +16,13 @@ export default (invoices = [], action) => {
 
         case 'FETCH_INVOICE':
            
-            return action.payload
+            return action.payload.invoice
         case 'DELETE':
         
             return invoices.filter((invoice) => invoice._id !== action.payload)
 
-
+        case 'CLEAR_INVOICES':
+            return invoices;
         default:
             return invoices;
 

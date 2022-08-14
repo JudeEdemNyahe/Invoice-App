@@ -6,7 +6,7 @@ import { deleteAnInvoice } from '../../actions/invoices';
 import './DeleteInvoice.css';
 
 const DeleteInvoice = ({ closeDelete, invoice }) => {
-  console.log(invoice);
+
 
   const dispatch = useDispatch();
   const navigate = useNavigate()
