@@ -7,13 +7,15 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { purple } from '@mui/material/colors';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+
 import Invoice from './Invoice/Invoice';
 import { getInvoices, filterInvoices } from '../../actions/invoices';
-import { useDispatch } from 'react-redux';
-// import NoInvoice from './Invoice/NoInvoice';
-import './Invoices.css';
 import NewInvoice from '../Create Invoice/NewInvoice';
-import { useSelector } from 'react-redux';
+import { ReactComponent as DownIcon } from '../../assets/icon-arrow-down.svg';
+import { ReactComponent as UpIcon } from '../../assets/icon-arrow-up.svg';
+import './Invoices.css';
 
 const theme = createTheme({
   palette: {
@@ -30,8 +32,9 @@ const Invoices = () => {
   const [show, setShow] = useState(false);
   const [showNewInvoice, setShowNewInvoice] = useState(false);
   const [filters, setFilters] = useState([]);
-  const invoices = useSelector((state) => state.invoices);
+  const [icon, setIcon] = useState('');
 
+  const invoices = useSelector((state) => state.invoices);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -55,6 +58,11 @@ const Invoices = () => {
     }
   };
 
+  const handleDropdown = () => {
+    setShow((prev) => !prev);
+    setIcon(!icon);
+  };
+
   return (
     <>
       <div className="container">
@@ -76,23 +84,16 @@ const Invoices = () => {
           <div className="right-section">
             <OutsideClickHandler
               onOutsideClick={() => {
-                setShow(false)
+                setShow(false);
+                setIcon('')
               }}>
               <div className="dropdown">
-                <div className="dropdown-heading" onClick={() => setShow((prev) => !prev)}>
+                <div className="dropdown-heading" onClick={handleDropdown}>
                   <span className="filter-text">
                     Filter <span className="remove">by status</span>
                   </span>
-                  <span className="down-arrow">
-                    <svg width="11" height="7" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M1 1l4.228 4.228L9.456 1"
-                        stroke="#7C5DFA"
-                        strokeWidth="2"
-                        fill="none"
-                        fillRule="evenodd"
-                      />
-                    </svg>
+                  <span className="arrow-icons">
+                    {icon ? <UpIcon className="up-icon" /> : <DownIcon className="down-icon" />}
                   </span>
                 </div>
                 <div className="filter-checkboxes">

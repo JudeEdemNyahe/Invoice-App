@@ -37,10 +37,6 @@
     color: #1E2139;
 }
 
-/* .checkbox:hover {
-    border-color: #7C5DFA;
-} */
-
 .dropdown-heading {
     display: flex;
     align-items: center;
@@ -48,13 +44,20 @@
     cursor: pointer;
 }
 
-
-/* .down-arrow:focus {
-    transform: scaleY(-1);
-} */
-
 .remove1 {
     margin-left: -10px;
+}
+
+.arrow-icons {
+    width: 20px;
+    height: 14px;
+}
+
+.up-icon {
+    fill: #7C5DFA;
+    position: absolute;
+    top: 90px;
+    right: 678px;
 }
 
 .btn button {
