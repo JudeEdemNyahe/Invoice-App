@@ -186,7 +186,7 @@ const Invoices = () => {
           <div className="invoice-cards">
             {invoices.map((invoice) => (
               <div key={invoice._id}>
-                <Invoice invoice={invoice} />
+                <Invoice invoice={invoice} key={invoice._id} />
               </div>
             ))}
           </div>
