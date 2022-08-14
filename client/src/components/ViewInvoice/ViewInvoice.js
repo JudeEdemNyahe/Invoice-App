@@ -88,15 +88,11 @@ const ViewInvoice = (props) => {
               <button
                 className="markAsPaidBtn"
                 onClick={() => (invoice.status ? handleMark() : null)}>
-                {invoice.status ? (
-                  invoice.status === 'Pending' || invoice.status === 'Draft' ? (
-                    'Mark as Paid'
-                  ) : (
-                    'Mark as Pending'
-                  )
-                ) : (
-                  ' '
-                )}
+                {invoice.status
+                  ? invoice.status === 'Pending' || invoice.status === 'Draft'
+                    ? 'Mark as Paid'
+                    : 'Mark as Pending'
+                  : ' '}
               </button>
             </div>
           </div>
@@ -112,22 +108,28 @@ const ViewInvoice = (props) => {
               </div>
               <div id="right">
                 <span>
-                  {typeof invoice.senderAddress === 'undefined'
-                    ?  <Skeleton height={25} width={60} />
-                    : invoice.senderAddress.street}
+                  {typeof invoice.senderAddress === 'undefined' ? (
+                    <Skeleton height={25} width={60} />
+                  ) : (
+                    invoice.senderAddress.street
+                  )}
                 </span>
                 <span>
                   {typeof invoice.senderAddress === 'undefined' ? ' ' : invoice.senderAddress.city}
                 </span>
                 <span>
-                  {typeof invoice.senderAddress === 'undefined'
-                    ?  <Skeleton height={25} />
-                    : invoice.senderAddress.postCode}
+                  {typeof invoice.senderAddress === 'undefined' ? (
+                    <Skeleton height={25} />
+                  ) : (
+                    invoice.senderAddress.postCode
+                  )}
                 </span>
                 <span>
-                  {typeof invoice.senderAddress === 'undefined'
-                    ?  <Skeleton height={25} />
-                    : invoice.senderAddress.country}
+                  {typeof invoice.senderAddress === 'undefined' ? (
+                    <Skeleton height={25} />
+                  ) : (
+                    invoice.senderAddress.country
+                  )}
                 </span>
               </div>
             </div>
@@ -245,13 +247,25 @@ const ViewInvoice = (props) => {
             </div>
           </div>
           <div className="viewInvoice-right-section-mobile">
-            <button className="editBtn" onClick={() => setShowEditInvoice(true)}>
-              Edit
+            <button
+              className="editBtn"
+              onClick={() => (invoice.status ? setShowEditInvoice(true) : null)}>
+              {invoice.status ? 'Edit' : ' '}
             </button>
-            <button className="deleteBtn" onClick={() => setShowDeleteInvoice(true)}>
-              Delete
+            <button
+              className="deleteBtn"
+              onClick={() => (invoice.status ? setShowDeleteInvoice(true) : null)}>
+              {invoice.status ? 'Delete' : ' '}
             </button>
-            <button className="markAsPaidBtn">Mark as Paid</button>
+            <button
+              className="markAsPaidBtn"
+              onClick={() => (invoice.status ? handleMark() : null)}>
+              {invoice.status
+                ? invoice.status === 'Pending' || invoice.status === 'Draft'
+                  ? 'Mark as Paid'
+                  : 'Mark as Pending'
+                : ' '}
+            </button>
           </div>
         </div>
       </div>
