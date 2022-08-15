@@ -14,11 +14,9 @@ import { ReactComponent as Back } from '../../assets/icon-arrow-left.svg';
 //import { updateInvoice } from '../../actions/invoices';
 
 const EditInvoice = ({ closeEditForm, invoice, setCurrentId }) => {
-
   const navigate = useNavigate();
 
   const [invoiceData, setInvoiceData] = useState({
-
     senderAddress: {
       street: invoice.senderAddress.street,
       city: invoice.senderAddress.city,
@@ -32,17 +30,14 @@ const EditInvoice = ({ closeEditForm, invoice, setCurrentId }) => {
       country: invoice.clientAddress.country
     },
     items: [...invoice.items]
-    
   });
 
   const dispatch = useDispatch();
- 
 
- 
-  const handleSubmit =  (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(updateInvoice(invoice._id, invoiceData));
-    
+
     e.target.reset();
     handleCloseForm(false);
   };
@@ -104,8 +99,8 @@ const EditInvoice = ({ closeEditForm, invoice, setCurrentId }) => {
   const handleCloseForm = () => {
     closeEditForm(false);
   };
-  if (!invoice)   return null;
-  
+  if (!invoice) return null;
+
   return (
     <Fragment>
       <div className="new-invoice-page">
