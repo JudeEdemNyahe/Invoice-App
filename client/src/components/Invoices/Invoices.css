@@ -55,9 +55,8 @@
 
 .up-icon {
     fill: #7C5DFA;
-    position: absolute;
-    top: 90px;
-    right: 678px;
+    margin-top: -5px;
+    margin-left: -6px;
 }
 
 .btn button {
