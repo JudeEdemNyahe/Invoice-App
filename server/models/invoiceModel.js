@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const { v4: uuidv4 } = require('uuid');
+
 const validator = require('validator')
 
 const invoiceSchema = new mongoose.Schema({
@@ -97,27 +97,27 @@ const invoiceSchema = new mongoose.Schema({
 
 
 
-invoiceSchema.virtual('dueDate').get(function() {
+invoiceSchema.virtual('dueDate').get(function () {
     let event = new Date(this.paymentDue)
     const dateStr = event.toLocaleDateString('en-uk', { day: "numeric", month: "short", year: "numeric", })
     return dateStr;
 
 });
-invoiceSchema.virtual('invoiceDate').get(function() {
+invoiceSchema.virtual('invoiceDate').get(function () {
     let event = new Date(this.createdAt)
     const dateCreatedStr = event.toLocaleDateString('en-uk', { day: "numeric", month: "short", year: "numeric", })
     return dateCreatedStr;
 
 });
 
-invoiceSchema.virtual('htmlDate').get(function() {
+invoiceSchema.virtual('htmlDate').get(function () {
     let event = new Date(this.createdAt).toISOString().slice(0, 10)
     return event;
 });
 
 
 
-invoiceSchema.pre('save', function(next) {
+invoiceSchema.pre('save', function (next) {
     let letters = Math.random()
         .toString(36)
         .replace(/[^a-z]+/g, "")
@@ -135,23 +135,22 @@ invoiceSchema.pre('save', function(next) {
 })
 
 
-invoiceSchema.pre('save', function(next) {
+invoiceSchema.pre('save', function (next) {
     let calcDueDate = new Date(this.createdAt);
     this.paymentDue = calcDueDate.setDate(calcDueDate.getDate() + Number.parseInt(this.paymentTerms));
     next()
 })
 
-invoiceSchema.pre('save', function(next) {
+
+invoiceSchema.pre('save', function (next) {
     let itemTotal = 0
     this.items.map((item) => {
-        itemTotal = item.quantity * item.price;
-        item.id = uuidv4()
+        itemTotal = +item.quantity * +item.price;
         item.total = itemTotal;
     })
 
     next()
 })
-
 
 
 invoiceSchema.pre('save', function (next) {
