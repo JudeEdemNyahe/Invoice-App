@@ -1,18 +1,18 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+
 
 import { deleteAnInvoice } from '../../actions/invoices';
 import './DeleteInvoice.css';
 
 const DeleteInvoice = ({ closeDelete, invoice }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+ 
 
   const handleSubmit = () => {
     dispatch(deleteAnInvoice(invoice._id));
     handleCloseForm();
-    navigate('/');
+    window.location.href = '/';
   };
 
   const handleCloseForm = () => {

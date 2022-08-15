@@ -77,9 +77,18 @@ exports.getAnInvoice = hookAsync(async(req, res, next) => {
 
 
 exports.updateAnInvoice = hookAsync(async(req, res, next) => {
-    if (!req.body.status){
-        req.body.status="pending"
+    itemTotal = 0
+    if (!req.body.status) {
+        req.body.status = "pending"
     }
+    req.body.items.map((item) => {
+        itemTotal = +item.quantity * +item.price;
+        item.total = itemTotal;
+    })
+
+
+
+
     const invoice = await Invoice.findByIdAndUpdate(req.params.id, req.body, {
         new: true,
         runValidators: true
@@ -91,6 +100,7 @@ exports.updateAnInvoice = hookAsync(async(req, res, next) => {
     }
 
 
+    await invoice.save()
 
     res.status(200).json({
         status: 'success',
