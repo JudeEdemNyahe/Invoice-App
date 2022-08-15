@@ -6,16 +6,14 @@ import { deleteAnInvoice } from '../../actions/invoices';
 import './DeleteInvoice.css';
 
 const DeleteInvoice = ({ closeDelete, invoice }) => {
-
-
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
-    dispatch(deleteAnInvoice(invoice._id))
-    handleCloseForm()
-    navigate('/')
-  }
+    dispatch(deleteAnInvoice(invoice._id));
+    handleCloseForm();
+    navigate('/');
+  };
 
   const handleCloseForm = () => {
     closeDelete(false);
@@ -26,10 +24,11 @@ const DeleteInvoice = ({ closeDelete, invoice }) => {
       <div className="delete-invoice">
         <h1>Confirm Deletion</h1>
         <span className="delete-description">
-          Are you sure you want to delete invoice #<span>{invoice.id}</span>? This action cannot be undone
+          Are you sure you want to delete invoice #<span>{invoice.id}</span>? This action cannot be
+          undone
         </span>
         <div className="delete-buttons">
-          <button className="editBtn edit" onClick={() => closeDelete(false)}>
+          <button className="editBtn delete" onClick={() => closeDelete(false)}>
             Cancel
           </button>
           <button className="deleteBtn" onClick={handleSubmit}>

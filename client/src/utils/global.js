@@ -24,7 +24,7 @@ export const GlobalStyles = createGlobalStyle`
     background: ${({ theme }) => theme.invoiceBg};
   }
 
-  .checkbox, .add-item h4, #saveDraft, #save-changes, .addItem {
+  .checkbox, .add-item h4, #saveDraft, #save-changes, .addItem, .delete:hover {
     color: ${({ theme }) => theme.text};
   }
  
@@ -54,6 +54,11 @@ export const GlobalStyles = createGlobalStyle`
   #cancel:hover, .addItem:hover {
     background: ${({ theme }) => theme.invoiceBg};
   }
+
+  .delete:hover {
+    background: ${({ theme }) => theme.body};
+  }
+
 
   @media (min-width: 600px) {
     .btns-container {

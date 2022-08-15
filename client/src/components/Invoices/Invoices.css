@@ -1,138 +1,142 @@
 .container {
-    display: flex;
-    width: 730px;
-    margin: 0 auto;
-    margin-top: 72px;
-    height: 59px;
-    flex-direction: column;
-    gap: 65px;
+  display: flex;
+  width: 730px;
+  margin: 0 auto;
+  margin-top: 72px;
+  height: 59px;
+  flex-direction: column;
+  gap: 65px;
 }
 
 .invoices {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 730px;
-    margin: 0 auto;
-    height: 59px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 730px;
+  margin: 0 auto;
+  height: 59px;
 }
 
 .right-section {
-    display: flex;
-    align-items: center;
-    gap: 2.5em
+  display: flex;
+  align-items: center;
+  gap: 2.5em;
 }
 
 .checkboxes {
-    flex-direction: column;
-    position: absolute;
-    background-color: white;
-    padding: 0.5em 2em;
-    border-radius: 8px;
-    margin-top: 23px;
-    box-shadow: 0px 10px 20px rgba(72, 84, 159, 0.25);
+  flex-direction: column;
+  position: absolute;
+  background-color: white;
+  padding: 0.5em 2em;
+  border-radius: 8px;
+  margin-top: 23px;
+  box-shadow: 0px 10px 20px rgba(72, 84, 159, 0.25);
 }
 
 .checkbox {
-    color: #1E2139;
+  color: #1e2139;
 }
-
-/* .checkbox:hover {
-    border-color: #7C5DFA;
-} */
 
 .dropdown-heading {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
 }
 
-
-/* .down-arrow:focus {
-    transform: scaleY(-1);
-} */
-
 .remove1 {
-    margin-left: -10px;
+  margin-left: -10px;
+}
+
+.arrow-icons {
+  width: 20px;
+  height: 14px;
+}
+
+.up-icon {
+  fill: #7c5dfa;
+  margin-top: -5px;
+  margin-left: -6px;
 }
 
 .btn button {
-    width: 150px; 
-    height: 48px;
-    padding: 17px;
-    background-color: #7C5DFA;
-    color: #F8F8FB;
-    border-radius: 2.5em;
-    border: none;
-    display: flex;
-    align-items: center;
-    gap: 1em;
-    font-weight: 500;
-    cursor: pointer;
+  width: 150px;
+  height: 48px;
+  padding: 17px;
+  background-color: #7c5dfa;
+  color: #f8f8fb;
+  border-radius: 2.5em;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  font-weight: 500;
+  cursor: pointer;
 }
 
-
 button:hover {
-    background-color: #9277FF;;
+  background-color: #9277ff;
 }
 
 .filter-text {
-    font-weight: 800;
-    color: black;
-    font-family: 'League Spartan', sans-serif;
-    font-size: 16px;
+  font-weight: 800;
+  color: black;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 16px;
 }
 
 .plus-icon {
-    font-size: 24px;
-    background-color: #ffffff;
-    width: 1em;
-    height: 1em;
-    border-radius: 50%;
-    display: grid;
-    justify-items: center;
-    align-items: center;
-    margin-right: -5px;
+  font-size: 24px;
+  background-color: #ffffff;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  margin-right: -5px;
 }
 
 .invoice-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-bottom: 1em;
 }
 
 @media (max-width: 1024px) {
-    .container {
-        margin-top: 8em;
-    }
+  .container {
+    margin-top: 8em;
+  }
 }
 
 @media (max-width: 600px) {
-    .container {
-        align-items: center;
-        width: inherit;
-    }
+  .container {
+    align-items: center;
+    width: inherit;
+  }
 
-    .invoices {
-        justify-content: space-around;
-        width: inherit;
-    }
+  .invoices {
+    justify-content: space-around;
+    width: inherit;
+  }
 
-    .numberOfInvoices span, label span, .remove, .remove1  {
-        display: none;
-    }
+  .numberOfInvoices span,
+  label span,
+  .remove,
+  .remove1 {
+    display: none;
+  }
 
-    .invoice-cards {
-        width: 95%;
-    }
+  .invoice-cards {
+    width: 95%;
+  }
 
-    .btn button {
-        width: 90px;
-    }
+  .btn button {
+    width: 90px;
+  }
 
-    .right-section {
-        gap: 18px;
-    }
+  .right-section {
+    gap: 18px;
+  }
 }
