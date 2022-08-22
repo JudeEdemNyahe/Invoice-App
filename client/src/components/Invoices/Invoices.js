@@ -72,7 +72,7 @@ console.log(invoices);
             {invoices?.length > 0 ? (
               <p className="numberOfInvoices">
                 {' '}
-                <span>There are</span> {invoices?.length} <span>total</span> invoices
+                <span className="remove">There are</span> {invoices?.length} <span>total</span> invoices
               </p>
             ) : (
               <p className="numberOfInvoices">
