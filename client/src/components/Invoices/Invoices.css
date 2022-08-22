@@ -122,7 +122,6 @@ button:hover {
   }
 
   .numberOfInvoices span,
-  label span,
   .remove,
   .remove1 {
     display: none;
