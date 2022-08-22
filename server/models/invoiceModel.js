@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 
 const validator = require('validator')
 
+//schema model
 const invoiceSchema = new mongoose.Schema({
     id: {
         type: String,
@@ -96,28 +97,32 @@ const invoiceSchema = new mongoose.Schema({
 
 
 
-
-invoiceSchema.virtual('dueDate').get(function () {
+//converts the payment due date to a more human readable format 
+invoiceSchema.virtual('dueDate').get(function() {
     let event = new Date(this.paymentDue)
     const dateStr = event.toLocaleDateString('en-uk', { day: "numeric", month: "short", year: "numeric", })
     return dateStr;
 
 });
-invoiceSchema.virtual('invoiceDate').get(function () {
+
+//converts the invoice due date to a more human readable format 
+invoiceSchema.virtual('invoiceDate').get(function() {
     let event = new Date(this.createdAt)
     const dateCreatedStr = event.toLocaleDateString('en-uk', { day: "numeric", month: "short", year: "numeric", })
     return dateCreatedStr;
 
 });
 
-invoiceSchema.virtual('htmlDate').get(function () {
+//converts createdAt timestamp to a  yyyy-mm-date format
+invoiceSchema.virtual('htmlDate').get(function() {
     let event = new Date(this.createdAt).toISOString().slice(0, 10)
     return event;
 });
 
 
 
-invoiceSchema.pre('save', function (next) {
+//generates a unique random id for each created user e.g# NK1231
+invoiceSchema.pre('save', function(next) {
     let letters = Math.random()
         .toString(36)
         .replace(/[^a-z]+/g, "")
@@ -135,14 +140,15 @@ invoiceSchema.pre('save', function (next) {
 })
 
 
-invoiceSchema.pre('save', function (next) {
+//calculates payment due date by adding payment term days to createdAt to date.default is 30 is not given by user
+invoiceSchema.pre('save', function(next) {
     let calcDueDate = new Date(this.createdAt);
     this.paymentDue = calcDueDate.setDate(calcDueDate.getDate() + Number.parseInt(this.paymentTerms));
     next()
 })
 
-
-invoiceSchema.pre('save', function (next) {
+//calculates the total for each item in the array
+invoiceSchema.pre('save', function(next) {
     let itemTotal = 0
     this.items.map((item) => {
         itemTotal = +item.quantity * +item.price;
@@ -153,7 +159,8 @@ invoiceSchema.pre('save', function (next) {
 })
 
 
-invoiceSchema.pre('save', function (next) {
+//calculates the overall total by adding up total from each item total
+invoiceSchema.pre('save', function(next) {
     let calcTotal = 0;
     this.items.map((item) => {
         calcTotal += item.total;
