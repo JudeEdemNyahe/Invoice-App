@@ -73,6 +73,9 @@ const ViewInvoice = (props) => {
               <span id="status" className={changeColor(props.status)}>
                 {invoice.status || <Skeleton />}
               </span>
+              <span id="status-m" className={changeColor(props.status)}>
+                {invoice.status || <Skeleton />}
+              </span>
             </div>
             <div className="viewInvoice-right-section">
               <button
