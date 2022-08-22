@@ -81,11 +81,14 @@ exports.updateAnInvoice = hookAsync(async(req, res, next) => {
     if (!req.body.status) {
         req.body.status = "pending"
     }
-    req.body.items.map((item) => {
-        itemTotal = +item.quantity * +item.price;
-        item.total = itemTotal;
-    })
 
+    if (req.body.items) {
+        req.body.items.map((item) => {
+            itemTotal = +item.quantity * +item.price;
+            item.total = itemTotal;
+        })
+
+    }
 
 
 

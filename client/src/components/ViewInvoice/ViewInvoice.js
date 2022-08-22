@@ -89,7 +89,7 @@ const ViewInvoice = (props) => {
                 className="markAsPaidBtn"
                 onClick={() => (invoice.status ? handleMark() : null)}>
                 {invoice.status
-                  ? invoice.status === 'Pending' || invoice.status === 'Draft'
+                  ? invoice.status === 'pending' || invoice.status === 'draft'
                     ? 'Mark as Paid'
                     : 'Mark as Pending'
                   : ' '}

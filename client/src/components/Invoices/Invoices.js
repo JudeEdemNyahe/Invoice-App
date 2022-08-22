@@ -62,7 +62,7 @@ const Invoices = () => {
     setShow((prev) => !prev);
     setIcon(!icon);
   };
-
+console.log(invoices);
   return (
     <>
       <div className="container">
